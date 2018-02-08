@@ -64,7 +64,10 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="Grammar\CodeLineExpression.cs" />
-    <Compile Include="Grammar\FuncUsageExpression.cs" />
+    <Compile Include="Grammar\FuncUsage\FuncUsageExpression.cs" />
+    <Compile Include="Grammar\FuncUsage\IFuncUsageParam.cs" />
+    <Compile Include="Grammar\FuncUsage\StringFuncUsageParam.cs" />
+    <Compile Include="Grammar\FuncUsage\VarFuncUsageParam.cs" />
     <Compile Include="Grammar\IExpression.cs" />
     <Compile Include="Grammar\ViewEngineVisitor.cs" />
     <Compile Include="Program.cs" />
