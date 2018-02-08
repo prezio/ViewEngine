@@ -47,7 +47,7 @@
   <ItemGroup>
     <Antlr4 Include="Grammar\ViewEngine.g4">
       <Generator>MSBuild:Compile</Generator>
-      <CustomToolNamespace>Grammar</CustomToolNamespace>
+      <CustomToolNamespace>ViewEngine.Core.Grammar</CustomToolNamespace>
       <Listener>False</Listener>
       <Visitor>True</Visitor>
     </Antlr4>
@@ -60,6 +60,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="Grammar\CodeLineExpression.cs" />
+    <Compile Include="Grammar\FuncUsageExpression.cs" />
+    <Compile Include="Grammar\IExpression.cs" />
+    <Compile Include="Grammar\ViewEngineVisitor.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
