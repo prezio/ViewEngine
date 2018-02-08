@@ -12,8 +12,9 @@ namespace ViewEngine.Core
     {
         public static void Main()
         {
-            string input = "pompka(\"frecel\",@pompka);www();kappa(@zet);";
-            AntlrInputStream inputStream = new AntlrInputStream(input);
+            var reader = new System.IO.StreamReader(@"Samples\FuncUsageTest.view");
+
+            AntlrInputStream inputStream = new AntlrInputStream(reader);
             ViewEngineLexer viewEngineLexer = new ViewEngineLexer(inputStream);
             CommonTokenStream commonTokenStream = new CommonTokenStream(viewEngineLexer);
             ViewEngineParser viewEngineParser = new ViewEngineParser(commonTokenStream);

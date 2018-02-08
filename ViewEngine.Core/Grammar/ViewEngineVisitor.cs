@@ -9,8 +9,6 @@ namespace ViewEngine.Core.Grammar
 {
     public class ViewEngineVisitor : ViewEngineBaseVisitor<object>
     {
-        //public List<string> ParsedMethods { get; }
-        //public string MainMethod 
         public List<IExpression> Result { get; } = new List<IExpression>();
 
         public override object VisitFuncUsageExp([NotNull] ViewEngineParser.FuncUsageExpContext context)
@@ -27,8 +25,6 @@ namespace ViewEngine.Core.Grammar
             var codeLine = context.CODE_LINE().GetText().Remove(0, 2);
             return new CodeLineExpression(codeLine);
         }
-
-
 
         public override object VisitFunc_usage([NotNull] ViewEngineParser.Func_usageContext context)
         {
