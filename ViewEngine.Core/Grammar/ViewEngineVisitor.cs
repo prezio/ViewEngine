@@ -37,6 +37,27 @@ namespace ViewEngine.Core.Grammar
             Visit(context.statement());
             return null;
         }
+
+        public override object VisitModelIntroduceExp([NotNull] ViewEngineParser.ModelIntroduceExpContext context)
+        {
+            var modelIntroduce = (IExpression) Visit(context.model_introduction());
+            Result.Add(modelIntroduce);
+
+            Visit(context.statement());
+            return null;
+        }
+        #endregion
+
+        #region Model Introduce Expression
+
+        public override object VisitModel_introduction([NotNull] ViewEngineParser.Model_introductionContext context)
+        {
+            var varType = context.ID().GetText();
+            var varName = context.VARID().GetText().TrimStart('@');
+
+            return new ModelIntroduceExpression(varType, varName);
+        }
+
         #endregion
 
         #region Function Usage Expression
@@ -83,9 +104,40 @@ namespace ViewEngine.Core.Grammar
             var declArgs = (List<IFuncDeclParam>)Visit(context.func_decl_args());
 
             // to do: add visiting body expression
-            context.func_body();
+            var bodyExp = (List<IFuncDeclBodyLine>)Visit(context.func_body());
 
-            return new FuncDeclarationExpression(funcName, declArgs);
+            return new FuncDeclarationExpression(funcName, declArgs, bodyExp);
+        }
+
+        public override object VisitFunc_body([NotNull] ViewEngineParser.Func_bodyContext context)
+        {
+            var bodyLines = new List<IFuncDeclBodyLine>();
+
+            var codeLine = context.CODE_LINE();
+            if (codeLine != null)
+            {
+                bodyLines.Add(
+                        new FuncDeclBodyCodeLine(codeLine.GetText().Remove(0, 2))
+                    );
+            }
+
+            var templateLine = context.FUNC_BODY_LINE();
+            if (templateLine != null)
+            {
+                bodyLines.Add(
+                        new FuncDeclBodyTemplateLine(templateLine.GetText())
+                    );
+            }
+
+            // we ommit epsilon and comment line
+            var nextLinesExp = context.func_body();
+            if (nextLinesExp != null)
+            {
+                var nextLines = (List<IFuncDeclBodyLine>)Visit(nextLinesExp);
+                bodyLines.AddRange(nextLines);
+            }
+
+            return bodyLines;
         }
 
         public override object VisitFunc_decl_args(ViewEngineParser.Func_decl_argsContext context)

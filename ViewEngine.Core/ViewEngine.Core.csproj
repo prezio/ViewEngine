@@ -76,6 +76,7 @@
     <Compile Include="Grammar\FuncUsage\StringFuncUsageParam.cs" />
     <Compile Include="Grammar\FuncUsage\VarFuncUsageParam.cs" />
     <Compile Include="Grammar\IExpression.cs" />
+    <Compile Include="Grammar\ModelIntroduceExpression.cs" />
     <Compile Include="Grammar\ViewEngineVisitor.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
