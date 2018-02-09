@@ -64,6 +64,12 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="Grammar\CodeLineExpression.cs" />
+    <Compile Include="Grammar\FuncDeclaration\FuncDeclarationExpression.cs" />
+    <Compile Include="Grammar\FuncDeclaration\FuncDeclBody.cs" />
+    <Compile Include="Grammar\FuncDeclaration\FuncDeclBodyCodeLine.cs" />
+    <Compile Include="Grammar\FuncDeclaration\IFuncDeclBodyLine.cs" />
+    <Compile Include="Grammar\FuncDeclaration\IFuncDeclParam.cs" />
+    <Compile Include="Grammar\FuncDeclaration\VarFuncDeclParam.cs" />
     <Compile Include="Grammar\FuncUsage\FuncUsageExpression.cs" />
     <Compile Include="Grammar\FuncUsage\IFuncUsageParam.cs" />
     <Compile Include="Grammar\FuncUsage\StringFuncUsageParam.cs" />

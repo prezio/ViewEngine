@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewEngine.Core.Grammar.FuncDeclaration;
 using ViewEngine.Core.Grammar.FuncUsage;
 
 namespace ViewEngine.Core.Grammar
@@ -42,9 +43,9 @@ namespace ViewEngine.Core.Grammar
         public override object VisitFunc_usage([NotNull] ViewEngineParser.Func_usageContext context)
         {
             var functionName = context.ID().GetText();
-            var args = (List<IFuncUsageParam>)Visit(context.func_usage_args());
+            var usageArgs = (List<IFuncUsageParam>)Visit(context.func_usage_args());
 
-            return new FuncUsageExpression(functionName, args);
+            return new FuncUsageExpression(functionName, usageArgs);
         }
 
         public override object VisitFunc_usage_args([NotNull] ViewEngineParser.Func_usage_argsContext context)
@@ -76,34 +77,38 @@ namespace ViewEngine.Core.Grammar
         #endregion
 
         #region Function declaration expression
-        /*public override object VisitFunc_declaration(ViewEngineParser.Func_declarationContext context)
+        public override object VisitFunc_declaration(ViewEngineParser.Func_declarationContext context)
         {
-            var funcName = context.ID();
-            var declArgs = (string)Visit(context.func_decl_args());
+            var funcName = context.ID().GetText();
+            var declArgs = (List<IFuncDeclParam>)Visit(context.func_decl_args());
 
+            // to do: add visiting body expression
+            context.func_body();
+
+            return new FuncDeclarationExpression(funcName, declArgs);
         }
 
         public override object VisitFunc_decl_args(ViewEngineParser.Func_decl_argsContext context)
         {
             var expArgs = context.func_decl_args2();
-            return expArgs != null ? (string)Visit(expArgs) : string.Empty;
+            return expArgs != null ? (List<IFuncDeclParam>)Visit(expArgs) : new List<IFuncDeclParam>();
         }
 
         public override object VisitFunc_decl_args2(ViewEngineParser.Func_decl_args2Context context)
         {
-            var argDecl = (string)Visit(context.func_decl_param());
+            var declArgs = new List<IFuncDeclParam> { (IFuncDeclParam)Visit(context.func_decl_param()) };
             var nextArgsExp = context.func_decl_args2();
-            var nextArgs = nextArgsExp != null ? (string)Visit(nextArgsExp) : null;
-            return !string.IsNullOrEmpty(nextArgs) ? $"{argDecl},{nextArgs}" : $"{argDecl}";
+            var nextArgs = nextArgsExp != null ? (List<IFuncDeclParam>)Visit(nextArgsExp) : new List<IFuncDeclParam>();
+            declArgs.AddRange(nextArgs);
+            return declArgs;
         }
 
         public override object VisitFunc_decl_param(ViewEngineParser.Func_decl_paramContext context)
         {
             var paramType = context.ID().GetText();
             var paramName = context.VARID().GetText().Remove(0, 1);
-
-
-        }*/
+            return new VarFuncDeclParam(paramType, paramName);
+        }
 
         #endregion
     }
