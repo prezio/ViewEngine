@@ -64,7 +64,9 @@
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interpreter\" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Grammar\CodeLineExpression.cs" />
     <Compile Include="Grammar\FuncDeclaration\FuncDeclarationExpression.cs" />
@@ -82,6 +84,9 @@
     <Compile Include="Grammar\ModelIntroduceExpression.cs" />
     <Compile Include="Grammar\ViewEngineVisitor.cs" />
     <Compile Include="Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\MockTemplate.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
