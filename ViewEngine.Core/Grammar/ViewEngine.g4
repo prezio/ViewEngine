@@ -6,6 +6,7 @@ grammar ViewEngine;
 statement
     : CODE_LINE statement               #codeLineExp
     | COMMENT_LINE statement            #commentLineExp
+	| model_introduction SEP statement	#modelIntroduceExp
     | func_usage SEP statement          #funcUsageExp
     | func_declaration SEP statement    #funcDeclExp
     | EOF                               #eofExp
@@ -67,6 +68,16 @@ func_body
     ;
 
 // end of grammar for function declaration
+
+
+
+// grammar for model introduce
+
+model_introduction
+	: VARID ID
+	;
+
+// end of grammar for model introduce
 
 
 
