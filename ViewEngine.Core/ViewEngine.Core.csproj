@@ -42,6 +42,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Samples\FuncBodyWithUsage.view">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Samples\FuncUsageTest.view">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

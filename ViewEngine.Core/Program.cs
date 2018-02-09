@@ -12,7 +12,7 @@ namespace ViewEngine.Core
     {
         public static void Main()
         {
-            var reader = new System.IO.StreamReader(@"Samples\FuncUsageTest.view");
+            var reader = new System.IO.StreamReader(@"Samples\FuncBodyWithUsage.view");
 
             AntlrInputStream inputStream = new AntlrInputStream(reader);
             ViewEngineLexer viewEngineLexer = new ViewEngineLexer(inputStream);

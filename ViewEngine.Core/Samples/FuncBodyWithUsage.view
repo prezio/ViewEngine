@@ -1,0 +1,10 @@
+// In this sample we declare function and then use it
+function Html(@body Text)
+{
+	|<html>
+	|	<body>
+	|		@body
+	|	</body>
+	|</html>
+};
+Html("Hello World!!");

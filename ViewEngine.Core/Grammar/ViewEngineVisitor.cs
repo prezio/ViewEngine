@@ -125,7 +125,7 @@ namespace ViewEngine.Core.Grammar
             if (templateLine != null)
             {
                 bodyLines.Add(
-                        new FuncDeclBodyTemplateLine(templateLine.GetText())
+                        new FuncDeclBodyTemplateLine(templateLine.GetText().TrimStart('|'))
                     );
             }
 
