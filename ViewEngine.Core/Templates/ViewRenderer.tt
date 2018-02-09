@@ -1,0 +1,25 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+// This code is auto generated
+
+namespace <#= NamespaceName #>
+{
+	class <#= ViewName #>ViewRenderer
+	{
+		<#= AdditionalSection #>
+
+		public void Render(<#= ModelParams #>, StreamWriter sw)
+		{
+			<#= ContentSection #>
+		}
+	}
+}

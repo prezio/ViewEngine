@@ -14,13 +14,13 @@ namespace ViewEngine.Core
         {
             var reader = new System.IO.StreamReader(@"Samples\FuncBodyWithUsage.view");
 
-            AntlrInputStream inputStream = new AntlrInputStream(reader);
-            ViewEngineLexer viewEngineLexer = new ViewEngineLexer(inputStream);
-            CommonTokenStream commonTokenStream = new CommonTokenStream(viewEngineLexer);
-            ViewEngineParser viewEngineParser = new ViewEngineParser(commonTokenStream);
+            var inputStream = new AntlrInputStream(reader);
+            var viewEngineLexer = new ViewEngineLexer(inputStream);
+            var commonTokenStream = new CommonTokenStream(viewEngineLexer);
+            var viewEngineParser = new ViewEngineParser(commonTokenStream);
 
-            ViewEngineParser.StatementContext statementContext = viewEngineParser.statement();
-            ViewEngineVisitor visitor = new ViewEngineVisitor();
+            var statementContext = viewEngineParser.statement();
+            var visitor = new ViewEngineVisitor();
 
             Console.WriteLine(visitor.Visit(statementContext));
         }
