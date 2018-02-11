@@ -17,6 +17,12 @@ namespace ViewEngine.Core.Grammar
         {
             var codeLine = context.CODE_LINE().GetText().Remove(0, 2);
             Result.Add(new CodeLineExpression(codeLine));
+
+            var nextStatements = context.template_statement();
+            if (nextStatements != null)
+            {
+                Visit(nextStatements);
+            }
             return null;
         }
 
@@ -24,6 +30,12 @@ namespace ViewEngine.Core.Grammar
         {
             var templateLine = context.RAW_TEXT_LINE().GetText();
             Result.Add(new TemplateLineExpression(templateLine));
+
+            var nextStatements = context.template_statement();
+            if (nextStatements != null)
+            {
+                Visit(nextStatements);
+            }
             return null;
         }
         #endregion

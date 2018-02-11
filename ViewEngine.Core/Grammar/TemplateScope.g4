@@ -17,4 +17,3 @@ COMMENT_LINE : '//' TEXT_LINE ;
 RAW_TEXT_LINE : ~( '\r' | '\n' ) ~( '\r' | '\n' )* ;
 
 WS : [ \r\t\n]+ -> skip ;
-NL: '\r'? '\n' -> skip ;
