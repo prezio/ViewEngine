@@ -1,0 +1,10 @@
+﻿<#@ template language="C#" #>
+
+<#@ parameter type="ViewEngine.Core.Templates.MethodDefinition.MethodDefinitionParams" name="Parameters" #>
+
+public void <#= Parameters.MethodName #>(<#= Parameters.ModelParams #>, 
+    <#= Parameters.MethodParams #>,
+    StreamWriter streamWriter)
+{
+    <#= Parameters.MethodContent #>
+}

@@ -7,18 +7,15 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace ViewEngine.Core.Templates
+namespace ViewEngine.Core.Templates.MethodDefinition
 {
-    using System.Linq;
-    using System.Text;
-    using System.Collections.Generic;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinitionTemplate.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class MethodDefinitionTemplate : MethodDefinitionTemplateBase
     {
@@ -28,8 +25,85 @@ namespace ViewEngine.Core.Templates
         /// </summary>
         public virtual string TransformText()
         {
+            this.Write("\r\n");
+            this.Write("\r\npublic void ");
+            
+            #line 5 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Parameters.MethodName));
+            
+            #line default
+            #line hidden
+            this.Write("(");
+            
+            #line 5 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Parameters.ModelParams));
+            
+            #line default
+            #line hidden
+            this.Write(", \r\n    ");
+            
+            #line 6 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Parameters.MethodParams));
+            
+            #line default
+            #line hidden
+            this.Write(",\r\n    StreamWriter streamWriter)\r\n{\r\n    ");
+            
+            #line 9 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Parameters.MethodContent));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n}");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
+
+private global::ViewEngine.Core.Templates.MethodDefinition.MethodDefinitionParams _ParametersField;
+
+/// <summary>
+/// Access the Parameters parameter of the template.
+/// </summary>
+private global::ViewEngine.Core.Templates.MethodDefinition.MethodDefinitionParams Parameters
+{
+    get
+    {
+        return this._ParametersField;
+    }
+}
+
+
+/// <summary>
+/// Initialize the template
+/// </summary>
+public virtual void Initialize()
+{
+    if ((this.Errors.HasErrors == false))
+    {
+bool ParametersValueAcquired = false;
+if (this.Session.ContainsKey("Parameters"))
+{
+    this._ParametersField = ((global::ViewEngine.Core.Templates.MethodDefinition.MethodDefinitionParams)(this.Session["Parameters"]));
+    ParametersValueAcquired = true;
+}
+if ((ParametersValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("Parameters");
+    if ((data != null))
+    {
+        this._ParametersField = ((global::ViewEngine.Core.Templates.MethodDefinition.MethodDefinitionParams)(data));
+    }
+}
+
+
+    }
+}
+
+
+        
+        #line default
+        #line hidden
     }
     
     #line default

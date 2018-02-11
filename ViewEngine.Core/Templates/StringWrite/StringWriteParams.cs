@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewEngine.Core.Templates
+namespace ViewEngine.Core.Templates.StringWrite
 {
-    public class MethodDefinitionParams
+    public class StringWriteParams
     {
-
+        public string TextString { get; set; }
     }
 }

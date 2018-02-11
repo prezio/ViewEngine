@@ -1,6 +1,6 @@
 ﻿<#@ template language="C#" #>
 
-<#@ parameter type="ViewEngine.Core.Templates.ViewRendererParams" name="Parameters" #>
+<#@ parameter type="ViewEngine.Core.Templates.ViewRenderer.ViewRendererParams" name="Parameters" #>
 
 using System;
 using System.Collections.Generic;

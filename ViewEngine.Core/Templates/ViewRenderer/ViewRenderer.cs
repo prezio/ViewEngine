@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace ViewEngine.Core.Templates
+namespace ViewEngine.Core.Templates.ViewRenderer
 {
     using System;
     
@@ -15,7 +15,7 @@ namespace ViewEngine.Core.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer\ViewRenderer.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class ViewRenderer : ViewRendererBase
     {
@@ -30,35 +30,35 @@ namespace ViewEngine.Core.Templates
                     "tem.Text;\r\nusing System.Threading.Tasks;\r\n\r\n// This code is auto generated\r\n\r\nna" +
                     "mespace ");
             
-            #line 13 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer.tt"
+            #line 13 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer\ViewRenderer.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Parameters.NamespaceName));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n\tclass ");
             
-            #line 15 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer.tt"
+            #line 15 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer\ViewRenderer.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Parameters.ViewName));
             
             #line default
             #line hidden
             this.Write("ViewRenderer\r\n\t{\r\n\t\t");
             
-            #line 17 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer.tt"
+            #line 17 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer\ViewRenderer.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Parameters.AdditionalSection));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n\t\tpublic void Render(");
             
-            #line 19 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer.tt"
+            #line 19 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer\ViewRenderer.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Parameters.ModelParams));
             
             #line default
             #line hidden
             this.Write(", StreamWriter streamWriter)\r\n\t\t{\r\n\t\t\t");
             
-            #line 21 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer.tt"
+            #line 21 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer\ViewRenderer.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Parameters.ContentSection));
             
             #line default
@@ -67,14 +67,14 @@ namespace ViewEngine.Core.Templates
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer.tt"
+        #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\ViewRenderer\ViewRenderer.tt"
 
-private global::ViewEngine.Core.Templates.ViewRendererParams _ParametersField;
+private global::ViewEngine.Core.Templates.ViewRenderer.ViewRendererParams _ParametersField;
 
 /// <summary>
 /// Access the Parameters parameter of the template.
 /// </summary>
-private global::ViewEngine.Core.Templates.ViewRendererParams Parameters
+private global::ViewEngine.Core.Templates.ViewRenderer.ViewRendererParams Parameters
 {
     get
     {
@@ -93,7 +93,7 @@ public virtual void Initialize()
 bool ParametersValueAcquired = false;
 if (this.Session.ContainsKey("Parameters"))
 {
-    this._ParametersField = ((global::ViewEngine.Core.Templates.ViewRendererParams)(this.Session["Parameters"]));
+    this._ParametersField = ((global::ViewEngine.Core.Templates.ViewRenderer.ViewRendererParams)(this.Session["Parameters"]));
     ParametersValueAcquired = true;
 }
 if ((ParametersValueAcquired == false))
@@ -101,7 +101,7 @@ if ((ParametersValueAcquired == false))
     object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("Parameters");
     if ((data != null))
     {
-        this._ParametersField = ((global::ViewEngine.Core.Templates.ViewRendererParams)(data));
+        this._ParametersField = ((global::ViewEngine.Core.Templates.ViewRenderer.ViewRendererParams)(data));
     }
 }
 

@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace ViewEngine.Core.Templates
+namespace ViewEngine.Core.Templates.StringWrite
 {
     using System;
     
@@ -15,7 +15,7 @@ namespace ViewEngine.Core.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWriteTemplate.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class StringWriteTemplate : StringWriteTemplateBase
     {
@@ -28,7 +28,7 @@ namespace ViewEngine.Core.Templates
             this.Write("\r\n");
             this.Write("\r\nstreamWriter.WriteLine(");
             
-            #line 5 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWriteTemplate.tt"
+            #line 5 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Parameters.TextString));
             
             #line default
@@ -37,14 +37,14 @@ namespace ViewEngine.Core.Templates
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWriteTemplate.tt"
+        #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
 
-private global::ViewEngine.Core.Templates.StringWriteParams _ParametersField;
+private global::ViewEngine.Core.Templates.StringWrite.StringWriteParams _ParametersField;
 
 /// <summary>
 /// Access the Parameters parameter of the template.
 /// </summary>
-private global::ViewEngine.Core.Templates.StringWriteParams Parameters
+private global::ViewEngine.Core.Templates.StringWrite.StringWriteParams Parameters
 {
     get
     {
@@ -63,7 +63,7 @@ public virtual void Initialize()
 bool ParametersValueAcquired = false;
 if (this.Session.ContainsKey("Parameters"))
 {
-    this._ParametersField = ((global::ViewEngine.Core.Templates.StringWriteParams)(this.Session["Parameters"]));
+    this._ParametersField = ((global::ViewEngine.Core.Templates.StringWrite.StringWriteParams)(this.Session["Parameters"]));
     ParametersValueAcquired = true;
 }
 if ((ParametersValueAcquired == false))
@@ -71,7 +71,7 @@ if ((ParametersValueAcquired == false))
     object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("Parameters");
     if ((data != null))
     {
-        this._ParametersField = ((global::ViewEngine.Core.Templates.StringWriteParams)(data));
+        this._ParametersField = ((global::ViewEngine.Core.Templates.StringWrite.StringWriteParams)(data));
     }
 }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewEngine.Core.Templates
+namespace ViewEngine.Core.Templates.ViewRenderer
 {
     public class ViewRendererParams
     {

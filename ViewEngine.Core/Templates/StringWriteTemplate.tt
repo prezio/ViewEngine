@@ -1,5 +1,0 @@
-﻿<#@ template language="C#" #>
-
-<#@ parameter type="ViewEngine.Core.Templates.StringWriteParams" name="Parameters" #>
-
-streamWriter.WriteLine(<#= Parameters.TextString #>);
