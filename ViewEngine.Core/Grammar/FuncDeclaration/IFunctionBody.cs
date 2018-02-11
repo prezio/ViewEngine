@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewEngine.Core.Grammar.FuncDeclaration
 {
-    public interface IFuncDeclBodyLine
+    public interface IFunctionBody
     {
     }
 }

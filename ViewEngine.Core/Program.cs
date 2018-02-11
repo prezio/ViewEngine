@@ -19,7 +19,7 @@ namespace ViewEngine.Core
             var commonTokenStream = new CommonTokenStream(viewEngineLexer);
             var viewEngineParser = new ViewEngineParser(commonTokenStream);
 
-            var statementContext = viewEngineParser.statement();
+            var statementContext = viewEngineParser.main();
             var visitor = new ViewEngineVisitor();
 
             Console.WriteLine(visitor.Visit(statementContext));

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewEngine.Core.Grammar.FuncDeclaration
+namespace ViewEngine.Core.Grammar.Scope
 {
-    public class FuncDeclBodyTemplateLine : IFuncDeclBodyLine
+    public class TemplateLineExpression : ITemplateExpression
     {
         public string TemplateLine { get; set; }
 
-        public FuncDeclBodyTemplateLine(string templateLine)
+        public TemplateLineExpression(string templateLine)
         {
             TemplateLine = templateLine;
         }

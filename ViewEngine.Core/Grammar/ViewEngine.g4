@@ -1,16 +1,46 @@
 grammar ViewEngine;
 
+// grammar for main file
 
-// grammar for statement declaration, main program
-
-statement
-    : CODE_LINE statement               #codeLineExp
-    | COMMENT_LINE statement            #commentLineExp
-	| model_introduction SEP statement	#modelIntroduceExp
-    | func_usage SEP statement          #funcUsageExp
-    | func_declaration SEP statement    #funcDeclExp
-    | EOF                               #eofExp
+main
+    : models_introduction regular_statement
     ;
+
+// grammar for secondary file
+
+secondary
+    : regular_statement
+    ;
+
+
+// grammar for regular statement declaration
+
+regular_statement
+    : CODE_LINE regular_statement               #codeLineExp
+    | COMMENT_LINE regular_statement            #commentLineExp
+    | REGULAR_SCOPE regular_statement           #rawScopeExp
+    | func_usage SEP regular_statement          #funcUsageExp
+    | func_declaration regular_statement        #funcDeclExp
+    | SEP regular_statement                     #emptyExp
+    | EOF                                       #eofExp
+    | /*epsilon*/                               #epsilonExp
+    ;
+
+
+
+// grammar for model introduction
+
+models_introduction
+    : COMMENT_LINE models_introduction
+    | model_introduction SEP models_introduction
+    | /*epsilon*/
+    ;
+
+model_introduction
+	: VARID ID
+	;
+
+// end of grammar for model introduction
 
 
 
@@ -31,8 +61,9 @@ func_usage_args2
     ;
 
 func_usage_param
-    : VARID
-    | TEXT_STRING
+    : VARID EQUAL TEMPLATE_SCOPE
+    | VARID EQUAL REGULAR_SCOPE
+    | VARID EQUAL TEXT_STRING
     ;
 
 // end of grammar for function usage
@@ -43,41 +74,26 @@ func_usage_param
 
 func_declaration
     : FUNCTION ID LP func_decl_args RP 
-        LS func_body RS
-    ;
-
-func_decl_args
-    : func_decl_args2
-    | /*epsilon*/
-    ;
-
-func_decl_args2
-    : func_decl_param
-    | func_decl_param COMMA func_decl_args2
-    ;
-
-func_decl_param
-    : VARID ID
+        func_body
     ;
 
 func_body
-    : COMMENT_LINE func_body
-    | CODE_LINE func_body
-    | FUNC_BODY_LINE func_body
-    | /*epsilon*/
+    : REGULAR_SCOPE
+    | TEMPLATE_SCOPE
     ;
 
-// end of grammar for function declaration
-
-
-
-// grammar for model introduce
-
-model_introduction
-	: VARID ID
+func_decl_args
+	: func_decl_args2
+	| /*epsilon*/
 	;
 
-// end of grammar for model introduce
+func_decl_args2
+    : VARID
+    | VARID COMMA func_decl_args2
+    ;
+
+
+// end of grammar for function declaration
 
 
 
@@ -90,13 +106,14 @@ COMMA : ',' ;
 SEP : ';' ;
 LP : '(' ;
 RP : ')' ;
-LS : '{' ;
-RS : '}' ;
+EQUAL : '=' ;
 
+TEMPLATE_SCOPE : '<@' ( ~'@' | ( '@'+ ~[>*]) )* '@'* '@>';
+REGULAR_SCOPE : '<|' ( ~'|' | ( '|'+ ~[>*]) )* '|'* '|>';
 TEXT_STRING : '"' ~('"')* '"' ;
 fragment TEXT_LINE : ~( '\r' | '\n' )* ;
 CODE_LINE : '--' TEXT_LINE ;
 COMMENT_LINE : '//' TEXT_LINE ;
-FUNC_BODY_LINE : '|' TEXT_LINE ;
+
 
 WS : [ \r\t\n]+ -> skip ;

@@ -39,6 +39,10 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Antlr4 Include="Grammar\TemplateScope.g4">
+      <CustomToolNamespace>ViewEngine.Core.Grammar</CustomToolNamespace>
+      <Generator>MSBuild:Compile</Generator>
+    </Antlr4>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -68,20 +72,21 @@
     <Folder Include="Interpreter\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Grammar\CodeLineExpression.cs" />
+    <Compile Include="Grammar\Common\IVarContent.cs" />
+    <Compile Include="Grammar\Common\CodeLineExpression.cs" />
+    <Compile Include="Grammar\Common\TextString.cs" />
+    <Compile Include="Grammar\Common\VariableReference.cs" />
     <Compile Include="Grammar\FuncDeclaration\FuncDeclarationExpression.cs" />
-    <Compile Include="Grammar\FuncDeclaration\FuncDeclBody.cs" />
-    <Compile Include="Grammar\FuncDeclaration\FuncDeclBodyCodeLine.cs" />
-    <Compile Include="Grammar\FuncDeclaration\FuncDeclBodyTemplateLine.cs" />
-    <Compile Include="Grammar\FuncDeclaration\IFuncDeclBodyLine.cs" />
-    <Compile Include="Grammar\FuncDeclaration\IFuncDeclParam.cs" />
-    <Compile Include="Grammar\FuncDeclaration\VarFuncDeclParam.cs" />
-    <Compile Include="Grammar\FuncUsage\FuncUsageExpression.cs" />
-    <Compile Include="Grammar\FuncUsage\IFuncUsageParam.cs" />
-    <Compile Include="Grammar\FuncUsage\StringFuncUsageParam.cs" />
-    <Compile Include="Grammar\FuncUsage\VarFuncUsageParam.cs" />
-    <Compile Include="Grammar\IExpression.cs" />
-    <Compile Include="Grammar\ModelIntroduceExpression.cs" />
+    <Compile Include="Grammar\Common\FuncUsageExpression.cs" />
+    <Compile Include="Grammar\FuncDeclaration\IFunctionBody.cs" />
+    <Compile Include="Grammar\Model\ModelIntroduceExpression.cs" />
+    <Compile Include="Grammar\Model\IModelExpression.cs" />
+    <Compile Include="Grammar\Scope\IRegularExpression.cs" />
+    <Compile Include="Grammar\Scope\ITemplateExpression.cs" />
+    <Compile Include="Grammar\Scope\RegularScope.cs" />
+    <Compile Include="Grammar\Scope\TemplateLineExpression.cs" />
+    <Compile Include="Grammar\Scope\TemplateScope.cs" />
+    <Compile Include="Grammar\TemplateScopeVisitor.cs" />
     <Compile Include="Grammar\ViewEngineVisitor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Templates\ViewRenderer.cs">

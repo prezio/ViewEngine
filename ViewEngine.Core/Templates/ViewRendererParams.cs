@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewEngine.Core.Templates
 {
-    public partial class ViewRenderer
+    public class ViewRendererParams
     {
         public string NamespaceName { get; set; }
         public string ViewName { get; set; }
