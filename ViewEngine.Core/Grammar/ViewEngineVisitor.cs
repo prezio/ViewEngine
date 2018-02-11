@@ -150,8 +150,7 @@ namespace ViewEngine.Core.Grammar
         {
             var funcName = context.ID().GetText();
             var declArgs = (List<string>)Visit(context.func_decl_args());
-
-            // to do: add visiting body expression
+            
             var bodyExp = (IFunctionBody)Visit(context.func_body());
 
             return new FuncDeclarationExpression(funcName, declArgs, bodyExp);

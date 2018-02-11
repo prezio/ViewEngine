@@ -68,10 +68,9 @@
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Interpreter\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="Engine\CoreEngine.cs" />
     <Compile Include="Grammar\Common\IVarContent.cs" />
     <Compile Include="Grammar\Common\CodeLineExpression.cs" />
     <Compile Include="Grammar\Common\TextString.cs" />
@@ -81,6 +80,8 @@
     <Compile Include="Grammar\FuncDeclaration\IFunctionBody.cs" />
     <Compile Include="Grammar\Model\ModelIntroduceExpression.cs" />
     <Compile Include="Grammar\Model\IModelExpression.cs" />
+    <Compile Include="Grammar\Outputs\MainOutput.cs" />
+    <Compile Include="Grammar\Outputs\SecondaryOutput.cs" />
     <Compile Include="Grammar\Scope\IRegularExpression.cs" />
     <Compile Include="Grammar\Scope\ITemplateExpression.cs" />
     <Compile Include="Grammar\Scope\RegularScope.cs" />
