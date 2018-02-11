@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewEngine.Core.Templates.ViewRenderer
+namespace ViewEngine.Core.Templates.MainView
 {
-    public class ViewRendererParams
+    public partial class MainViewTemplate
     {
         public string NamespaceName { get; set; }
         public string ViewName { get; set; }

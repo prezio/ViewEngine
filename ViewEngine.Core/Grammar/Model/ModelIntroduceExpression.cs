@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewEngine.Core.Grammar.Model
 {
-    public class ModelIntroduceExpression : IModelExpression
+    public class ModelIntroduceExpression
     {
         public string VarType { get; set; }
         public string VarName { get; set; }

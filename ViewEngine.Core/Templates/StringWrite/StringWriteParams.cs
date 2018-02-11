@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewEngine.Core.Templates.StringWrite
 {
-    public class StringWriteParams
+    public partial class StringWriteTemplate
     {
         public string TextString { get; set; }
     }

@@ -18,7 +18,7 @@ secondary
 regular_statement
     : CODE_LINE regular_statement               #codeLineExp
     | COMMENT_LINE regular_statement            #commentLineExp
-    | REGULAR_SCOPE regular_statement           #rawScopeExp
+    | TEMPLATE_SCOPE regular_statement          #templateScopeExp
     | func_usage SEP regular_statement          #funcUsageExp
     | func_declaration regular_statement        #funcDeclExp
     | SEP regular_statement                     #emptyExp
@@ -73,7 +73,7 @@ func_usage_param
 // grammar for function declaration
 
 func_declaration
-    : FUNCTION ID LP func_decl_args RP 
+    : FUNCTION ID COLON
         func_body
     ;
 
@@ -81,17 +81,6 @@ func_body
     : REGULAR_SCOPE
     | TEMPLATE_SCOPE
     ;
-
-func_decl_args
-	: func_decl_args2
-	| /*epsilon*/
-	;
-
-func_decl_args2
-    : VARID
-    | VARID COMMA func_decl_args2
-    ;
-
 
 // end of grammar for function declaration
 
@@ -103,6 +92,7 @@ FUNCTION : 'function' ;
 ID : [a-zA-Z] [a-zA-Z0-9]* ;
 VARID : '@' [a-zA-Z] [a-zA-Z0-9]* ;
 COMMA : ',' ;
+COLON : ':' ;
 SEP : ';' ;
 LP : '(' ;
 RP : ')' ;

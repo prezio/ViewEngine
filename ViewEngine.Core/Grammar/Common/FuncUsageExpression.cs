@@ -7,13 +7,13 @@ namespace ViewEngine.Core.Grammar.Common
     public class FuncUsageExpression : IRegularExpression
     {
         public string FunctionName { get; set; }
-        public Dictionary<string, IVarContent> InvokeParameters { get; set; }
+        public Dictionary<string, IVarContent> VariableAssignments { get; set; }
 
         public FuncUsageExpression(string functionName,
-            Dictionary<string, IVarContent> invokeParameters)
+            Dictionary<string, IVarContent> variableAssignments)
         {
             FunctionName = functionName;
-            InvokeParameters = invokeParameters;
+            VariableAssignments = variableAssignments;
         }
     }
 }

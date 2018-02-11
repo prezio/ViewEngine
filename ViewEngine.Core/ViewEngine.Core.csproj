@@ -74,12 +74,10 @@
     <Compile Include="Grammar\Common\IVarContent.cs" />
     <Compile Include="Grammar\Common\CodeLineExpression.cs" />
     <Compile Include="Grammar\Common\TextString.cs" />
-    <Compile Include="Grammar\Common\VariableReference.cs" />
     <Compile Include="Grammar\FuncDeclaration\FuncDeclarationExpression.cs" />
     <Compile Include="Grammar\Common\FuncUsageExpression.cs" />
     <Compile Include="Grammar\FuncDeclaration\IFunctionBody.cs" />
     <Compile Include="Grammar\Model\ModelIntroduceExpression.cs" />
-    <Compile Include="Grammar\Model\IModelExpression.cs" />
     <Compile Include="Grammar\Outputs\MainOutput.cs" />
     <Compile Include="Grammar\Outputs\SecondaryOutput.cs" />
     <Compile Include="Grammar\Scope\IRegularExpression.cs" />
@@ -90,26 +88,42 @@
     <Compile Include="Grammar\TemplateScopeVisitor.cs" />
     <Compile Include="Grammar\ViewEngineVisitor.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Templates\Assignment\TemplateVariableAssignmentManager.cs" />
+    <Compile Include="Templates\Assignment\VariableAssignmentParams.cs" />
+    <Compile Include="Templates\Assignment\VariableAssignmentTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VariableAssignmentTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\MainView\TemplateMainViewManager.cs" />
     <Compile Include="Templates\MethodDefinition\MethodDefinitionParams.cs" />
     <Compile Include="Templates\MethodDefinition\MethodDefinitionTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MethodDefinitionTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\MethodDefinition\TemplateMethodDefinitionManager.cs" />
+    <Compile Include="Templates\Model\TemplateModelManager.cs" />
+    <Compile Include="Templates\Scope\TemplateScopeManager.cs" />
     <Compile Include="Templates\StringWrite\StringWriteParams.cs" />
     <Compile Include="Templates\StringWrite\StringWriteTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StringWriteTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\ViewRenderer\ViewRenderer.cs">
+    <Compile Include="Templates\StringWrite\TemplateStringWriteManager.cs" />
+    <Compile Include="Templates\MainView\MainViewTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ViewRenderer.tt</DependentUpon>
+      <DependentUpon>MainViewTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\ViewRenderer\ViewRendererParams.cs" />
+    <Compile Include="Templates\MainView\MainViewParams.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\Assignment\VariableAssignmentTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>VariableAssignmentTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\MethodDefinition\MethodDefinitionTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MethodDefinitionTemplate.cs</LastGenOutput>
@@ -118,9 +132,9 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>StringWriteTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\ViewRenderer\ViewRenderer.tt">
+    <Content Include="Templates\MainView\MainViewTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ViewRenderer.cs</LastGenOutput>
+      <LastGenOutput>MainViewTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

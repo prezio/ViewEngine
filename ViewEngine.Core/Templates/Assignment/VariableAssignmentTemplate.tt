@@ -1,0 +1,5 @@
+﻿<#@ template language="C#" #>
+
+var <#= VarName #> = () => {
+    <#= Content #>
+};

@@ -149,11 +149,9 @@ namespace ViewEngine.Core.Grammar
         public override object VisitFunc_declaration(ViewEngineParser.Func_declarationContext context)
         {
             var funcName = context.ID().GetText();
-            var declArgs = (List<string>)Visit(context.func_decl_args());
-            
             var bodyExp = (IFunctionBody)Visit(context.func_body());
 
-            return new FuncDeclarationExpression(funcName, declArgs, bodyExp);
+            return new FuncDeclarationExpression(funcName, bodyExp);
         }
 
         public override object VisitFunc_body([NotNull] ViewEngineParser.Func_bodyContext context)
@@ -177,7 +175,7 @@ namespace ViewEngine.Core.Grammar
             return null;
         }
 
-        public override object VisitFunc_decl_args(ViewEngineParser.Func_decl_argsContext context)
+        /*public override object VisitFunc_decl_args(ViewEngineParser.Func_decl_argsContext context)
         {
             var expArgs = context.func_decl_args2();
             return expArgs != null ? (List<string>)Visit(expArgs) : new List<string>();
@@ -191,7 +189,7 @@ namespace ViewEngine.Core.Grammar
             var nextArgs = nextArgsExp != null ? (List<string>)Visit(nextArgsExp) : new List<string>();
             nextArgs.Add(declParam);
             return nextArgs;
-        }
+        }*/
         #endregion
     }
 }
