@@ -16,7 +16,7 @@ namespace <#= Parameters.NamespaceName #>
 	{
 		<#= Parameters.AdditionalSection #>
 
-		public void Render(<#= Parameters.ModelParams #>, StreamWriter sw)
+		public void Render(<#= Parameters.ModelParams #>, StreamWriter streamWriter)
 		{
 			<#= Parameters.ContentSection #>
 		}
