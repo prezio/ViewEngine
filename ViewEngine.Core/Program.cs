@@ -29,7 +29,8 @@ namespace ViewEngine.Core
             coreEngine.Render("Widok",
                 "Przestrzen",
                 @"Samples\FuncBodyWithUsage.view",
-                null);
+                null,
+                "output.cs");
         }
     }
 }

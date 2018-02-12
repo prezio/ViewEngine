@@ -174,22 +174,6 @@ namespace ViewEngine.Core.Grammar
 
             return null;
         }
-
-        /*public override object VisitFunc_decl_args(ViewEngineParser.Func_decl_argsContext context)
-        {
-            var expArgs = context.func_decl_args2();
-            return expArgs != null ? (List<string>)Visit(expArgs) : new List<string>();
-        }
-
-        public override object VisitFunc_decl_args2(ViewEngineParser.Func_decl_args2Context context)
-        {
-            var declParam = context.VARID().GetText().TrimStart('@');
-
-            var nextArgsExp = context.func_decl_args2();
-            var nextArgs = nextArgsExp != null ? (List<string>)Visit(nextArgsExp) : new List<string>();
-            nextArgs.Add(declParam);
-            return nextArgs;
-        }*/
         #endregion
     }
 }

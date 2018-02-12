@@ -73,6 +73,16 @@ namespace ViewEngine.Core.Engine
             return renderOutput;
         }
 
+        public void Render(
+            string viewName,
+            string namespaceName,
+            string mainFilePath,
+            string[] secondaryFilePaths,
+            string outputViewPath)
+        {
+            File.WriteAllText(outputViewPath, Render(viewName, namespaceName, mainFilePath, secondaryFilePaths));
+        }
+
         public CoreEngine()
         {
             _mainViewManager = TemplateMainViewManager.CreateMainViewManager();
