@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewEngine.Core.Engine;
 
 namespace ViewEngine.Core
 {
@@ -12,7 +13,7 @@ namespace ViewEngine.Core
     {
         public static void Main()
         {
-            var reader = new System.IO.StreamReader(@"Samples\FuncBodyWithUsage.view");
+            /*var reader = new System.IO.StreamReader(@"Samples\FuncBodyWithUsage.view");
 
             var inputStream = new AntlrInputStream(reader);
             var viewEngineLexer = new ViewEngineLexer(inputStream);
@@ -22,7 +23,13 @@ namespace ViewEngine.Core
             var statementContext = viewEngineParser.main();
             var visitor = new ViewEngineVisitor();
 
-            Console.WriteLine(visitor.Visit(statementContext));
+            Console.WriteLine(visitor.Visit(statementContext));*/
+
+            var coreEngine = new CoreEngine();
+            coreEngine.Render("Widok",
+                "Przestrzen",
+                @"Samples\FuncBodyWithUsage.view",
+                null);
         }
     }
 }
