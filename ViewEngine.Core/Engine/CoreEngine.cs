@@ -8,13 +8,14 @@ using Antlr4.Runtime;
 using ViewEngine.Core.Grammar;
 using ViewEngine.Core.Grammar.Outputs;
 using ViewEngine.Core.Grammar.Scope;
+using ViewEngine.Core.Templates.MainView;
 
 namespace ViewEngine.Core.Engine
 {
     public class CoreEngine
     {
-        #region private methods
-        private ViewEngineParser GenerateParser(StreamReader reader)
+        #region private region for parsing file
+        private static ViewEngineParser GenerateParser(StreamReader reader)
         {
             var inputStream = new AntlrInputStream(reader);
             var viewEngineLexer = new ViewEngineLexer(inputStream);
@@ -22,18 +23,18 @@ namespace ViewEngine.Core.Engine
             return new ViewEngineParser(commonTokenStream);
         }
 
-        private ViewEngineParser GenerateParser(string filePath)
+        private static ViewEngineParser GenerateParser(string filePath)
         {
             var reader = new StreamReader(filePath);
             return GenerateParser(reader);
         }
 
-        private ViewEngineVisitor CreateVisitor()
+        private static ViewEngineVisitor CreateVisitor()
         {
             return new ViewEngineVisitor();
         }
 
-        private MainOutput ParseMainFile(string mainFilePath)
+        private static MainOutput ParseMainFile(string mainFilePath)
         {
             var parser = GenerateParser(mainFilePath);
             var visitor = CreateVisitor();
@@ -42,7 +43,7 @@ namespace ViewEngine.Core.Engine
                 visitor.Models);
         }
 
-        private SecondaryOutput ParseSecondaryFile(string secondaryFilePath)
+        private static SecondaryOutput ParseSecondaryFile(string secondaryFilePath)
         {
             var parser = GenerateParser(secondaryFilePath);
             var visitor = CreateVisitor();
@@ -51,12 +52,30 @@ namespace ViewEngine.Core.Engine
         }
         #endregion
 
-        public string Render(string mainFilePath, string[] secondaryFilePaths)
+        #region private region for class templates
+        private readonly TemplateMainViewManager _mainViewManager;
+        #endregion
+        
+        public string Render(
+            string viewName,
+            string namespaceName,
+            string mainFilePath,
+            string[] secondaryFilePaths)
         {
             var mainOutput = ParseMainFile(mainFilePath);
-            var secondaryOutputs = secondaryFilePaths.Select(ParseSecondaryFile);
+            //var secondaryOutputs = secondaryFilePaths.Select(ParseSecondaryFile);
+            var renderOutput = _mainViewManager.GenerateMainView(
+                viewName,
+                namespaceName,
+                mainOutput,
+                null
+            );
+            return renderOutput;
+        }
 
-            return string.Empty;
+        public CoreEngine()
+        {
+            _mainViewManager = TemplateMainViewManager.CreateMainViewManager();
         }
     }
 }
