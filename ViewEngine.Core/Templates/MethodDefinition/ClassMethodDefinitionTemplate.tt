@@ -1,0 +1,6 @@
+﻿<#@ template language="C#" #>
+
+private void <#= MethodName #>()
+{
+	<#= MethodContent #>
+}

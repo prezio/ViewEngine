@@ -96,11 +96,17 @@
       <DependentUpon>VariableAssignmentTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MainView\TemplateMainViewManager.cs" />
-    <Compile Include="Templates\MethodDefinition\MethodDefinitionParams.cs" />
-    <Compile Include="Templates\MethodDefinition\MethodDefinitionTemplate.cs">
+    <Compile Include="Templates\MethodDefinition\ClassMethodDefinitionParams.cs" />
+    <Compile Include="Templates\MethodDefinition\ClassMethodDefinitionTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MethodDefinitionTemplate.tt</DependentUpon>
+      <DependentUpon>ClassMethodDefinitionTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\MethodDefinition\LambdaMethodDefinitionParams.cs" />
+    <Compile Include="Templates\MethodDefinition\LambdaMethodDefinitionTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LambdaMethodDefinitionTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MethodDefinition\TemplateMethodDefinitionManager.cs" />
     <Compile Include="Templates\MethodUsage\MethodUsageParams.cs" />
@@ -130,9 +136,13 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>VariableAssignmentTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\MethodDefinition\MethodDefinitionTemplate.tt">
+    <Content Include="Templates\MethodDefinition\ClassMethodDefinitionTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>MethodDefinitionTemplate.cs</LastGenOutput>
+      <LastGenOutput>ClassMethodDefinitionTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>LambdaMethodDefinitionTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\MethodUsage\MethodUsageTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

@@ -11,10 +11,21 @@ namespace ViewEngine.Core.Templates.MethodDefinition
 {
     public class TemplateMethodDefinitionManager
     {
-        public string GenerateMethodDefinition(string functionName,
+        public string GenerateLambdaMethodDefinition(string functionName,
             string functionBody)
         {
-            var template = new MethodDefinitionTemplate
+            var template = new LambdaMethodDefinitionTemplate
+            {
+                MethodName = functionName,
+                MethodContent = functionBody
+            };
+            return template.TransformText();
+        }
+
+        public string GenerateClassMethodDefinition(string functionName,
+            string functionBody)
+        {
+            var template = new ClassMethodDefinitionTemplate
             {
                 MethodName = functionName,
                 MethodContent = functionBody

@@ -10,12 +10,35 @@ using System.Threading.Tasks;
 
 namespace <#= NamespaceName #>
 {
+	class <#= ViewName #>Renderer
+	{
+		public StreamWriter Output { get; }
+
+		<#= ModelDeclarations #>
+
+		<#= SecondaryMethodSection #>
+
+		public <#= ViewName #>Renderer(StreamWriter streamWriter
+			<#= ModelParams #>)
+		{
+			Output = streamWriter;
+			<#= ModelAssignments #>
+		}
+
+		public void Render()
+		{
+			<#= ContentSection #>
+		}
+	}
+
     public class <#= ViewName #>RenderManager
     {
         public void Render(StreamWriter streamWriter,
 			<#= ModelParams #>)
 		{
-            <#= RenderSection #>
+			var renderer = new <#= ViewName #>Renderer(streamWriter
+				<#= ModelPass #>);
+			renderer.Render();
 		}
     }
 }

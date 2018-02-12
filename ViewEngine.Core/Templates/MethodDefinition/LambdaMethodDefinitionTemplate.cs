@@ -15,9 +15,9 @@ namespace ViewEngine.Core.Templates.MethodDefinition
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
+    #line 1 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class MethodDefinitionTemplate : MethodDefinitionTemplateBase
+    public partial class LambdaMethodDefinitionTemplate : LambdaMethodDefinitionTemplateBase
     {
 #line hidden
         /// <summary>
@@ -27,14 +27,14 @@ namespace ViewEngine.Core.Templates.MethodDefinition
         {
             this.Write("\r\nvar ");
             
-            #line 3 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
+            #line 3 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodName));
             
             #line default
             #line hidden
             this.Write(" = () =>\r\n{\r\n    ");
             
-            #line 5 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
+            #line 5 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodContent));
             
             #line default
@@ -51,7 +51,7 @@ namespace ViewEngine.Core.Templates.MethodDefinition
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class MethodDefinitionTemplateBase
+    public class LambdaMethodDefinitionTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
