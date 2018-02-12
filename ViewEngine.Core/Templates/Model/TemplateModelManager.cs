@@ -14,5 +14,23 @@ namespace ViewEngine.Core.Templates.Model
             return string.Join(",",
                 modelExpressions.Select(model => $"{model.VarType} {model.VarName}"));
         }
+
+        public string GenerateModelAssignments(List<ModelIntroduceExpression> modelExpressions)
+        {
+            return string.Join(";\n",
+                modelExpressions.Select(model => $"this.{model.VarName} = {model.VarName};"));
+        }
+
+        public string GenerateModelDeclarations(List<ModelIntroduceExpression> modelExpressions)
+        {
+            return string.Join(";\n",
+                modelExpressions.Select(model => $"{model.VarType} {model.VarName};"));
+        }
+
+        public string GenerateModelPassed(List<ModelIntroduceExpression> modelExpressions)
+        {
+            return string.Join(",",
+                modelExpressions.Select(model => model.VarName));
+        }
     }
 }

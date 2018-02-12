@@ -10,7 +10,12 @@ namespace ViewEngine.Core.Templates.MainView
     {
         public string NamespaceName { get; set; }
         public string ViewName { get; set; }
+        public string ContentSection { get; set; }
+        public string SecondaryMethodsSection { get; set; }
+
+        public string ModelDeclarations { get; set; }
         public string ModelParams { get; set; }
-        public string RenderSection { get; set; }
+        public string ModelAssignments { get; set; }
+        public string ModelPassed { get; set; }
     }
 }

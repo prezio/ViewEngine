@@ -36,15 +36,22 @@ namespace ViewEngine.Core.Templates.MainView
             MainOutput mainOutput,
             SecondaryOutput[] secondaryOutputs)
         {
-            var renderSection = _scopeManager.GenerateRegularScope(mainOutput.RegularScope);
+            var contentSection = _scopeManager.GenerateRegularScope(mainOutput.RegularScope);
             var modelParams = _modelManager.GenerateModelParams(mainOutput.Models);
+            var modelDeclarations = _modelManager.GenerateModelDeclarations(mainOutput.Models);
+            var modelAssignments = _modelManager.GenerateModelAssignments(mainOutput.Models);
+            var modelPassed = _modelManager.GenerateModelPassed(mainOutput.Models);
 
             var template = new MainViewTemplate
             {
                 ViewName = viewName,
                 NamespaceName = namespaceName,
-                RenderSection = renderSection,
-                ModelParams = modelParams
+                ModelParams = string.IsNullOrEmpty(modelParams) ? string.Empty : $",{modelParams}",
+                ModelAssignments = modelAssignments,
+                ModelPassed = string.IsNullOrEmpty(modelPassed) ? string.Empty : $",{modelPassed}",
+                ModelDeclarations = modelDeclarations,
+                ContentSection = contentSection,
+                SecondaryMethodsSection = string.Empty
             };
 
             return template.TransformText();

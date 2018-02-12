@@ -30,7 +30,7 @@ namespace ViewEngine.Core.Templates.Scope
                 funcBody = GenerateTemplateScope(templateScope);
             }
 
-            return _methodDefinitionManager.GenerateMethodDefinition(
+            return _methodDefinitionManager.GenerateLambdaMethodDefinition(
                     exp.FunctionName, funcBody
                 );
         }
