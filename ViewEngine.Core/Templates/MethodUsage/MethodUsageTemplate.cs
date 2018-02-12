@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace ViewEngine.Core.Templates.MainView
+namespace ViewEngine.Core.Templates.MethodUsage
 {
     using System;
     
@@ -15,9 +15,9 @@ namespace ViewEngine.Core.Templates.MainView
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+    #line 1 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodUsage\MethodUsageTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class MainViewTemplate : MainViewTemplateBase
+    public partial class MethodUsageTemplate : MethodUsageTemplateBase
     {
 #line hidden
         /// <summary>
@@ -25,37 +25,21 @@ namespace ViewEngine.Core.Templates.MainView
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sys" +
-                    "tem.Text;\r\nusing System.Threading.Tasks;\r\n\r\n// This code is auto generated\r\n\r\nna" +
-                    "mespace ");
+            this.Write("{\r\n\t");
             
-            #line 11 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(NamespaceName));
+            #line 3 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodUsage\MethodUsageTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(VariableAssignments));
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    public class ");
+            this.Write("\r\n\t");
             
-            #line 13 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ViewName));
-            
-            #line default
-            #line hidden
-            this.Write("RenderManager\r\n    {\r\n        public void Render(StreamWriter streamWriter,\r\n\t\t\t");
-            
-            #line 16 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModelParams));
+            #line 4 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodUsage\MethodUsageTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(MethodName));
             
             #line default
             #line hidden
-            this.Write(")\r\n\t\t{\r\n            ");
-            
-            #line 18 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(RenderSection));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t\t}\r\n    }\r\n}");
+            this.Write("();\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -67,7 +51,7 @@ namespace ViewEngine.Core.Templates.MainView
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class MainViewTemplateBase
+    public class MethodUsageTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

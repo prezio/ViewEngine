@@ -37,13 +37,14 @@ namespace ViewEngine.Core.Templates.MainView
             SecondaryOutput[] secondaryOutputs)
         {
             var renderSection = _scopeManager.GenerateRegularScope(mainOutput.RegularScope);
-            //var modelParams = _modelManager.GenerateModelParams(mainOutput.Models);
+            var modelParams = _modelManager.GenerateModelParams(mainOutput.Models);
 
             var template = new MainViewTemplate
             {
                 ViewName = viewName,
                 NamespaceName = namespaceName,
-                RenderSection = renderSection
+                RenderSection = renderSection,
+                ModelParams = modelParams
             };
 
             return template.TransformText();

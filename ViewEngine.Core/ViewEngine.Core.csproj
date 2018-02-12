@@ -103,6 +103,12 @@
       <DependentUpon>MethodDefinitionTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MethodDefinition\TemplateMethodDefinitionManager.cs" />
+    <Compile Include="Templates\MethodUsage\MethodUsageParams.cs" />
+    <Compile Include="Templates\MethodUsage\MethodUsageTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MethodUsageTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\Model\TemplateModelManager.cs" />
     <Compile Include="Templates\Scope\TemplateScopeManager.cs" />
     <Compile Include="Templates\StringWrite\StringWriteParams.cs" />
@@ -127,6 +133,10 @@
     <Content Include="Templates\MethodDefinition\MethodDefinitionTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MethodDefinitionTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\MethodUsage\MethodUsageTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MethodUsageTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\StringWrite\StringWriteTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
