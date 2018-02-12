@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Antlr4.Runtime;
 using ViewEngine.Core.Grammar;
 using ViewEngine.Core.Grammar.Outputs;
+using ViewEngine.Core.Grammar.Scope;
 
 namespace ViewEngine.Core.Engine
 {
@@ -37,7 +38,7 @@ namespace ViewEngine.Core.Engine
             var parser = GenerateParser(mainFilePath);
             var visitor = CreateVisitor();
             visitor.Visit(parser.main());
-            return new MainOutput(visitor.Result,
+            return new MainOutput(new RegularScope(visitor.Result),
                 visitor.Models);
         }
 

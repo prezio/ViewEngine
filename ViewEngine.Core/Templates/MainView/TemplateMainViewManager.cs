@@ -7,45 +7,30 @@ using ViewEngine.Core.Grammar.Common;
 using ViewEngine.Core.Grammar.Outputs;
 using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Templates.Model;
+using ViewEngine.Core.Templates.Scope;
 
 namespace ViewEngine.Core.Templates.MainView
 {
     public class TemplateMainViewManager
     {
-        private TemplateModelManager _modelManager;
+        private readonly TemplateModelManager _modelManager;
+        private readonly TemplateScopeManager _scopeManager;
 
-        private void VisitInvokeParameters(StringBuilder section,
-            Dictionary<string, IVarContent> parameters)
+        public void GenerateMainView(
+            string viewName,
+            string namespaceName,
+            MainOutput mainOutput,
+            SecondaryOutput[] secondaryOutputs)
         {
-            foreach (var parameter in parameters)
-            {
-                
-            }
-        }
+            var renderSection = _scopeManager.GenerateRegularScope(mainOutput.RegularScope);
+            //var modelParams = _modelManager.GenerateModelParams(mainOutput.Models);
 
-        private void VisitRegularExpression(StringBuilder mainSection,
-            StringBuilder additionalSection, IRegularExpression expression)
-        {
-            if (expression is CodeLineExpression codeLine)
+            var template = new MainViewTemplate
             {
-                mainSection.AppendLine(codeLine.CodeLine);
-            }
-            else if (expression is FuncUsageExpression funcUsage)
-            {
-                //funcUsage.
-            }
-        }
-
-        public void GenerateMainView(MainOutput mainOutput, SecondaryOutput[] secondaryOutputs)
-        {
-            var additionalSection = new StringBuilder();
-            var mainSection = new StringBuilder();
-            var modelParams = _modelManager.GenerateModelParams(mainOutput.Models);
-
-            foreach (var regularExp in mainOutput.Expressions)
-            {
-
-            }
+                ViewName = viewName,
+                NamespaceName = namespaceName,
+                RenderSection = renderSection
+            };
         }
     }
 }

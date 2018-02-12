@@ -14,9 +14,9 @@ namespace ViewEngine.Core.Templates.Scope
 {
     public class TemplateScopeManager
     {
-        private TemplateStringWriteManager _stringWriteManager;
-        private TemplateVariableAssignmentManager _assignmentManager;
-        private TemplateMethodDefinitionManager _methodDefinitionManager;
+        private readonly TemplateStringWriteManager _stringWriteManager;
+        private readonly TemplateVariableAssignmentManager _assignmentManager;
+        private readonly TemplateMethodDefinitionManager _methodDefinitionManager;
 
         public string GenerateFuncDeclaration(FuncDeclarationExpression exp)
         {
@@ -58,7 +58,31 @@ namespace ViewEngine.Core.Templates.Scope
 
         public string GenerateTemplateScope(TemplateScope scope)
         {
-            return string.Empty;
+            var ret = new StringBuilder();
+            foreach (var expression in scope.Result)
+            {
+                if (expression is CodeLineExpression codeLine)
+                {
+                    ret.AppendLine(codeLine.CodeLine);
+                }
+                else if (expression is TemplateLineExpression templateLine)
+                {
+                    ret.AppendLine(
+                        _stringWriteManager.GenerateTextAddition(
+                            templateLine.TemplateLine));
+                }
+            }
+            return ret.ToString();
+        }
+
+        public TemplateScopeManager(
+            TemplateStringWriteManager stringWriteManager,
+            TemplateVariableAssignmentManager assignmentManager,
+            TemplateMethodDefinitionManager methodDefinitionManager)
+        {
+            _stringWriteManager = stringWriteManager;
+            _assignmentManager = assignmentManager;
+            _methodDefinitionManager = methodDefinitionManager;
         }
     }
 }

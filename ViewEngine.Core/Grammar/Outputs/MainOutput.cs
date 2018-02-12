@@ -10,13 +10,13 @@ namespace ViewEngine.Core.Grammar.Outputs
 {
     public class MainOutput
     {
-        public List<IRegularExpression> Expressions { get; set; }
+        public RegularScope RegularScope { get; set; }
         public List<ModelIntroduceExpression> Models { get; set; }
 
-        public MainOutput(List<IRegularExpression> expressions,
+        public MainOutput(RegularScope regularScope,
             List<ModelIntroduceExpression> models)
         {
-            Expressions = expressions;
+            RegularScope = regularScope;
             Models = models;
         }
     }

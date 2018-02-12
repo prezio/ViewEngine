@@ -26,7 +26,36 @@ namespace ViewEngine.Core.Templates.MainView
         public virtual string TransformText()
         {
             this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sys" +
-                    "tem.Text;\r\nusing System.Threading.Tasks;\r\n\r\n// This code is auto generated\r\n\r\n");
+                    "tem.Text;\r\nusing System.Threading.Tasks;\r\n\r\n// This code is auto generated\r\n\r\nna" +
+                    "mespace ");
+            
+            #line 11 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(NamespaceName));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n{\r\n    public class ");
+            
+            #line 13 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ViewName));
+            
+            #line default
+            #line hidden
+            this.Write("RenderManager\r\n    {\r\n        public void Render(");
+            
+            #line 15 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModelParams));
+            
+            #line default
+            #line hidden
+            this.Write(",\r\n            StreamWriter streamWriter)\r\n\t\t{\r\n            ");
+            
+            #line 18 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RenderSection));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t}\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
