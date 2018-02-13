@@ -11,7 +11,7 @@ template_statement
     | /*epsilon*/                            #epsilonExp
     ;
 
-fragment TEXT_LINE : ~( '\r' | '\n' )* ;
+fragment TEXT_LINE : ~( '\r' | '\n' | '@' )* ;
 CODE_LINE : '--' TEXT_LINE ;
 COMMENT_LINE : '//' TEXT_LINE ;
 RAW_TEXT_LINE : ~( '\r' | '\n' ) ~( '\r' | '\n' )* ;

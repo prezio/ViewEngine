@@ -15,7 +15,7 @@ namespace ViewEngine.Core.Templates.Assignment
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Assignment\VariableAssignmentTemplate.tt"
+    #line 1 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\Assignment\VariableAssignmentTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class VariableAssignmentTemplate : VariableAssignmentTemplateBase
     {
@@ -25,21 +25,21 @@ namespace ViewEngine.Core.Templates.Assignment
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nvar ");
+            this.Write("{\r\n\t\"");
             
-            #line 3 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Assignment\VariableAssignmentTemplate.tt"
+            #line 3 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\Assignment\VariableAssignmentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(VarName));
             
             #line default
             #line hidden
-            this.Write(" = () => {\r\n    ");
+            this.Write("\" , () => {\r\n\t\t");
             
-            #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Assignment\VariableAssignmentTemplate.tt"
+            #line 4 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\Assignment\VariableAssignmentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Content));
             
             #line default
             #line hidden
-            this.Write("\r\n};");
+            this.Write("\r\n\t}\r\n},");
             return this.GenerationEnvironment.ToString();
         }
     }

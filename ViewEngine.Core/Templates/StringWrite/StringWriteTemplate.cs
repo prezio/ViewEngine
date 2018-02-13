@@ -15,7 +15,7 @@ namespace ViewEngine.Core.Templates.StringWrite
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
+    #line 1 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class StringWriteTemplate : StringWriteTemplateBase
     {
@@ -25,9 +25,9 @@ namespace ViewEngine.Core.Templates.StringWrite
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nOutput.WriteLine($\"");
+            this.Write("Output.WriteLine($\"");
             
-            #line 3 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
+            #line 2 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TextString));
             
             #line default

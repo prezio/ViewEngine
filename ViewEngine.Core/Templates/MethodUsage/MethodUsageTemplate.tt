@@ -1,5 +1,8 @@
 ﻿<#@ template language="C#" #>
 {
-	<#= VariableAssignments #>
-	<#= MethodName #>();
+	var parameters = new Dictionary<string, Action>()
+	{
+		<#= VariableAssignments #>
+	};
+	<#= MethodName #>(parameters);
 }
