@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewEngine.Core.Engine;
 
 namespace ViewEngine.Runtime
 {
@@ -10,7 +11,12 @@ namespace ViewEngine.Runtime
     {
         public static void Main()
         {
-
+            var coreEngine = new CoreEngine();
+            coreEngine.Render("Widok",
+                "Przestrzen",
+                @"Samples\FuncBodyWithUsage.view",
+                null,
+                "output.cs");
         }
     }
 }

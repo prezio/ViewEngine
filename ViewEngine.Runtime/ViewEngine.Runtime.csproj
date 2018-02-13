@@ -37,5 +37,11 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ViewEngine.Core\ViewEngine.Core.csproj">
+      <Project>{804d8e99-b393-4cfd-a7b9-f767cb331788}</Project>
+      <Name>ViewEngine.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

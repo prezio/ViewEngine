@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{804D8E99-B393-4CFD-A7B9-F767CB331788}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>ViewEngine.Core</RootNamespace>
     <AssemblyName>ViewEngine.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -36,6 +36,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <Antlr4UseCSharpGenerator>True</Antlr4UseCSharpGenerator>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -87,7 +90,6 @@
     <Compile Include="Grammar\Scope\TemplateScope.cs" />
     <Compile Include="Grammar\TemplateScopeVisitor.cs" />
     <Compile Include="Grammar\ViewEngineVisitor.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Templates\Assignment\TemplateVariableAssignmentManager.cs" />
     <Compile Include="Templates\Assignment\VariableAssignmentParams.cs" />
     <Compile Include="Templates\Assignment\VariableAssignmentTemplate.cs">

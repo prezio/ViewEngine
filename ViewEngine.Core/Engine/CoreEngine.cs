@@ -63,7 +63,8 @@ namespace ViewEngine.Core.Engine
             string[] secondaryFilePaths)
         {
             var mainOutput = ParseMainFile(mainFilePath);
-            //var secondaryOutputs = secondaryFilePaths.Select(ParseSecondaryFile);
+            // TODO: Add parsing secondary files
+            // var secondaryOutputs = secondaryFilePaths.Select(ParseSecondaryFile);
             var renderOutput = _mainViewManager.GenerateMainView(
                 viewName,
                 namespaceName,
