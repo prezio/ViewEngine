@@ -115,6 +115,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MethodUsageTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\MethodUsage\TemplateMethodUsageManager.cs" />
     <Compile Include="Templates\Model\TemplateModelManager.cs" />
     <Compile Include="Templates\Scope\TemplateScopeManager.cs" />
     <Compile Include="Templates\StringWrite\StringWriteParams.cs" />

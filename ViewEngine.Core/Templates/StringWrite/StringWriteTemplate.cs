@@ -25,14 +25,14 @@ namespace ViewEngine.Core.Templates.StringWrite
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nstreamWriter.WriteLine(");
+            this.Write("\r\nOutput.WriteLine($\"");
             
             #line 3 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TextString));
             
             #line default
             #line hidden
-            this.Write(");");
+            this.Write("\");");
             return this.GenerationEnvironment.ToString();
         }
     }

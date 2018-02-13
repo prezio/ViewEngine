@@ -22,7 +22,9 @@ namespace ViewEngine.Core.Templates.MethodDefinition
             return template.TransformText();
         }
 
-        public string GenerateClassMethodDefinition(string functionName,
+
+        // For now not used
+        /*public string GenerateClassMethodDefinition(string functionName,
             string functionBody)
         {
             var template = new ClassMethodDefinitionTemplate
@@ -31,6 +33,6 @@ namespace ViewEngine.Core.Templates.MethodDefinition
                 MethodContent = functionBody
             };
             return template.TransformText();
-        }
+        }*/
     }
 }

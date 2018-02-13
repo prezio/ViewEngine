@@ -16,8 +16,6 @@ namespace <#= NamespaceName #>
 
 		<#= ModelDeclarations #>
 
-		<#= SecondaryMethodsSection #>
-
 		public <#= ViewName #>Renderer(StreamWriter streamWriter
 			<#= ModelParams #>)
 		{
@@ -33,7 +31,7 @@ namespace <#= NamespaceName #>
 
     public class <#= ViewName #>RenderManager
     {
-        public void Render(StreamWriter streamWriter,
+        public void Render(StreamWriter streamWriter
 			<#= ModelParams #>)
 		{
 			var renderer = new <#= ViewName #>Renderer(streamWriter
