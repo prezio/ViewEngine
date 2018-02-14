@@ -89,6 +89,7 @@
     <Compile Include="Grammar\Scope\TemplateLineExpression.cs" />
     <Compile Include="Grammar\Scope\TemplateScope.cs" />
     <Compile Include="Grammar\TemplateScopeVisitor.cs" />
+    <Compile Include="Grammar\TemplateTextLineVisitor.cs" />
     <Compile Include="Grammar\ViewEngineVisitor.cs" />
     <Compile Include="Templates\Assignment\TemplateVariableAssignmentManager.cs" />
     <Compile Include="Templates\Assignment\VariableAssignmentParams.cs" />
@@ -135,6 +136,10 @@
     <Compile Include="Templates\MainView\MainViewParams.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Antlr4 Include="Grammar\TemplateTextLine.g4">
+      <Generator>MSBuild:Compile</Generator>
+      <CustomToolNamespace>ViewEngine.Core.Grammar</CustomToolNamespace>
+    </Antlr4>
     <Content Include="Templates\Assignment\VariableAssignmentTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>VariableAssignmentTemplate.cs</LastGenOutput>

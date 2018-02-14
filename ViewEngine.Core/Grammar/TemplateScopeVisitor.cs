@@ -26,9 +26,9 @@ namespace ViewEngine.Core.Grammar
             return null;
         }
 
-        public override object VisitRawLineExp(TemplateScopeParser.RawLineExpContext context)
+        public override object VisitTemplateLineExp(TemplateScopeParser.TemplateLineExpContext context)
         {
-            var templateLine = context.RAW_TEXT_LINE().GetText();
+            var templateLine = context.TEMPLATE_LINE().GetText();
             Result.Add(new TemplateLineExpression(templateLine));
 
             var nextStatements = context.template_statement();
