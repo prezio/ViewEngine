@@ -66,10 +66,10 @@ namespace ViewEngine.Core.Templates.Scope
                 exp.FunctionName);
         }
 
-        public string GenerateTemplateLine(TemplateLineExpression templateLine)
+        /*public string GenerateTemplateLine(TemplateLineExpression templateLine)
         {
             templateLine.TemplateLine.
-        }
+        }*/
 
         public string GenerateRegularScope(RegularScope scope)
         {
