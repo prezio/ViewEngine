@@ -8,7 +8,7 @@ using ViewEngine.Core.Grammar.Outputs;
 using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Templates.Assignment;
 using ViewEngine.Core.Templates.MethodDefinition;
-using ViewEngine.Core.Templates.MethodUsage;
+using ViewEngine.Core.Templates.Usage;
 using ViewEngine.Core.Templates.Model;
 using ViewEngine.Core.Templates.Scope;
 using ViewEngine.Core.Templates.StringWrite;
@@ -25,7 +25,7 @@ namespace ViewEngine.Core.Templates.MainView
                     new TemplateStringWriteManager(), 
                     new TemplateVariableAssignmentManager(),
                     new TemplateMethodDefinitionManager(),
-                    new TemplateMethodUsageManager(),
+                    new TemplateUsageManager(),
                     new TemplateVariableWriteManager()
                     ));
         }

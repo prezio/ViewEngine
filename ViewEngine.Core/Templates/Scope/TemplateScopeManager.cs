@@ -8,8 +8,8 @@ using ViewEngine.Core.Grammar.FuncDeclaration;
 using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Templates.Assignment;
 using ViewEngine.Core.Templates.MethodDefinition;
-using ViewEngine.Core.Templates.MethodUsage;
 using ViewEngine.Core.Templates.StringWrite;
+using ViewEngine.Core.Templates.Usage;
 
 namespace ViewEngine.Core.Templates.Scope
 {
@@ -18,7 +18,7 @@ namespace ViewEngine.Core.Templates.Scope
         private readonly TemplateStringWriteManager _stringWriteManager;
         private readonly TemplateVariableAssignmentManager _assignmentManager;
         private readonly TemplateMethodDefinitionManager _methodDefinitionManager;
-        private readonly TemplateMethodUsageManager _methodUsageManager;
+        private readonly TemplateUsageManager _usageManager;
         private readonly TemplateVariableWriteManager _variableWriteManager;
 
         public string GenerateFuncDeclaration(FuncDeclarationExpression exp, string[] modelNames)
@@ -33,7 +33,7 @@ namespace ViewEngine.Core.Templates.Scope
                 funcBody = GenerateTemplateScope(templateScope, modelNames);
             }
 
-            return _methodDefinitionManager.GenerateLambdaMethodDefinition(
+            return _methodDefinitionManager.GenerateMethodDefinition(
                     exp.FunctionName, funcBody
                 );
         }
@@ -60,10 +60,10 @@ namespace ViewEngine.Core.Templates.Scope
             var assignments = new StringBuilder();
             foreach (var varAssign in exp.VariableAssignments)
             {
-                assignments.AppendLine(_assignmentManager.GenerateVariableAssignment(varAssign.Key,
+                assignments.Append(_assignmentManager.GenerateVariableAssignment(varAssign.Key,
                     GenerateVarContent(varAssign.Value, modelNames)));
             }
-            return _methodUsageManager.GenerateMethodUsage(assignments.ToString(),
+            return _usageManager.GenerateMethodUsage(assignments.ToString(),
                 exp.FunctionName);
         }
 
@@ -75,7 +75,7 @@ namespace ViewEngine.Core.Templates.Scope
             {
                 if (part is TemplateRawText rawText)
                 {
-                    ret.AppendLine(
+                    ret.Append(
                         _stringWriteManager.GenerateTextAddition(rawText.RawText)
                         );
                 }
@@ -84,18 +84,19 @@ namespace ViewEngine.Core.Templates.Scope
                     var varName = varUsage.VarUsageString.Split('.').First().Trim();
                     if (modelNames.Contains(varName))
                     {
-                        ret.AppendLine(
+                        ret.Append(
                             _variableWriteManager.GenerateVarAddition(varUsage.VarUsageString)
                             );
                     }
                     else
                     {
-                        ret.AppendLine(
-                            $"parameters[\"{varName}\"]();"
+                        ret.Append(
+                            _usageManager.GenerateParameterUsage(varName)
                             );
                     }
                 }
             }
+            ret.AppendLine(_stringWriteManager.GenerateTextAddition("\\r\\n"));
             return ret.ToString();
         }
 
@@ -142,13 +143,13 @@ namespace ViewEngine.Core.Templates.Scope
             TemplateStringWriteManager stringWriteManager,
             TemplateVariableAssignmentManager assignmentManager,
             TemplateMethodDefinitionManager methodDefinitionManager,
-            TemplateMethodUsageManager methodUsageManager,
+            TemplateUsageManager methodUsageManager,
             TemplateVariableWriteManager variableWriteManager)
         {
             _stringWriteManager = stringWriteManager;
             _assignmentManager = assignmentManager;
             _methodDefinitionManager = methodDefinitionManager;
-            _methodUsageManager = methodUsageManager;
+            _usageManager = methodUsageManager;
             _variableWriteManager = variableWriteManager;
         }
     }

@@ -11,7 +11,7 @@ namespace ViewEngine.Core.Templates.MethodDefinition
 {
     public class TemplateMethodDefinitionManager
     {
-        public string GenerateLambdaMethodDefinition(string functionName,
+        public string GenerateMethodDefinition(string functionName,
             string functionBody)
         {
             var template = new MethodDefinitionTemplate

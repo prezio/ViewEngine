@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace ViewEngine.Core.Templates.MethodUsage
+namespace ViewEngine.Core.Templates.Usage
 {
     using System;
     
@@ -15,7 +15,7 @@ namespace ViewEngine.Core.Templates.MethodUsage
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodUsage\MethodUsageTemplate.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class MethodUsageTemplate : MethodUsageTemplateBase
     {
@@ -27,14 +27,14 @@ namespace ViewEngine.Core.Templates.MethodUsage
         {
             this.Write("{\r\n\tvar parameters = new Dictionary<string, Action>()\r\n\t{\r\n\t\t");
             
-            #line 5 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodUsage\MethodUsageTemplate.tt"
+            #line 5 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(VariableAssignments));
             
             #line default
             #line hidden
             this.Write("\r\n\t};\r\n\t");
             
-            #line 7 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodUsage\MethodUsageTemplate.tt"
+            #line 7 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodName));
             
             #line default

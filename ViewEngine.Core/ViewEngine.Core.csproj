@@ -177,20 +177,26 @@
       <DependentUpon>VariableAssignmentTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MainView\TemplateMainViewManager.cs" />
-    <Compile Include="Templates\MethodDefinition\LambdaMethodDefinitionParams.cs" />
+    <Compile Include="Templates\MethodDefinition\MethodDefinitionParams.cs" />
     <Compile Include="Templates\MethodDefinition\MethodDefinitionTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MethodDefinitionTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MethodDefinition\TemplateMethodDefinitionManager.cs" />
-    <Compile Include="Templates\MethodUsage\MethodUsageParams.cs" />
-    <Compile Include="Templates\MethodUsage\MethodUsageTemplate.cs">
+    <Compile Include="Templates\Usage\MethodUsageParams.cs" />
+    <Compile Include="Templates\Usage\MethodUsageTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MethodUsageTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\MethodUsage\TemplateMethodUsageManager.cs" />
+    <Compile Include="Templates\Usage\ParameterUsageParams.cs" />
+    <Compile Include="Templates\Usage\ParameterUsageTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParameterUsageTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Usage\TemplateUsageManager.cs" />
     <Compile Include="Templates\Model\TemplateModelManager.cs" />
     <Compile Include="Templates\Scope\TemplateScopeManager.cs" />
     <Compile Include="Templates\StringWrite\StringWriteParams.cs" />
@@ -227,7 +233,7 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MethodDefinitionTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\MethodUsage\MethodUsageTemplate.tt">
+    <Content Include="Templates\Usage\MethodUsageTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MethodUsageTemplate.cs</LastGenOutput>
     </Content>
@@ -242,6 +248,10 @@
     <Content Include="Templates\StringWrite\VariableWriteTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>VariableWriteTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Usage\ParameterUsageTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ParameterUsageTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
