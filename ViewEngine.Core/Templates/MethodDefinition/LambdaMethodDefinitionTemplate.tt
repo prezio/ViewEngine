@@ -1,6 +1,5 @@
 ﻿<#@ template language="C#" #>
-
-var <#= MethodName #> = () =>
+Action<Dictionary<string, Action>> <#= MethodName #> = (Dictionary<string, Action> parameters) =>
 {
     <#= MethodContent #>
 };

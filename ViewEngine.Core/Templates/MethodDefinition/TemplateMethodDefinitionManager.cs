@@ -21,18 +21,5 @@ namespace ViewEngine.Core.Templates.MethodDefinition
             };
             return template.TransformText();
         }
-
-
-        // For now not used
-        /*public string GenerateClassMethodDefinition(string functionName,
-            string functionBody)
-        {
-            var template = new ClassMethodDefinitionTemplate
-            {
-                MethodName = functionName,
-                MethodContent = functionBody
-            };
-            return template.TransformText();
-        }*/
     }
 }

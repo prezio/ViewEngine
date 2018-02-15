@@ -28,7 +28,7 @@ namespace ViewEngine.Core.Grammar
             {
                 var textVarUsage = varUsage.GetText();
                 Result.Add(
-                    new TemplateVarUsage(textVarUsage.Substring(2, textVarUsage.Length - 3)
+                    new TemplateVarUsage(textVarUsage.Substring(1, textVarUsage.Length - 1)
                     ));
             }
 

@@ -102,12 +102,6 @@
       <DependentUpon>VariableAssignmentTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MainView\TemplateMainViewManager.cs" />
-    <Compile Include="Templates\MethodDefinition\ClassMethodDefinitionParams.cs" />
-    <Compile Include="Templates\MethodDefinition\ClassMethodDefinitionTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClassMethodDefinitionTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\MethodDefinition\LambdaMethodDefinitionParams.cs" />
     <Compile Include="Templates\MethodDefinition\LambdaMethodDefinitionTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -153,10 +147,6 @@
     <Content Include="Templates\Assignment\VariableAssignmentTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>VariableAssignmentTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\MethodDefinition\ClassMethodDefinitionTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ClassMethodDefinitionTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

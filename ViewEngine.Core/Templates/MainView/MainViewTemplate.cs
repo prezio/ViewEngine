@@ -25,81 +25,81 @@ namespace ViewEngine.Core.Templates.MainView
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sys" +
-                    "tem.Text;\r\nusing System.Threading.Tasks;\r\n\r\n// This code is auto generated\r\n\r\nna" +
-                    "mespace ");
+            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.IO;\r\nusing Syste" +
+                    "m.Linq;\r\nusing System.Text;\r\nusing System.Threading.Tasks;\r\n\r\n// This code is au" +
+                    "to generated\r\n\r\nnamespace ");
             
-            #line 11 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 12 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NamespaceName));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n\tclass ");
             
-            #line 13 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 14 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ViewName));
             
             #line default
             #line hidden
             this.Write("Renderer\r\n\t{\r\n\t\tpublic StreamWriter Output { get; }\r\n\r\n\t\t");
             
-            #line 17 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 18 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelDeclarations));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n\t\tpublic ");
             
-            #line 19 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 20 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ViewName));
             
             #line default
             #line hidden
             this.Write("Renderer(StreamWriter streamWriter\r\n\t\t\t");
             
-            #line 20 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 21 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelParams));
             
             #line default
             #line hidden
             this.Write(")\r\n\t\t{\r\n\t\t\tOutput = streamWriter;\r\n\t\t\t");
             
-            #line 23 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 24 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelAssignments));
             
             #line default
             #line hidden
             this.Write("\r\n\t\t}\r\n\r\n\t\tpublic void Render()\r\n\t\t{\r\n\t\t\t");
             
-            #line 28 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 29 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ContentSection));
             
             #line default
             #line hidden
             this.Write("\r\n\t\t}\r\n\t}\r\n\r\n    public class ");
             
-            #line 32 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 33 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ViewName));
             
             #line default
             #line hidden
             this.Write("RenderManager\r\n    {\r\n        public void Render(StreamWriter streamWriter\r\n\t\t\t");
             
-            #line 35 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 36 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelParams));
             
             #line default
             #line hidden
             this.Write(")\r\n\t\t{\r\n\t\t\tvar renderer = new ");
             
-            #line 37 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 38 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ViewName));
             
             #line default
             #line hidden
             this.Write("Renderer(streamWriter\r\n\t\t\t\t");
             
-            #line 38 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
+            #line 39 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelPassed));
             
             #line default

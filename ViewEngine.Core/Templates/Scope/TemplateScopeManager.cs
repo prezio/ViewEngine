@@ -91,7 +91,7 @@ namespace ViewEngine.Core.Templates.Scope
                     else
                     {
                         ret.AppendLine(
-                            $"{varName}();"
+                            $"parameters[\"{varName}\"]();"
                             );
                     }
                 }
@@ -106,15 +106,15 @@ namespace ViewEngine.Core.Templates.Scope
             {
                 if (expression is CodeLineExpression codeLine)
                 {
-                    ret.AppendLine(codeLine.CodeLine);
+                    ret.Append(codeLine.CodeLine);
                 }
                 else if (expression is FuncUsageExpression funcUsage)
                 {
-                    ret.AppendLine(GenerateFuncUsage(funcUsage, modelNames));
+                    ret.Append(GenerateFuncUsage(funcUsage, modelNames));
                 }
                 else if (expression is FuncDeclarationExpression funcDeclaration)
                 {
-                    ret.AppendLine(GenerateFuncDeclaration(funcDeclaration, modelNames));
+                    ret.Append(GenerateFuncDeclaration(funcDeclaration, modelNames));
                 }
             }
             return ret.ToString();
@@ -127,11 +127,11 @@ namespace ViewEngine.Core.Templates.Scope
             {
                 if (expression is CodeLineExpression codeLine)
                 {
-                    ret.AppendLine(codeLine.CodeLine);
+                    ret.Append(codeLine.CodeLine);
                 }
                 else if (expression is TemplateLineExpression templateLine)
                 {
-                    ret.AppendLine(
+                    ret.Append(
                         GenerateTemplateLine(templateLine, modelNames));
                 }
             }

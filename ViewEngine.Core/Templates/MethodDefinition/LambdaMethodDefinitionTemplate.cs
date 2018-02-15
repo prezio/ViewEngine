@@ -15,7 +15,7 @@ namespace ViewEngine.Core.Templates.MethodDefinition
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class LambdaMethodDefinitionTemplate : LambdaMethodDefinitionTemplateBase
     {
@@ -25,16 +25,16 @@ namespace ViewEngine.Core.Templates.MethodDefinition
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nvar ");
+            this.Write("Action<Dictionary<string, Action>> ");
             
-            #line 3 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
+            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodName));
             
             #line default
             #line hidden
-            this.Write(" = () =>\r\n{\r\n    ");
+            this.Write(" = (Dictionary<string, Action> parameters) =>\r\n{\r\n    ");
             
-            #line 5 "D:\magisterium\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
+            #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodContent));
             
             #line default
