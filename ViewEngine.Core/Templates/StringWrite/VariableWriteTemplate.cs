@@ -15,9 +15,9 @@ namespace ViewEngine.Core.Templates.StringWrite
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\VariableWriteTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class StringWriteTemplate : StringWriteTemplateBase
+    public partial class VariableWriteTemplate : VariableWriteTemplateBase
     {
 #line hidden
         /// <summary>
@@ -25,14 +25,14 @@ namespace ViewEngine.Core.Templates.StringWrite
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("Output.Write(\"");
+            this.Write("Output.Write($\"{");
             
-            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TextString));
+            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\VariableWriteTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(VarText));
             
             #line default
             #line hidden
-            this.Write("\");");
+            this.Write("}\");\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -44,7 +44,7 @@ namespace ViewEngine.Core.Templates.StringWrite
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class StringWriteTemplateBase
+    public class VariableWriteTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

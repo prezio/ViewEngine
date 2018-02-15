@@ -25,7 +25,8 @@ namespace ViewEngine.Core.Templates.MainView
                     new TemplateStringWriteManager(), 
                     new TemplateVariableAssignmentManager(),
                     new TemplateMethodDefinitionManager(),
-                    new TemplateMethodUsageManager()
+                    new TemplateMethodUsageManager(),
+                    new TemplateVariableWriteManager()
                     ));
         }
 
@@ -38,7 +39,8 @@ namespace ViewEngine.Core.Templates.MainView
             MainOutput mainOutput,
             SecondaryOutput[] secondaryOutputs)
         {
-            var contentSection = _scopeManager.GenerateRegularScope(mainOutput.RegularScope);
+            var contentSection = _scopeManager.GenerateRegularScope(mainOutput.RegularScope,
+                                    mainOutput.Models.Select(model => model.VarName).ToArray());
             var modelParams = _modelManager.GenerateModelParams(mainOutput.Models);
             var modelDeclarations = _modelManager.GenerateModelDeclarations(mainOutput.Models);
             var modelAssignments = _modelManager.GenerateModelAssignments(mainOutput.Models);

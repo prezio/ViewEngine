@@ -85,9 +85,12 @@
     <Compile Include="Grammar\Outputs\SecondaryOutput.cs" />
     <Compile Include="Grammar\Scope\IRegularExpression.cs" />
     <Compile Include="Grammar\Scope\ITemplateExpression.cs" />
+    <Compile Include="Grammar\Scope\ITemplateLinePart.cs" />
     <Compile Include="Grammar\Scope\RegularScope.cs" />
     <Compile Include="Grammar\Scope\TemplateLineExpression.cs" />
+    <Compile Include="Grammar\Scope\TemplateRawText.cs" />
     <Compile Include="Grammar\Scope\TemplateScope.cs" />
+    <Compile Include="Grammar\Scope\TemplateVarUsage.cs" />
     <Compile Include="Grammar\TemplateScopeVisitor.cs" />
     <Compile Include="Grammar\TemplateTextLineVisitor.cs" />
     <Compile Include="Grammar\ViewEngineVisitor.cs" />
@@ -134,6 +137,13 @@
       <DependentUpon>MainViewTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MainView\MainViewParams.cs" />
+    <Compile Include="Templates\StringWrite\TemplateVariableWriteManager.cs" />
+    <Compile Include="Templates\StringWrite\VariableWriteParams.cs" />
+    <Compile Include="Templates\StringWrite\VariableWriteTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VariableWriteTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Antlr4 Include="Grammar\TemplateTextLine.g4">
@@ -163,6 +173,10 @@
     <Content Include="Templates\MainView\MainViewTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MainViewTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\StringWrite\VariableWriteTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>VariableWriteTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

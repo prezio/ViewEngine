@@ -15,6 +15,6 @@ template_statement
 fragment TEXT_LINE : ~( '\r' | '\n' )* ;
 CODE_LINE : '--' TEXT_LINE ;
 COMMENT_LINE : '//' TEXT_LINE ;
-TEMPLATE_LINE : ~( '\r' | '\n' ) ;
+TEMPLATE_LINE : ~( '\r' | '\n' ) ~( '\r' | '\n' )* ;
 
 WS : [ \r\t\n]+ -> skip ;

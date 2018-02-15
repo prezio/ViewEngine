@@ -8,11 +8,11 @@ namespace ViewEngine.Core.Grammar.Scope
 {
     public class TemplateLineExpression : ITemplateExpression
     {
-        public string TemplateLine { get; set; }
+        public List<ITemplateLinePart> Parts { get; set; }
 
-        public TemplateLineExpression(string templateLine)
+        public TemplateLineExpression(List<ITemplateLinePart> parts)
         {
-            TemplateLine = templateLine;
+            Parts = parts;
         }
     }
 }

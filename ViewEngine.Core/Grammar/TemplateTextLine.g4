@@ -1,12 +1,27 @@
 ﻿grammar TemplateTextLine;
 
-text_line
-	: RAW_PART text_line          #rawPartExp
-	| VAR_USAGE text_line         #varUsageExp
-	| RAW_CHARACTER text_line     #rawCharacterExp
+template_text_line
+    : text_line EOF
+    ;
 
-RAW_PART: ~('@')* ;
+text_line
+	: raw_part text_line          #rawPartExp
+	| variable_usage text_line    #varUsageExp
+    | /*epsilon*/                 #epsilonExp
+    ;
+
+raw_part
+    : RAW_PART
+    | RAW_CHARACTER
+    ;
+
+variable_usage
+    : VAR_USAGE
+    | EXT_VAR_USAGE
+    ;
+
+RAW_PART: ~('@') ~('@')* ;
+EXT_VAR_USAGE : '@' '[' ~('@' | ']') ~('@' | ']')* ']' ;
 fragment ID : [a-zA-Z] [a-zA-Z0-9]* ;
-fragment VAR_REMAINDER : '.' ID ('(' ID VAR_REMAINDER*')')? ;
-VAR_USAGE: '@' ID VAR_REMAINDER* ;
+VAR_USAGE: '@' ID ;
 RAW_CHARACTER : '@' ;
