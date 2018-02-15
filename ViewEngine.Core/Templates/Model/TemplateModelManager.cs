@@ -17,14 +17,14 @@ namespace ViewEngine.Core.Templates.Model
 
         public string GenerateModelAssignments(List<ModelIntroduceExpression> modelExpressions)
         {
-            return string.Join(";\n",
+            return string.Join("\n",
                 modelExpressions.Select(model => $"this.{model.VarName} = {model.VarName};"));
         }
 
         public string GenerateModelDeclarations(List<ModelIntroduceExpression> modelExpressions)
         {
-            return string.Join(";\n",
-                modelExpressions.Select(model => $"{model.VarType} {model.VarName};"));
+            return string.Join("\n",
+                modelExpressions.Select(model => $"{model.VarType} {model.VarName} {{ get; set; }}"));
         }
 
         public string GenerateModelPassed(List<ModelIntroduceExpression> modelExpressions)

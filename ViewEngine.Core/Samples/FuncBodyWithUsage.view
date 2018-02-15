@@ -1,3 +1,5 @@
+@model Model;
+@model2 Model2;
 // In this sample we declare function and then use it
 function Html:
 <@
