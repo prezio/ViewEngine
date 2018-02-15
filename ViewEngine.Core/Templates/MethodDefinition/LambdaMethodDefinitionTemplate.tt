@@ -1,5 +1,0 @@
-﻿<#@ template language="C#" #>
-Action<Dictionary<string, Action>> <#= MethodName #> = (Dictionary<string, Action> parameters) =>
-{
-    <#= MethodContent #>
-};

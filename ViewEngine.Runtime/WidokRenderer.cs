@@ -25,15 +25,20 @@ namespace Przestrzen
 
         public void Render()
         {
-            Action<Dictionary<string, Action>> Html = parameters =>
+            void Test()
+            {
+                Html(new Dictionary<string, Action>());
+            }
+
+            void Html(IReadOnlyDictionary<string, Action> parameters)
             {
                 Output.Write("<html>");
                 Output.Write("<body>");
                 parameters["body"]();
                 Output.Write("</body>");
                 Output.Write("</html>");
+            }
 
-            };
             {
                 var parameters = new Dictionary<string, Action>()
                 {

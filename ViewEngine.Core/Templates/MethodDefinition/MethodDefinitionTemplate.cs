@@ -15,9 +15,9 @@ namespace ViewEngine.Core.Templates.MethodDefinition
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class LambdaMethodDefinitionTemplate : LambdaMethodDefinitionTemplateBase
+    public partial class MethodDefinitionTemplate : MethodDefinitionTemplateBase
     {
 #line hidden
         /// <summary>
@@ -25,21 +25,21 @@ namespace ViewEngine.Core.Templates.MethodDefinition
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("Action<Dictionary<string, Action>> ");
+            this.Write("void ");
             
-            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
+            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodName));
             
             #line default
             #line hidden
-            this.Write(" = (Dictionary<string, Action> parameters) =>\r\n{\r\n    ");
+            this.Write("(IReadOnlyDictionary<string, Action> parameters)\r\n{\r\n    ");
             
-            #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt"
+            #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodContent));
             
             #line default
             #line hidden
-            this.Write("\r\n};");
+            this.Write("\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -51,7 +51,7 @@ namespace ViewEngine.Core.Templates.MethodDefinition
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class LambdaMethodDefinitionTemplateBase
+    public class MethodDefinitionTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

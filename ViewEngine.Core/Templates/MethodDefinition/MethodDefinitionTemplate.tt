@@ -1,0 +1,5 @@
+﻿<#@ template language="C#" #>
+void <#= MethodName #>(IReadOnlyDictionary<string, Action> parameters)
+{
+    <#= MethodContent #>
+}

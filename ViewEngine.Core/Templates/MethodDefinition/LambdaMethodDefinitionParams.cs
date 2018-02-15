@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewEngine.Core.Templates.MethodDefinition
 {
-    public partial class LambdaMethodDefinitionTemplate
+    public partial class MethodDefinitionTemplate
     {
         public string MethodName { get; set; }
         public string MethodContent { get; set; }

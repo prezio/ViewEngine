@@ -103,10 +103,10 @@
     </Compile>
     <Compile Include="Templates\MainView\TemplateMainViewManager.cs" />
     <Compile Include="Templates\MethodDefinition\LambdaMethodDefinitionParams.cs" />
-    <Compile Include="Templates\MethodDefinition\LambdaMethodDefinitionTemplate.cs">
+    <Compile Include="Templates\MethodDefinition\MethodDefinitionTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LambdaMethodDefinitionTemplate.tt</DependentUpon>
+      <DependentUpon>MethodDefinitionTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MethodDefinition\TemplateMethodDefinitionManager.cs" />
     <Compile Include="Templates\MethodUsage\MethodUsageParams.cs" />
@@ -148,9 +148,9 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>VariableAssignmentTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\MethodDefinition\LambdaMethodDefinitionTemplate.tt">
+    <Content Include="Templates\MethodDefinition\MethodDefinitionTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>LambdaMethodDefinitionTemplate.cs</LastGenOutput>
+      <LastGenOutput>MethodDefinitionTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\MethodUsage\MethodUsageTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
