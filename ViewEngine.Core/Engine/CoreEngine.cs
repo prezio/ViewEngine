@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Antlr4.Runtime;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using ViewEngine.Core.Grammar;
 using ViewEngine.Core.Grammar.Outputs;
 using ViewEngine.Core.Grammar.Scope;
@@ -50,6 +52,14 @@ namespace ViewEngine.Core.Engine
             visitor.Visit(parser.secondary());
             return new SecondaryOutput(visitor.Result);
         }
+
+        public string ArrangeUsingRoslyn(string csCode)
+        {
+            var tree = CSharpSyntaxTree.ParseText(csCode);
+            var root = tree.GetRoot().NormalizeWhitespace();
+            var ret = root.ToFullString();
+            return ret;
+        }
         #endregion
 
         #region private region for class templates
@@ -71,7 +81,7 @@ namespace ViewEngine.Core.Engine
                 mainOutput,
                 null
             );
-            return renderOutput;
+            return ArrangeUsingRoslyn(renderOutput);
         }
 
         public void Render(

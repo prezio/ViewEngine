@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,29 +6,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 // This code is auto generated
-
 namespace Przestrzen
 {
     class WidokRenderer
     {
-        public StreamWriter Output { get; }
+        public StreamWriter Output
+        {
+            get;
+        }
 
-
-
-        public WidokRenderer(StreamWriter streamWriter
-        )
+        public WidokRenderer(StreamWriter streamWriter)
         {
             Output = streamWriter;
-
         }
 
         public void Render()
         {
-            void Test()
-            {
-                Html(new Dictionary<string, Action>());
-            }
-
             void Html(IReadOnlyDictionary<string, Action> parameters)
             {
                 Output.Write("<html>");
@@ -41,14 +33,11 @@ namespace Przestrzen
 
             {
                 var parameters = new Dictionary<string, Action>()
-                {
+                {{"body", () =>
                     {
-                        "body" , () => {
-                            Output.Write("Hello World!!");
-                        }
-                    },
-
-                };
+                        Output.Write("Hello World!!");
+                    }
+                }, };
                 Html(parameters);
             }
         }
@@ -56,11 +45,9 @@ namespace Przestrzen
 
     public class WidokRenderManager
     {
-        public void Render(StreamWriter streamWriter
-        )
+        public void Render(StreamWriter streamWriter)
         {
-            var renderer = new WidokRenderer(streamWriter
-            );
+            var renderer = new WidokRenderer(streamWriter);
             renderer.Render();
         }
     }
