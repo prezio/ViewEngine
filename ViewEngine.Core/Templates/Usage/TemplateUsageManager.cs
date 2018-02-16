@@ -29,5 +29,15 @@ namespace ViewEngine.Core.Templates.Usage
 
             return template.TransformText();
         }
+
+        public string GenerateCodeVarUsage(string varText)
+        {
+            var template = new CodeVarUsageTemplate
+            {
+                VarText = varText
+            };
+
+            return template.TransformText();
+        }
     }
 }

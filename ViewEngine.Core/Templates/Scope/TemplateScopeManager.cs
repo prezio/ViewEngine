@@ -19,18 +19,17 @@ namespace ViewEngine.Core.Templates.Scope
         private readonly TemplateVariableAssignmentManager _assignmentManager;
         private readonly TemplateMethodDefinitionManager _methodDefinitionManager;
         private readonly TemplateUsageManager _usageManager;
-        private readonly TemplateVariableWriteManager _variableWriteManager;
 
-        public string GenerateFuncDeclaration(FuncDeclarationExpression exp, string[] modelNames)
+        public string GenerateFuncDeclaration(FuncDeclarationExpression exp)
         {
             var funcBody = string.Empty;
             if (exp.FunctionBody is RegularScope regularScope)
             {
-                funcBody = GenerateRegularScope(regularScope, modelNames);
+                funcBody = GenerateRegularScope(regularScope);
             }
             else if (exp.FunctionBody is TemplateScope templateScope)
             {
-                funcBody = GenerateTemplateScope(templateScope, modelNames);
+                funcBody = GenerateTemplateScope(templateScope);
             }
 
             return _methodDefinitionManager.GenerateMethodDefinition(
@@ -38,15 +37,15 @@ namespace ViewEngine.Core.Templates.Scope
                 );
         }
 
-        public string GenerateVarContent(IVarContent varContent, string[] modelNames)
+        public string GenerateVarContent(IVarContent varContent)
         {
             if (varContent is RegularScope regularScope)
             {
-                return GenerateRegularScope(regularScope, modelNames);
+                return GenerateRegularScope(regularScope);
             }
             if (varContent is TemplateScope templateScope)
             {
-                return GenerateTemplateScope(templateScope, modelNames);
+                return GenerateTemplateScope(templateScope);
             }
             if (varContent is TextString textString)
             {
@@ -55,20 +54,19 @@ namespace ViewEngine.Core.Templates.Scope
             return string.Empty;
         }
 
-        public string GenerateFuncUsage(FuncUsageExpression exp, string[] modelNames)
+        public string GenerateFuncUsage(FuncUsageExpression exp)
         {
             var assignments = new StringBuilder();
             foreach (var varAssign in exp.VariableAssignments)
             {
                 assignments.Append(_assignmentManager.GenerateVariableAssignment(varAssign.Key,
-                    GenerateVarContent(varAssign.Value, modelNames)));
+                    GenerateVarContent(varAssign.Value)));
             }
             return _usageManager.GenerateMethodUsage(assignments.ToString(),
                 exp.FunctionName);
         }
 
-        public string GenerateTemplateLine(TemplateLineExpression templateLine,
-                string[] modelNames)
+        public string GenerateTemplateLine(TemplateLineExpression templateLine)
         {
             var ret = new StringBuilder();
             foreach (var part in templateLine.Parts)
@@ -79,28 +77,24 @@ namespace ViewEngine.Core.Templates.Scope
                         _stringWriteManager.GenerateTextAddition(rawText.RawText)
                         );
                 }
-                if (part is TemplateVarUsage varUsage)
+                else if (part is TemplateVarUsage templateUsage)
                 {
-                    var varName = varUsage.VarUsageString.Split('.').First().Trim();
-                    if (modelNames.Contains(varName))
-                    {
-                        ret.Append(
-                            _variableWriteManager.GenerateVarAddition(varUsage.VarUsageString)
-                            );
-                    }
-                    else
-                    {
-                        ret.Append(
-                            _usageManager.GenerateParameterUsage(varName)
-                            );
-                    }
+                    ret.Append(
+                        _usageManager.GenerateParameterUsage(templateUsage.VarUsageString)
+                        );
+                }
+                else if (part is CodeVarUsage codeUsage)
+                {
+                    ret.Append(
+                        _usageManager.GenerateCodeVarUsage(codeUsage.VarUsageString)
+                        );
                 }
             }
             ret.AppendLine(_stringWriteManager.GenerateTextAddition("\\r\\n"));
             return ret.ToString();
         }
 
-        public string GenerateRegularScope(RegularScope scope, string[] modelNames)
+        public string GenerateRegularScope(RegularScope scope)
         {
             var ret = new StringBuilder();
             foreach (var expression in scope.Result)
@@ -111,17 +105,21 @@ namespace ViewEngine.Core.Templates.Scope
                 }
                 else if (expression is FuncUsageExpression funcUsage)
                 {
-                    ret.Append(GenerateFuncUsage(funcUsage, modelNames));
+                    ret.Append(GenerateFuncUsage(funcUsage));
                 }
                 else if (expression is FuncDeclarationExpression funcDeclaration)
                 {
-                    ret.Append(GenerateFuncDeclaration(funcDeclaration, modelNames));
+                    ret.Append(GenerateFuncDeclaration(funcDeclaration));
+                }
+                else if (expression is TemplateScope templateScope)
+                {
+                    ret.Append(GenerateTemplateScope(templateScope));
                 }
             }
             return ret.ToString();
         }
 
-        public string GenerateTemplateScope(TemplateScope scope, string[] modelNames)
+        public string GenerateTemplateScope(TemplateScope scope)
         {
             var ret = new StringBuilder();
             foreach (var expression in scope.Result)
@@ -133,7 +131,7 @@ namespace ViewEngine.Core.Templates.Scope
                 else if (expression is TemplateLineExpression templateLine)
                 {
                     ret.Append(
-                        GenerateTemplateLine(templateLine, modelNames));
+                        GenerateTemplateLine(templateLine));
                 }
             }
             return ret.ToString();
@@ -143,14 +141,12 @@ namespace ViewEngine.Core.Templates.Scope
             TemplateStringWriteManager stringWriteManager,
             TemplateVariableAssignmentManager assignmentManager,
             TemplateMethodDefinitionManager methodDefinitionManager,
-            TemplateUsageManager methodUsageManager,
-            TemplateVariableWriteManager variableWriteManager)
+            TemplateUsageManager methodUsageManager)
         {
             _stringWriteManager = stringWriteManager;
             _assignmentManager = assignmentManager;
             _methodDefinitionManager = methodDefinitionManager;
             _usageManager = methodUsageManager;
-            _variableWriteManager = variableWriteManager;
         }
     }
 }

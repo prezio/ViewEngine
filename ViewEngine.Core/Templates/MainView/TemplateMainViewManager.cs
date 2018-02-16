@@ -25,13 +25,24 @@ namespace ViewEngine.Core.Templates.MainView
                     new TemplateStringWriteManager(), 
                     new TemplateVariableAssignmentManager(),
                     new TemplateMethodDefinitionManager(),
-                    new TemplateUsageManager(),
-                    new TemplateVariableWriteManager()
+                    new TemplateUsageManager()
                     ));
         }
 
         private readonly TemplateModelManager _modelManager;
         private readonly TemplateScopeManager _scopeManager;
+
+        public string GenerateContent(MainOutput mainOutput, SecondaryOutput[] secondaryOutputs)
+        {
+            var ret = new StringBuilder();
+            foreach (var secondaryOutput in secondaryOutputs)
+            {
+                ret.AppendLine(_scopeManager.GenerateRegularScope(secondaryOutput.RegularScope));
+            }
+            ret.AppendLine(_scopeManager.GenerateRegularScope(mainOutput.RegularScope));
+
+            return ret.ToString();
+        }
 
         public string GenerateMainView(
             string viewName,
@@ -39,8 +50,7 @@ namespace ViewEngine.Core.Templates.MainView
             MainOutput mainOutput,
             SecondaryOutput[] secondaryOutputs)
         {
-            var contentSection = _scopeManager.GenerateRegularScope(mainOutput.RegularScope,
-                                    mainOutput.Models.Select(model => model.VarName).ToArray());
+            var contentSection = GenerateContent(mainOutput, secondaryOutputs);
             var modelParams = _modelManager.GenerateModelParams(mainOutput.Models);
             var modelDeclarations = _modelManager.GenerateModelDeclarations(mainOutput.Models);
             var modelAssignments = _modelManager.GenerateModelAssignments(mainOutput.Models);

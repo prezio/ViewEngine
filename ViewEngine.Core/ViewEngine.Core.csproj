@@ -49,12 +49,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Samples\FuncBodyWithUsage.view">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Samples\FuncUsageTest.view">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <!--<None Include="ViewEngine.g4" />-->
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\CoreEngine.cs" />
+    <Compile Include="Engine\ICoreEngine.cs" />
     <Compile Include="Grammar\Common\IVarContent.cs" />
     <Compile Include="Grammar\Common\CodeLineExpression.cs" />
     <Compile Include="Grammar\Common\TextString.cs" />
@@ -158,6 +153,7 @@
     <Compile Include="Grammar\Model\ModelIntroduceExpression.cs" />
     <Compile Include="Grammar\Outputs\MainOutput.cs" />
     <Compile Include="Grammar\Outputs\SecondaryOutput.cs" />
+    <Compile Include="Grammar\Scope\CodeVarUsage.cs" />
     <Compile Include="Grammar\Scope\IRegularExpression.cs" />
     <Compile Include="Grammar\Scope\ITemplateExpression.cs" />
     <Compile Include="Grammar\Scope\ITemplateLinePart.cs" />
@@ -212,12 +208,11 @@
       <DependentUpon>MainViewTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MainView\MainViewParams.cs" />
-    <Compile Include="Templates\StringWrite\TemplateVariableWriteManager.cs" />
-    <Compile Include="Templates\StringWrite\VariableWriteParams.cs" />
-    <Compile Include="Templates\StringWrite\VariableWriteTemplate.cs">
+    <Compile Include="Templates\Usage\CodeVarUsageParams.cs" />
+    <Compile Include="Templates\Usage\CodeVarUsageTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VariableWriteTemplate.tt</DependentUpon>
+      <DependentUpon>CodeVarUsageTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -245,9 +240,9 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MainViewTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\StringWrite\VariableWriteTemplate.tt">
+    <Content Include="Templates\Usage\CodeVarUsageTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>VariableWriteTemplate.cs</LastGenOutput>
+      <LastGenOutput>CodeVarUsageTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Usage\ParameterUsageTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

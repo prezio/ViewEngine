@@ -19,7 +19,7 @@ namespace ViewEngine.Core.Grammar
             {
                 var textVarUsage = extVarUsage.GetText();
                 Result.Add(
-                    new TemplateVarUsage(textVarUsage.Substring(2, textVarUsage.Length - 3)
+                    new CodeVarUsage(textVarUsage.Substring(2, textVarUsage.Length - 3)
                     ));
             }
 

@@ -20,6 +20,14 @@ namespace <#= NamespaceName #>
 {
 	class <#= ViewName #>Renderer
 	{
+        private void InvokeParameter(IReadOnlyDictionary<string, Action> parameters, string varName)
+        {
+            if (parameters.ContainsKey(varName))
+            {
+                parameters[varName]();
+            }
+        }
+
 		public StreamWriter Output { get; }
         
         // SECTION WITH MODEL DECLARATIONS ======

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewEngine.Core", "ViewEngi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewEngine.Runtime", "ViewEngine.Runtime\ViewEngine.Runtime.csproj", "{FEFB0A5B-8CF6-4BE7-AA7A-F3C31013AA4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewEngine.Example", "ViewEngine.Example\ViewEngine.Example.csproj", "{2334429A-BD47-4945-96E4-842CAE12ED9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FEFB0A5B-8CF6-4BE7-AA7A-F3C31013AA4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEFB0A5B-8CF6-4BE7-AA7A-F3C31013AA4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEFB0A5B-8CF6-4BE7-AA7A-F3C31013AA4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2334429A-BD47-4945-96E4-842CAE12ED9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2334429A-BD47-4945-96E4-842CAE12ED9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2334429A-BD47-4945-96E4-842CAE12ED9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2334429A-BD47-4945-96E4-842CAE12ED9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

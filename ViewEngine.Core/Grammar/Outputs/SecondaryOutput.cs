@@ -9,11 +9,11 @@ namespace ViewEngine.Core.Grammar.Outputs
 {
     public class SecondaryOutput
     {
-        public List<IRegularExpression> Expressions { get; set; }
+        public RegularScope RegularScope { get; set; }
 
-        public SecondaryOutput(List<IRegularExpression> expressions)
+        public SecondaryOutput(RegularScope regularScope)
         {
-            Expressions = expressions;
+            RegularScope = regularScope;
         }
     }
 }

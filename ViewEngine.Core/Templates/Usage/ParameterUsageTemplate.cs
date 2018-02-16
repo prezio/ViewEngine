@@ -25,14 +25,14 @@ namespace ViewEngine.Core.Templates.Usage
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("parameters[\"{");
+            this.Write("InvokeParameter(parameters, \"");
             
             #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\ParameterUsageTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(VarName));
             
             #line default
             #line hidden
-            this.Write("}\"]();");
+            this.Write("\");");
             return this.GenerationEnvironment.ToString();
         }
     }

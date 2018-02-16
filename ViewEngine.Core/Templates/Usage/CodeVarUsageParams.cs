@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewEngine.Core.Templates.StringWrite
+namespace ViewEngine.Core.Templates.Usage
 {
-    public partial class VariableWriteTemplate
+    public partial class CodeVarUsageTemplate
     {
         public string VarText { get; set; }
     }

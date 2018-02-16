@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FEFB0A5B-8CF6-4BE7-AA7A-F3C31013AA4C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>ViewEngine.Runtime</RootNamespace>
-    <AssemblyName>ViewEngine.Runtime</AssemblyName>
+    <ProjectGuid>{2334429A-BD47-4945-96E4-842CAE12ED9F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ViewEngine.Example</RootNamespace>
+    <AssemblyName>ViewEngine.Example</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,11 +31,19 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Views\Common.helper">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Views\MainView.view">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExampleModel.cs" />
+    <Compile Include="MainViewRenderer.cs" />
+    <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ViewEngine.Core\ViewEngine.Core.csproj">

@@ -14,7 +14,7 @@ using ViewEngine.Core.Templates.MainView;
 
 namespace ViewEngine.Core.Engine
 {
-    public class CoreEngine
+    public class CoreEngine : ICoreEngine
     {
         #region private region for parsing file
         private static ViewEngineParser GenerateParser(StreamReader reader)
@@ -50,10 +50,10 @@ namespace ViewEngine.Core.Engine
             var parser = GenerateParser(secondaryFilePath);
             var visitor = CreateVisitor();
             visitor.Visit(parser.secondary());
-            return new SecondaryOutput(visitor.Result);
+            return new SecondaryOutput(new RegularScope(visitor.Result));
         }
 
-        public string ArrangeUsingRoslyn(string csCode)
+        private string ArrangeUsingRoslyn(string csCode)
         {
             var tree = CSharpSyntaxTree.ParseText(csCode);
             var root = tree.GetRoot().NormalizeWhitespace();
@@ -73,13 +73,12 @@ namespace ViewEngine.Core.Engine
             string[] secondaryFilePaths)
         {
             var mainOutput = ParseMainFile(mainFilePath);
-            // TODO: Add parsing secondary files
-            // var secondaryOutputs = secondaryFilePaths.Select(ParseSecondaryFile);
+            var secondaryOutputs = secondaryFilePaths.Select(ParseSecondaryFile).ToArray();
             var renderOutput = _mainViewManager.GenerateMainView(
                 viewName,
                 namespaceName,
                 mainOutput,
-                null
+                secondaryOutputs
             );
             return ArrangeUsingRoslyn(renderOutput);
         }

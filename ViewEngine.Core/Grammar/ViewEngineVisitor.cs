@@ -74,6 +74,15 @@ namespace ViewEngine.Core.Grammar
             Visit(context.regular_statement());
             return null;
         }
+
+        public override object VisitTemplateScopeExp(ViewEngineParser.TemplateScopeExpContext context)
+        {
+            var templateScope = context.TEMPLATE_SCOPE().GetText();
+            Result.Add(ParseStringToTemplateScope(templateScope.Substring(2, templateScope.Length - 4)));
+
+            Visit(context.regular_statement());
+            return null;
+        }
         #endregion
 
         #region Model Introduce Section

@@ -1,5 +1,0 @@
-// Tests of just parsing function usages
-// Note that following file should not be compiled because there are no function declarations
-test(@param, "Witaj swiecie");
-anotherTest(@param, @param);
-simpleTest();

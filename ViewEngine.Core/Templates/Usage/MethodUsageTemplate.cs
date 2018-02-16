@@ -25,21 +25,20 @@ namespace ViewEngine.Core.Templates.Usage
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("{\r\n\tvar parameters = new Dictionary<string, Action>()\r\n\t{\r\n\t\t");
             
-            #line 5 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(VariableAssignments));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t};\r\n\t");
-            
-            #line 7 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
+            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodName));
             
             #line default
             #line hidden
-            this.Write("(parameters);\r\n}");
+            this.Write("(new Dictionary<string, Action>()\r\n{\r\n\t");
+            
+            #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(VariableAssignments));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n});");
             return this.GenerationEnvironment.ToString();
         }
     }

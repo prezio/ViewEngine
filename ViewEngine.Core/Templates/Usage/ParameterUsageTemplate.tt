@@ -1,2 +1,2 @@
 ﻿<#@ template language="C#" #>
-parameters["{<#= VarName #>}"]();
+InvokeParameter(parameters, "<#= VarName #>");
