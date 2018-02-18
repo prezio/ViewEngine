@@ -148,9 +148,9 @@
     <Compile Include="Grammar\Common\CodeLineExpression.cs" />
     <Compile Include="Grammar\Common\TextString.cs" />
     <Compile Include="Grammar\Common\Variable.cs" />
-    <Compile Include="Grammar\FuncDeclaration\FuncDeclarationExpression.cs" />
+    <Compile Include="Grammar\FuncDeclaration\MixinDeclarationExpression.cs" />
     <Compile Include="Grammar\Common\FuncUsageExpression.cs" />
-    <Compile Include="Grammar\FuncDeclaration\IFunctionBody.cs" />
+    <Compile Include="Grammar\FuncDeclaration\IMixinBody.cs" />
     <Compile Include="Grammar\Model\ModelIntroduceExpression.cs" />
     <Compile Include="Grammar\Outputs\MainOutput.cs" />
     <Compile Include="Grammar\Outputs\SecondaryOutput.cs" />

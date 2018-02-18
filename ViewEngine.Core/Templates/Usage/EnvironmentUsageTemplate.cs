@@ -25,7 +25,7 @@ namespace ViewEngine.Core.Templates.Usage
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("InvokeVariable(parameters, \"");
+            this.Write("InvokeVariable(environment, \"");
             
             #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\EnvironmentUsageTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(VarName));

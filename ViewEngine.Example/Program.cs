@@ -24,9 +24,9 @@ namespace ViewEngine.Example
             {
                 Name = "Marek"
             };
-            var renderManager = new MainRenderManager();
+            //var renderManager = new MainRenderManager();
             var output = new StreamWriter("out.html");
-            renderManager.Render(output, model);
+            //renderManager.Render(output, model);
             output.Close();
         }
     }

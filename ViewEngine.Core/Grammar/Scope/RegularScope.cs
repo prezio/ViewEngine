@@ -8,7 +8,7 @@ using ViewEngine.Core.Grammar.FuncDeclaration;
 
 namespace ViewEngine.Core.Grammar.Scope
 {
-    public class RegularScope : IVarContent, IFunctionBody
+    public class RegularScope : IVarContent, IMixinBody
     {
         public List<IRegularExpression> Result { get; set; }
 

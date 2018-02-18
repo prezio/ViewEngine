@@ -15,13 +15,13 @@ using System.Threading.Tasks;
 
 namespace ViewEngine.Example
 {
-    class MainRenderer
+    /*class MainRenderer
     {
-        private void InvokeParameter(IReadOnlyDictionary<string, Action> parameters, string varName)
+        private void InvokeVariable(IReadOnlyDictionary<string, Action> environment, string varName)
         {
-            if (parameters.ContainsKey(varName))
+            if (environment.ContainsKey(varName))
             {
-                parameters[varName]();
+                environment[varName]();
             }
         }
 
@@ -47,23 +47,23 @@ namespace ViewEngine.Example
         }
 
         // Render Method
-        public void Render()
+        public void Render(IReadOnlyDictionary<string, Action> environment)
         {
-            void Html(IReadOnlyDictionary<string, Action> parameters)
+            void Html()
             {
                 Output.Write("<html>");
                 Output.Write("\r\n");
                 Output.Write("<head>");
                 Output.Write("\r\n");
                 Output.Write("<title> ");
-                InvokeParameter(parameters, "title");
+                InvokeVariable(environment, "title");
                 Output.Write(" </title>");
                 Output.Write("\r\n");
                 Output.Write("</head>");
                 Output.Write("\r\n");
                 Output.Write("<body>");
                 Output.Write("\r\n");
-                InvokeParameter(parameters, "body");
+                InvokeVariable(environment, "body");
                 Output.Write("\r\n");
                 Output.Write("</body>");
                 Output.Write("\r\n");
@@ -71,58 +71,58 @@ namespace ViewEngine.Example
                 Output.Write("\r\n");
             }
 
-            void H1(IReadOnlyDictionary<string, Action> parameters)
+            void H1()
             {
                 Output.Write("<h1>");
-                InvokeParameter(parameters, "header");
+                InvokeVariable(environment, "header");
                 Output.Write("</h1>");
                 Output.Write("\r\n");
             }
 
-            void Line(IReadOnlyDictionary<string, Action> parameters)
+            void Line()
             {
-                InvokeParameter(parameters, "line");
+                InvokeVariable(environment, "line");
                 Output.Write(" </br>");
                 Output.Write("\r\n");
             }
 
             Html(new Dictionary<string, Action>()
             {{"body", () =>
-            {
-                H1(new Dictionary<string, Action>()
-                {{"header", () =>
                 {
-                    Output.Write("Example site generated with ViewEngine");
-                }
-                }, });
-                Output.Write("My name is: ");
-                Output.Write($"{Model.Name}");
-                Output.Write("\r\n");
-                Line(new Dictionary<string, Action>()
-                {});
-                for (int i = 0; i < 10; i++)
-                {
+                    H1(new Dictionary<string, Action>()
+                    {{"header", () =>
+                        {
+                            Output.Write("Example site generated with ViewEngine");
+                        }
+                    }, });
+                    Output.Write("My name is: ");
+                    Output.Write($"{Model.Name}");
+                    Output.Write("\r\n");
+                    Line(new Dictionary<string, Action>()
+                        {});
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Line(new Dictionary<string, Action>()
+                        {{"line", () =>
+                            {
+                                Output.Write("Row no. ");
+                                Output.Write($"{i}");
+                                Output.Write("\r\n");
+                            }
+                        }, });
+                    }
+
                     Line(new Dictionary<string, Action>()
                     {{"line", () =>
-                    {
-                        Output.Write("Row no. ");
-                        Output.Write($"{i}");
-                        Output.Write("\r\n");
-                    }
+                        {
+                            Output.Write("End line");
+                        }
                     }, });
                 }
-
-                Line(new Dictionary<string, Action>()
-                {{"line", () =>
-                {
-                    Output.Write("End line");
-                }
-                }, });
-            }
             }, {"title", () =>
-            {
-                Output.Write("Example Title");
-            }
+                {
+                    Output.Write("Example Title");
+                }
             }, });
         }
     }
@@ -134,7 +134,8 @@ namespace ViewEngine.Example
         public void Render(StreamWriter streamWriter, ExampleModel Model)
         {
             var renderer = new MainRenderer(streamWriter, Model);
-            renderer.Render();
+            var environment = new Dictionary<string, Action>();
+            renderer.Render(environment);
         }
-    }
+    }*/
 }

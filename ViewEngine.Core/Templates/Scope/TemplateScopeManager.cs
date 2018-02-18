@@ -20,20 +20,20 @@ namespace ViewEngine.Core.Templates.Scope
         private readonly TemplateMethodDefinitionManager _methodDefinitionManager;
         private readonly TemplateUsageManager _usageManager;
 
-        public string GenerateFuncDeclaration(FuncDeclarationExpression exp)
+        public string GenerateMixinDeclaration(MixinDeclarationExpression exp)
         {
             var funcBody = string.Empty;
-            if (exp.FunctionBody is RegularScope regularScope)
+            if (exp.MixinBody is RegularScope regularScope)
             {
                 funcBody = GenerateRegularScope(regularScope);
             }
-            else if (exp.FunctionBody is TemplateScope templateScope)
+            else if (exp.MixinBody is TemplateScope templateScope)
             {
                 funcBody = GenerateTemplateScope(templateScope);
             }
 
             return _methodDefinitionManager.GenerateMethodDefinition(
-                    exp.FunctionName, funcBody
+                    exp.MixinName, funcBody
                 );
         }
 
@@ -53,7 +53,7 @@ namespace ViewEngine.Core.Templates.Scope
             }
             if (varContent is Variable variable)
             {
-                return _writeManager.GenerateCodeWrite(variable.Name);
+                return _usageManager.GenerateVariableUsage(variable.Name);
             }
             if (varContent is CodeVarUsage codeUsage)
             {
@@ -63,7 +63,7 @@ namespace ViewEngine.Core.Templates.Scope
             return string.Empty;
         }
 
-        public string GenerateFuncUsage(FuncUsageExpression exp)
+        public string GenerateFuncUsage(MixinUsageExpression exp)
         {
             var assignments = new StringBuilder();
             foreach (var varAssign in exp.VariableAssignments)
@@ -72,7 +72,7 @@ namespace ViewEngine.Core.Templates.Scope
                     GenerateVarContent(varAssign.Value)));
             }
             return _usageManager.GenerateMethodUsage(assignments.ToString(),
-                exp.FunctionName);
+                exp.MixinName);
         }
 
         public string GenerateTemplateLine(TemplateLineExpression templateLine)
@@ -112,13 +112,13 @@ namespace ViewEngine.Core.Templates.Scope
                 {
                     ret.Append(codeLine.CodeLine);
                 }
-                else if (expression is FuncUsageExpression funcUsage)
+                else if (expression is MixinUsageExpression funcUsage)
                 {
                     ret.Append(GenerateFuncUsage(funcUsage));
                 }
-                else if (expression is FuncDeclarationExpression funcDeclaration)
+                else if (expression is MixinDeclarationExpression funcDeclaration)
                 {
-                    ret.Append(GenerateFuncDeclaration(funcDeclaration));
+                    ret.Append(GenerateMixinDeclaration(funcDeclaration));
                 }
                 else if (expression is TemplateScope templateScope)
                 {

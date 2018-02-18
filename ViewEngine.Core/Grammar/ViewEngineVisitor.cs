@@ -102,7 +102,7 @@ namespace ViewEngine.Core.Grammar
             var functionName = context.ID().GetText();
             var usageArgs = (Dictionary<string, IVarContent>)Visit(context.func_usage_args());
 
-            return new FuncUsageExpression(functionName, usageArgs);
+            return new MixinUsageExpression(functionName, usageArgs);
         }
 
         public override object VisitFunc_usage_args([NotNull] ViewEngineParser.Func_usage_argsContext context)
@@ -174,9 +174,9 @@ namespace ViewEngine.Core.Grammar
         public override object VisitFunc_declaration(ViewEngineParser.Func_declarationContext context)
         {
             var funcName = context.ID().GetText();
-            var bodyExp = (IFunctionBody)Visit(context.func_body());
+            var bodyExp = (IMixinBody)Visit(context.func_body());
 
-            return new FuncDeclarationExpression(funcName, bodyExp);
+            return new MixinDeclarationExpression(funcName, bodyExp);
         }
 
         public override object VisitFunc_body([NotNull] ViewEngineParser.Func_bodyContext context)
