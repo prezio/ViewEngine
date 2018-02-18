@@ -62,11 +62,11 @@ namespace ");
             #line hidden
             this.Write(@"Renderer
 	{
-        private void InvokeParameter(IReadOnlyDictionary<string, Action> parameters, string varName)
+        private void InvokeVariable(IReadOnlyDictionary<string, Action> environment, string varName)
         {
-            if (parameters.ContainsKey(varName))
+            if (environment.ContainsKey(varName))
             {
-                parameters[varName]();
+                environment[varName]();
             }
         }
 
@@ -104,7 +104,8 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t}\r\n\r\n        // Render Method\r\n\t\tpublic void Render()\r\n\t\t{\r\n\t\t\t");
+            this.Write("\r\n\t\t}\r\n\r\n        // Render Method\r\n\t\tpublic void Render(IReadOnlyDictionary<strin" +
+                    "g, Action> environment)\r\n\t\t{\r\n\t\t\t");
             
             #line 51 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ContentSection));
@@ -147,7 +148,8 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write(");\r\n\t\t\trenderer.Render();\r\n\t\t}\r\n    }\r\n}");
+            this.Write(");\r\n            var environment = new Dictionary<string, Action>();\r\n\t\t\trenderer." +
+                    "Render(environment);\r\n\t\t}\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

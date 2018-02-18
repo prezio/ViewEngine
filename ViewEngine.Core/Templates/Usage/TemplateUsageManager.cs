@@ -20,21 +20,11 @@ namespace ViewEngine.Core.Templates.Usage
             return template.TransformText();
         }
 
-        public string GenerateParameterUsage(string varName)
+        public string GenerateVariableUsage(string varName)
         {
-            var template = new ParameterUsageTemplate
+            var template = new EnvironmentUsageTemplate
             {
                 VarName = varName
-            };
-
-            return template.TransformText();
-        }
-
-        public string GenerateCodeVarUsage(string varText)
-        {
-            var template = new CodeVarUsageTemplate
-            {
-                VarText = varText
             };
 
             return template.TransformText();

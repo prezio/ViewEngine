@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewEngine.Core.Templates.Usage
 {
-    public partial class ParameterUsageTemplate
+    public partial class EnvironmentUsageTemplate
     {
         public string VarName { get; set; }
     }

@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace ViewEngine.Core.Templates.Usage
+namespace ViewEngine.Core.Templates.StringWrite
 {
     using System;
     
@@ -15,9 +15,9 @@ namespace ViewEngine.Core.Templates.Usage
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\CodeVarUsageTemplate.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\CodeWriteTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class CodeVarUsageTemplate : CodeVarUsageTemplateBase
+    public partial class CodeWriteTemplate : CodeWriteTemplateBase
     {
 #line hidden
         /// <summary>
@@ -27,8 +27,8 @@ namespace ViewEngine.Core.Templates.Usage
         {
             this.Write("Output.Write($\"{");
             
-            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\CodeVarUsageTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(VarText));
+            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\CodeWriteTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(CodeText));
             
             #line default
             #line hidden
@@ -44,7 +44,7 @@ namespace ViewEngine.Core.Templates.Usage
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class CodeVarUsageTemplateBase
+    public class CodeWriteTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

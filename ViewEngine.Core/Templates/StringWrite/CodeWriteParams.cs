@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewEngine.Core.Templates.Usage
+namespace ViewEngine.Core.Templates.StringWrite
 {
-    public partial class CodeVarUsageTemplate
+    public partial class CodeWriteTemplate
     {
-        public string VarText { get; set; }
+        public string CodeText { get; set; }
     }
 }

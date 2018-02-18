@@ -22,7 +22,7 @@ namespace ViewEngine.Core.Templates.MainView
             return new TemplateMainViewManager(
                 new TemplateModelManager(),
                 new TemplateScopeManager(
-                    new TemplateStringWriteManager(), 
+                    new TemplateWriteManager(), 
                     new TemplateVariableAssignmentManager(),
                     new TemplateMethodDefinitionManager(),
                     new TemplateUsageManager()

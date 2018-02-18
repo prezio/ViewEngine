@@ -6,13 +6,23 @@ using System.Threading.Tasks;
 
 namespace ViewEngine.Core.Templates.StringWrite
 {
-    public class TemplateStringWriteManager
+    public class TemplateWriteManager
     {
-        public string GenerateTextAddition(string text)
+        public string GenerateTextWrite(string text)
         {
             var template = new StringWriteTemplate
             {
                 TextString = text
+            };
+
+            return template.TransformText();
+        }
+
+        public string GenerateCodeWrite(string codeText)
+        {
+            var template = new CodeWriteTemplate
+            {
+                CodeText = codeText
             };
 
             return template.TransformText();

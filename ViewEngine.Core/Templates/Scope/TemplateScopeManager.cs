@@ -15,7 +15,7 @@ namespace ViewEngine.Core.Templates.Scope
 {
     public class TemplateScopeManager
     {
-        private readonly TemplateStringWriteManager _stringWriteManager;
+        private readonly TemplateWriteManager _writeManager;
         private readonly TemplateVariableAssignmentManager _assignmentManager;
         private readonly TemplateMethodDefinitionManager _methodDefinitionManager;
         private readonly TemplateUsageManager _usageManager;
@@ -49,8 +49,17 @@ namespace ViewEngine.Core.Templates.Scope
             }
             if (varContent is TextString textString)
             {
-                return _stringWriteManager.GenerateTextAddition(textString.Text);
+                return _writeManager.GenerateTextWrite(textString.Text);
             }
+            if (varContent is Variable variable)
+            {
+                return _writeManager.GenerateCodeWrite(variable.Name);
+            }
+            if (varContent is CodeVarUsage codeUsage)
+            {
+                return _writeManager.GenerateCodeWrite(codeUsage.VarUsageString);
+            }
+
             return string.Empty;
         }
 
@@ -74,23 +83,23 @@ namespace ViewEngine.Core.Templates.Scope
                 if (part is TemplateRawText rawText)
                 {
                     ret.Append(
-                        _stringWriteManager.GenerateTextAddition(rawText.RawText)
+                        _writeManager.GenerateTextWrite(rawText.RawText)
                         );
                 }
                 else if (part is TemplateVarUsage templateUsage)
                 {
                     ret.Append(
-                        _usageManager.GenerateParameterUsage(templateUsage.VarUsageString)
+                        _usageManager.GenerateVariableUsage(templateUsage.VarUsageString)
                         );
                 }
                 else if (part is CodeVarUsage codeUsage)
                 {
                     ret.Append(
-                        _usageManager.GenerateCodeVarUsage(codeUsage.VarUsageString)
+                        _writeManager.GenerateCodeWrite(codeUsage.VarUsageString)
                         );
                 }
             }
-            ret.AppendLine(_stringWriteManager.GenerateTextAddition("\\r\\n"));
+            ret.AppendLine(_writeManager.GenerateTextWrite("\\r\\n"));
             return ret.ToString();
         }
 
@@ -138,12 +147,12 @@ namespace ViewEngine.Core.Templates.Scope
         }
 
         public TemplateScopeManager(
-            TemplateStringWriteManager stringWriteManager,
+            TemplateWriteManager writeManager,
             TemplateVariableAssignmentManager assignmentManager,
             TemplateMethodDefinitionManager methodDefinitionManager,
             TemplateUsageManager methodUsageManager)
         {
-            _stringWriteManager = stringWriteManager;
+            _writeManager = writeManager;
             _assignmentManager = assignmentManager;
             _methodDefinitionManager = methodDefinitionManager;
             _usageManager = methodUsageManager;

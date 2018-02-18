@@ -20,11 +20,11 @@ namespace <#= NamespaceName #>
 {
 	class <#= ViewName #>Renderer
 	{
-        private void InvokeParameter(IReadOnlyDictionary<string, Action> parameters, string varName)
+        private void InvokeVariable(IReadOnlyDictionary<string, Action> environment, string varName)
         {
-            if (parameters.ContainsKey(varName))
+            if (environment.ContainsKey(varName))
             {
-                parameters[varName]();
+                environment[varName]();
             }
         }
 
@@ -46,7 +46,7 @@ namespace <#= NamespaceName #>
 		}
 
         // Render Method
-		public void Render()
+		public void Render(IReadOnlyDictionary<string, Action> environment)
 		{
 			<#= ContentSection #>
 		}
@@ -61,7 +61,8 @@ namespace <#= NamespaceName #>
 		{
 			var renderer = new <#= ViewName #>Renderer(streamWriter
 				<#= ModelPassed #>);
-			renderer.Render();
+            var environment = new Dictionary<string, Action>();
+			renderer.Render(environment);
 		}
     }
 }

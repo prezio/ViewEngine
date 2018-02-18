@@ -132,7 +132,7 @@ namespace ViewEngine.Core.Grammar
             if (ids.Length == 2)
             {
                 return new Tuple<string, IVarContent>(varName,
-                    new Variable(ids[2].GetText()));
+                    new Variable(ids[1].GetText()));
             }
 
             var templateScope = context.TEMPLATE_SCOPE();
@@ -154,9 +154,18 @@ namespace ViewEngine.Core.Grammar
             var textString = context.TEXT_STRING();
             if (textString != null)
             {
-                return new Tuple<string, IVarContent>(varName, new TextString(textString.GetText().Trim('"')));
+                return new Tuple<string, IVarContent>(varName,
+                    new TextString(textString.GetText().Trim('"')));
             }
-            
+
+            var codeString = context.CODE_SCOPE();
+            if (codeString != null)
+            {
+                var content = codeString.GetText();
+                return new Tuple<string, IVarContent>(varName,
+                    new CodeVarUsage(content.Substring(2, content.Length - 3)));
+            }
+
             return null;
         }
         #endregion

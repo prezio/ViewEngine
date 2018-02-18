@@ -154,7 +154,7 @@
     <Compile Include="Grammar\Model\ModelIntroduceExpression.cs" />
     <Compile Include="Grammar\Outputs\MainOutput.cs" />
     <Compile Include="Grammar\Outputs\SecondaryOutput.cs" />
-    <Compile Include="Grammar\Scope\CodeVarUsage.cs" />
+    <Compile Include="Grammar\Common\CodeVarUsage.cs" />
     <Compile Include="Grammar\Scope\IRegularExpression.cs" />
     <Compile Include="Grammar\Scope\ITemplateExpression.cs" />
     <Compile Include="Grammar\Scope\ITemplateLinePart.cs" />
@@ -187,11 +187,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MethodUsageTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\Usage\ParameterUsageParams.cs" />
-    <Compile Include="Templates\Usage\ParameterUsageTemplate.cs">
+    <Compile Include="Templates\Usage\EnvironmentUsageParams.cs" />
+    <Compile Include="Templates\Usage\EnvironmentUsageTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ParameterUsageTemplate.tt</DependentUpon>
+      <DependentUpon>EnvironmentUsageTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Usage\TemplateUsageManager.cs" />
     <Compile Include="Templates\Model\TemplateModelManager.cs" />
@@ -202,18 +202,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StringWriteTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\StringWrite\TemplateStringWriteManager.cs" />
+    <Compile Include="Templates\StringWrite\TemplateWriteManager.cs" />
     <Compile Include="Templates\MainView\MainViewTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MainViewTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MainView\MainViewParams.cs" />
-    <Compile Include="Templates\Usage\CodeVarUsageParams.cs" />
-    <Compile Include="Templates\Usage\CodeVarUsageTemplate.cs">
+    <Compile Include="Templates\StringWrite\CodeWriteParams.cs" />
+    <Compile Include="Templates\StringWrite\CodeWriteTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CodeVarUsageTemplate.tt</DependentUpon>
+      <DependentUpon>CodeWriteTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -241,13 +241,13 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MainViewTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\Usage\CodeVarUsageTemplate.tt">
+    <Content Include="Templates\StringWrite\CodeWriteTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>CodeVarUsageTemplate.cs</LastGenOutput>
+      <LastGenOutput>CodeWriteTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\Usage\ParameterUsageTemplate.tt">
+    <Content Include="Templates\Usage\EnvironmentUsageTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ParameterUsageTemplate.cs</LastGenOutput>
+      <LastGenOutput>EnvironmentUsageTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

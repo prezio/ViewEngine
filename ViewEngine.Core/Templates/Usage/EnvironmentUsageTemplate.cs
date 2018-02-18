@@ -15,9 +15,9 @@ namespace ViewEngine.Core.Templates.Usage
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\ParameterUsageTemplate.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\EnvironmentUsageTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ParameterUsageTemplate : ParameterUsageTemplateBase
+    public partial class EnvironmentUsageTemplate : EnvironmentUsageTemplateBase
     {
 #line hidden
         /// <summary>
@@ -25,9 +25,9 @@ namespace ViewEngine.Core.Templates.Usage
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("InvokeParameter(parameters, \"");
+            this.Write("InvokeVariable(parameters, \"");
             
-            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\ParameterUsageTemplate.tt"
+            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\EnvironmentUsageTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(VarName));
             
             #line default
@@ -44,7 +44,7 @@ namespace ViewEngine.Core.Templates.Usage
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class ParameterUsageTemplateBase
+    public class EnvironmentUsageTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

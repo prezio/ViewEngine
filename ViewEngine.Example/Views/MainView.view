@@ -3,10 +3,12 @@
 // This is definition of example model
 
 Html(title = "Example Title", 
+	 pompka = @{model.jojo},
+	 srompka = fekeok,
 	 body = 
 		<|
 			// This is scope where you can use functions. I call it regular scope.
-			H1 ( @header = "Example site generated with ViewEngine" );
+			H1 ( header = "Example site generated with ViewEngine" );
 			<-
 				// This is scope where you can type some template lines. I call it template scope.
 				My name is: @{Model.Name}
