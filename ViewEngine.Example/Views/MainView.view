@@ -1,25 +1,26 @@
-﻿@Model ExampleModel;
+﻿model ExampleModel Model;
 
 // This is definition of example model
 
-Html(@title = "Example Title", 
-	@body = 
+Html(title = "Example Title", 
+	 body = 
 		<|
 			// This is scope where you can use functions. I call it regular scope.
 			H1 ( @header = "Example site generated with ViewEngine" );
-			<@
+			<-
 				// This is scope where you can type some template lines. I call it template scope.
-				My name is: @[Model.Name]
-			@>
+				My name is: @{Model.Name}
+			->
 			Line();
+
 			-- for (int i=0; i<10; i++)
 			-- {
-				Line ( @line =
-					<@
-						Row no. @[i]
-					@>);
+				Line ( line =
+					<-
+						Row no. @{i}
+					->);
 			-- }
 
-			Line ( @line = "End line" );
+			Line ( line = "End line" );
 		|>
 );

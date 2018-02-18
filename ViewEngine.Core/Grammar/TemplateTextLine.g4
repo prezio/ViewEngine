@@ -21,7 +21,7 @@ variable_usage
     ;
 
 RAW_PART: ~('@') ~('@')* ;
-EXT_VAR_USAGE : '@' '[' ~('@' | ']') ~('@' | ']')* ']' ;
+EXT_VAR_USAGE : '@' '{' ~('@' | '}') ~('@' | '}')* '}' ;
 fragment ID : [a-zA-Z] [a-zA-Z0-9]* ;
 VAR_USAGE: '@' ID ;
 RAW_CHARACTER : '@' ;

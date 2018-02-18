@@ -37,7 +37,7 @@ models_introduction
     ;
 
 model_introduction
-	: VARID ID
+	: MODEL ID ID
 	;
 
 // end of grammar for model introduction
@@ -61,9 +61,11 @@ func_usage_args2
     ;
 
 func_usage_param
-    : VARID EQUAL TEMPLATE_SCOPE
-    | VARID EQUAL REGULAR_SCOPE
-    | VARID EQUAL TEXT_STRING
+    : ID EQUAL TEMPLATE_SCOPE
+    | ID EQUAL REGULAR_SCOPE
+    | ID EQUAL TEXT_STRING
+	| ID EQUAL CODE_SCOPE
+	| ID EQUAL ID
     ;
 
 // end of grammar for function usage
@@ -73,7 +75,7 @@ func_usage_param
 // grammar for function declaration
 
 func_declaration
-    : FUNCTION ID COLON
+    : MIXIN ID COLON
         func_body
     ;
 
@@ -88,9 +90,9 @@ func_body
 
 // Tokens declaration
 
-FUNCTION : 'function' ;
+MIXIN : 'mixin' ;
+MODEL : 'model' ;
 ID : [a-zA-Z] [a-zA-Z0-9]* ;
-VARID : '@' [a-zA-Z] [a-zA-Z0-9]* ;
 COMMA : ',' ;
 COLON : ':' ;
 SEP : ';' ;
@@ -98,8 +100,9 @@ LP : '(' ;
 RP : ')' ;
 EQUAL : '=' ;
 
-TEMPLATE_SCOPE : '<@' ( ~'@' | ( '@'+ ~[>*]) )* '@'* '@>';
+TEMPLATE_SCOPE : '<-' ( ~'-' | ( '-'+ ~[>*]) )* '-'* '->';
 REGULAR_SCOPE : '<|' ( ~'|' | ( '|'+ ~[>*]) )* '|'* '|>';
+CODE_SCOPE : '@{' ~('}')* '}' ;
 TEXT_STRING : '"' ~('"')* '"' ;
 fragment TEXT_LINE : ~( '\r' | '\n' )* ;
 CODE_LINE : '--' TEXT_LINE ;

@@ -88,8 +88,8 @@ namespace ViewEngine.Core.Grammar
         #region Model Introduce Section
         public override object VisitModel_introduction([NotNull] ViewEngineParser.Model_introductionContext context)
         {
-            var varType = context.ID().GetText();
-            var varName = context.VARID().GetText().TrimStart('@');
+            var varType = context.ID(0).GetText();
+            var varName = context.ID(1).GetText();
 
             Models.Add(new ModelIntroduceExpression(varType, varName));
             return null;
@@ -126,7 +126,14 @@ namespace ViewEngine.Core.Grammar
 
         public override object VisitFunc_usage_param([NotNull] ViewEngineParser.Func_usage_paramContext context)
         {
-            var varName = context.VARID().GetText().TrimStart('@');
+            var ids = context.ID();
+            var varName = ids.First().GetText();
+
+            if (ids.Length == 2)
+            {
+                return new Tuple<string, IVarContent>(varName,
+                    new Variable(ids[2].GetText()));
+            }
 
             var templateScope = context.TEMPLATE_SCOPE();
             if (templateScope != null)

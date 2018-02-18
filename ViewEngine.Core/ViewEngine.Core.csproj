@@ -147,6 +147,7 @@
     <Compile Include="Grammar\Common\IVarContent.cs" />
     <Compile Include="Grammar\Common\CodeLineExpression.cs" />
     <Compile Include="Grammar\Common\TextString.cs" />
+    <Compile Include="Grammar\Common\Variable.cs" />
     <Compile Include="Grammar\FuncDeclaration\FuncDeclarationExpression.cs" />
     <Compile Include="Grammar\Common\FuncUsageExpression.cs" />
     <Compile Include="Grammar\FuncDeclaration\IFunctionBody.cs" />

@@ -1,8 +1,8 @@
 ﻿// Common Functions
 
 // Definition of Html template function
-function Html:
-<@
+mixin Html:
+<-
 	<html>
 	<head>
 	<title> @title </title>
@@ -11,16 +11,16 @@ function Html:
 		@body
 	</body>
 	</html>
-@>
+->
 
 // Header
 
-function H1:
-<@
+mixin H1:
+<-
 	<h1>@header</h1>
-@>
+->
 
-function Line:
-<@
+mixin Line:
+<-
 	@line </br>
-@>
+->
