@@ -137,7 +137,7 @@ namespace ");
             this.Write("RenderManager\r\n    {\r\n        public void Render(StreamWriter streamWriter\r\n\t\t\t");
             
             #line 66 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModelParams));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.IsNullOrEmpty(ModelParams) ? string.Empty : $",{ModelParams}"));
             
             #line default
             #line hidden
@@ -151,7 +151,7 @@ namespace ");
             this.Write("Renderer(streamWriter\r\n\t\t\t\t");
             
             #line 69 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MainView\MainViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModelPassed));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.IsNullOrEmpty(ModelPassed) ? string.Empty : $",{ModelPassed}"));
             
             #line default
             #line hidden

@@ -1,6 +1,11 @@
 ﻿model ExampleModel Model;
 
 // This is definition of example model
+mixin Html:
+<-
+	pompka
+->
+
 
 Html(title = "Example Title", 
 	 pompka = @{model.jojo},

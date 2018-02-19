@@ -63,7 +63,7 @@ namespace ViewEngine.Core.Templates.Scope
             return string.Empty;
         }
 
-        public string GenerateFuncUsage(MixinUsageExpression exp)
+        public string GenerateMixinUsage(MixinUsageExpression exp)
         {
             var assignments = new StringBuilder();
             foreach (var varAssign in exp.VariableAssignments)
@@ -114,7 +114,7 @@ namespace ViewEngine.Core.Templates.Scope
                 }
                 else if (expression is MixinUsageExpression mixinUsage)
                 {
-                    ret.Append(GenerateFuncUsage(mixinUsage));
+                    ret.Append(GenerateMixinUsage(mixinUsage));
                 }
                 else if (expression is TemplateScope templateScope)
                 {
