@@ -1,2 +1,2 @@
 ﻿<#@ template language="C#" #>
-Output.Write($"{<#= CodeText #>}");
+output.Write($"{<#= CodeText #>}");

@@ -25,7 +25,7 @@ namespace ViewEngine.Core.Templates.StringWrite
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("Output.Write(\"");
+            this.Write("output.Write(\"");
             
             #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\StringWriteTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TextString));

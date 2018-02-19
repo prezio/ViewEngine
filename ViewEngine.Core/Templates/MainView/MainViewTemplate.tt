@@ -27,8 +27,6 @@ namespace <#= NamespaceName #>
                 environment[varName]();
             }
         }
-
-		public StreamWriter Output { get; }
         
         // SECTION WITH MODEL DECLARATIONS ======
 
@@ -47,15 +45,14 @@ namespace <#= NamespaceName #>
 
 
         // View Renderer Constructor
-		public <#= ViewName #>Renderer(StreamWriter streamWriter
-			<#= ModelParams #>)
+		public <#= ViewName #>Renderer(<#= ModelParams #>)
 		{
 			Output = streamWriter;
 			<#= ModelAssignments #>
 		}
 
         // Render Method
-		public void Render(IReadOnlyDictionary<string, Action> environment)
+		public void Render(StreamWriter output)
 		{
 			<#= ContentSection #>
 		}
@@ -70,8 +67,7 @@ namespace <#= NamespaceName #>
 		{
 			var renderer = new <#= ViewName #>Renderer(streamWriter
 				<#= ModelPassed #>);
-            var environment = new Dictionary<string, Action>();
-			renderer.Render(environment);
+			renderer.Render();
 		}
     }
 }

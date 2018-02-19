@@ -31,7 +31,7 @@ namespace ViewEngine.Core.Templates.Usage
             
             #line default
             #line hidden
-            this.Write("(new Dictionary<string, Action>()\r\n{\r\n\t");
+            this.Write("(output, new Dictionary<string, Action>()\r\n{\r\n\t");
             
             #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(VariableAssignments));
