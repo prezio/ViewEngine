@@ -12,6 +12,9 @@
 # diff files
 *.diff
 
+# Sonar cube
+.sonarqube
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

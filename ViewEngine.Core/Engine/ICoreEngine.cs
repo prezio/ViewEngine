@@ -8,17 +8,14 @@ namespace ViewEngine.Core.Engine
 {
     public interface ICoreEngine
     {
-        string Render(
+        string RenderMainView(
             string viewName,
             string namespaceName,
-            string mainFilePath,
-            string[] secondaryFilePaths);
+            string mainFilePath);
 
-        void Render(
-            string viewName,
+        string RenderHelper(
+            string helperName,
             string namespaceName,
-            string mainFilePath,
-            string[] secondaryFilePaths,
-            string outputViewPath);
+            string helperFilePath);
     }
 }

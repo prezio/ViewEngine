@@ -153,7 +153,7 @@
     <Compile Include="Grammar\MixinDeclaration\IMixinBody.cs" />
     <Compile Include="Grammar\Model\ModelIntroduceExpression.cs" />
     <Compile Include="Grammar\Outputs\MainOutput.cs" />
-    <Compile Include="Grammar\Outputs\SecondaryOutput.cs" />
+    <Compile Include="Grammar\Outputs\HelperOutput.cs" />
     <Compile Include="Grammar\Common\CodeVarUsage.cs" />
     <Compile Include="Grammar\Scope\IRegularExpression.cs" />
     <Compile Include="Grammar\Scope\ITemplateExpression.cs" />
@@ -173,7 +173,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VariableAssignmentTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\MainView\TemplateViewManager.cs" />
+    <Compile Include="Templates\OutputView\HelperViewParams.cs" />
+    <Compile Include="Templates\OutputView\HelperViewTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelperViewTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\OutputView\TemplateViewManager.cs" />
     <Compile Include="Templates\MethodDefinition\MethodDefinitionParams.cs" />
     <Compile Include="Templates\MethodDefinition\MethodDefinitionTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -203,12 +209,12 @@
       <DependentUpon>StringWriteTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\StringWrite\TemplateWriteManager.cs" />
-    <Compile Include="Templates\MainView\MainViewTemplate.cs">
+    <Compile Include="Templates\OutputView\MainViewTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MainViewTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\MainView\MainViewParams.cs" />
+    <Compile Include="Templates\OutputView\MainViewParams.cs" />
     <Compile Include="Templates\StringWrite\CodeWriteParams.cs" />
     <Compile Include="Templates\StringWrite\CodeWriteTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -229,6 +235,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MethodDefinitionTemplate.cs</LastGenOutput>
     </Content>
+    <Content Include="Templates\OutputView\HelperViewTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HelperViewTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\Usage\MethodUsageTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MethodUsageTemplate.cs</LastGenOutput>
@@ -237,7 +247,7 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>StringWriteTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\MainView\MainViewTemplate.tt">
+    <Content Include="Templates\OutputView\MainViewTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MainViewTemplate.cs</LastGenOutput>
     </Content>

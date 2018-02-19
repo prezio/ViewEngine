@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewEngine.Core.Templates.MainView
+namespace ViewEngine.Core.Templates.OutputView
 {
     public partial class MainViewTemplate
     {

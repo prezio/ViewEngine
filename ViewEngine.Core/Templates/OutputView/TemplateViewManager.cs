@@ -14,11 +14,11 @@ using ViewEngine.Core.Templates.Model;
 using ViewEngine.Core.Templates.Scope;
 using ViewEngine.Core.Templates.StringWrite;
 
-namespace ViewEngine.Core.Templates.MainView
+namespace ViewEngine.Core.Templates.OutputView
 {
     public class TemplateViewManager
     {
-        public static TemplateViewManager CreateMainViewManager()
+        public static TemplateViewManager CreateViewManager()
         {
             return new TemplateViewManager(
                 new TemplateModelManager(),
@@ -51,8 +51,7 @@ namespace ViewEngine.Core.Templates.MainView
         public string GenerateMainView(
             string viewName,
             string namespaceName,
-            MainOutput mainOutput,
-            SecondaryOutput[] secondaryOutputs)
+            MainOutput mainOutput)
         {
             var mixinDeclarations = GenerateMixinDeclarations(mainOutput.Mixins);
             var contentSection = GenerateContent(mainOutput);
@@ -71,6 +70,23 @@ namespace ViewEngine.Core.Templates.MainView
                 ModelDeclarations = modelDeclarations,
                 ContentSection = contentSection,
                 MixinDeclarations = mixinDeclarations
+            };
+
+            return template.TransformText();
+        }
+
+        public string GenerateHelper(
+            string helperName,
+            string namespaceName,
+            HelperOutput helperOutput)
+        {
+            var mixinDeclarations = GenerateMixinDeclarations(helperOutput.Mixins);
+
+            var template = new HelperViewTemplate
+            {
+                NamespaceName = namespaceName,
+                HelperName = helperName,
+                MixinDeclarations =  mixinDeclarations
             };
 
             return template.TransformText();

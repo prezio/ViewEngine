@@ -7,11 +7,11 @@ using ViewEngine.Core.Grammar.MixinDeclaration;
 
 namespace ViewEngine.Core.Grammar.Outputs
 {
-    public class SecondaryOutput
+    public class HelperOutput
     {
         public List<MixinDeclarationExpression> Mixins { get; set; }
 
-        public SecondaryOutput(List<MixinDeclarationExpression> mixins)
+        public HelperOutput(List<MixinDeclarationExpression> mixins)
         {
             Mixins = mixins;
         }

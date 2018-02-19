@@ -10,7 +10,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using ViewEngine.Core.Grammar;
 using ViewEngine.Core.Grammar.Outputs;
 using ViewEngine.Core.Grammar.Scope;
-using ViewEngine.Core.Templates.MainView;
+using ViewEngine.Core.Templates.OutputView;
 
 namespace ViewEngine.Core.Engine
 {
@@ -46,12 +46,12 @@ namespace ViewEngine.Core.Engine
                 visitor.Mixins);
         }
 
-        private static SecondaryOutput ParseSecondaryFile(string secondaryFilePath)
+        private static HelperOutput ParseHelperFile(string secondaryFilePath)
         {
             var parser = GenerateParser(secondaryFilePath);
             var visitor = CreateVisitor();
             visitor.Visit(parser.secondary());
-            return new SecondaryOutput(visitor.Mixins);
+            return new HelperOutput(visitor.Mixins);
         }
 
         private string ArrangeUsingRoslyn(string csCode)
@@ -64,39 +64,42 @@ namespace ViewEngine.Core.Engine
         #endregion
 
         #region private region for class templates
-        private readonly TemplateViewManager _mainViewManager;
+        private readonly TemplateViewManager _viewManager;
         #endregion
-        
-        public string Render(
+
+        #region ICoreEngine Interface methods
+        public string RenderMainView(
             string viewName,
             string namespaceName,
-            string mainFilePath,
-            string[] secondaryFilePaths)
+            string mainFilePath)
         {
             var mainOutput = ParseMainFile(mainFilePath);
-            var secondaryOutputs = secondaryFilePaths.Select(ParseSecondaryFile).ToArray();
-            var renderOutput = _mainViewManager.GenerateMainView(
+            var renderOutput = _viewManager.GenerateMainView(
                 viewName,
                 namespaceName,
-                mainOutput,
-                secondaryOutputs
+                mainOutput
             );
             return ArrangeUsingRoslyn(renderOutput);
         }
 
-        public void Render(
-            string viewName,
+        public string RenderHelper(
+            string helperName,
             string namespaceName,
-            string mainFilePath,
-            string[] secondaryFilePaths,
-            string outputViewPath)
+            string helperFilePath)
         {
-            File.WriteAllText(outputViewPath, Render(viewName, namespaceName, mainFilePath, secondaryFilePaths));
+            var helperOutput = ParseHelperFile(helperFilePath);
+            var renderOutput = _viewManager.GenerateHelper(
+                helperName,
+                namespaceName,
+                helperOutput
+            );
+            return ArrangeUsingRoslyn(renderOutput);
         }
+        #endregion
 
         public CoreEngine()
         {
-            _mainViewManager = TemplateViewManager.CreateMainViewManager();
+            _viewManager = TemplateViewManager.CreateViewManager();
         }
     }
 }
