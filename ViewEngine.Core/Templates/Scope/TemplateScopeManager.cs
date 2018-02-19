@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewEngine.Core.Grammar.Common;
-using ViewEngine.Core.Grammar.FuncDeclaration;
+using ViewEngine.Core.Grammar.MixinDeclaration;
 using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Templates.Assignment;
 using ViewEngine.Core.Templates.MethodDefinition;
@@ -112,13 +112,9 @@ namespace ViewEngine.Core.Templates.Scope
                 {
                     ret.Append(codeLine.CodeLine);
                 }
-                else if (expression is MixinUsageExpression funcUsage)
+                else if (expression is MixinUsageExpression mixinUsage)
                 {
-                    ret.Append(GenerateFuncUsage(funcUsage));
-                }
-                else if (expression is MixinDeclarationExpression funcDeclaration)
-                {
-                    ret.Append(GenerateMixinDeclaration(funcDeclaration));
+                    ret.Append(GenerateFuncUsage(mixinUsage));
                 }
                 else if (expression is TemplateScope templateScope)
                 {

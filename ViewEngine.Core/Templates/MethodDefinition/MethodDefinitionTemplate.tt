@@ -1,5 +1,5 @@
 ﻿<#@ template language="C#" #>
-void <#= MethodName #>(IReadOnlyDictionary<string, Action> environment)
+public static void <#= MethodName #>(StreamWriter output, IReadOnlyDictionary<string, Action> environment)
 {
     <#= MethodContent #>
 }

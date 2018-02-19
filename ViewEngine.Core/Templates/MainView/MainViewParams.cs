@@ -11,6 +11,7 @@ namespace ViewEngine.Core.Templates.MainView
         public string NamespaceName { get; set; }
         public string ViewName { get; set; }
         public string ContentSection { get; set; }
+        public string MixinDeclarations { get; set; }
 
         public string ModelDeclarations { get; set; }
         public string ModelParams { get; set; }

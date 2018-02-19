@@ -37,6 +37,15 @@ namespace <#= NamespaceName #>
         // END OF SECTION WITH MODEL DECLARATIONS
         // ======================================
 
+
+        // SECTION WITH MIXIN DECLARATIONS ======
+
+        <#= MixinDeclarations #>
+    
+        // END OF SECTION WITH MIXIN DECLARATIONS
+        // ======================================        
+
+
         // View Renderer Constructor
 		public <#= ViewName #>Renderer(StreamWriter streamWriter
 			<#= ModelParams #>)

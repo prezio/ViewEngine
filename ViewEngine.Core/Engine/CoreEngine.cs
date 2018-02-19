@@ -42,7 +42,8 @@ namespace ViewEngine.Core.Engine
             var visitor = CreateVisitor();
             visitor.Visit(parser.main());
             return new MainOutput(new RegularScope(visitor.Result),
-                visitor.Models);
+                visitor.Models,
+                visitor.Mixins);
         }
 
         private static SecondaryOutput ParseSecondaryFile(string secondaryFilePath)
@@ -50,7 +51,7 @@ namespace ViewEngine.Core.Engine
             var parser = GenerateParser(secondaryFilePath);
             var visitor = CreateVisitor();
             visitor.Visit(parser.secondary());
-            return new SecondaryOutput(new RegularScope(visitor.Result));
+            return new SecondaryOutput(visitor.Mixins);
         }
 
         private string ArrangeUsingRoslyn(string csCode)
@@ -63,7 +64,7 @@ namespace ViewEngine.Core.Engine
         #endregion
 
         #region private region for class templates
-        private readonly TemplateMainViewManager _mainViewManager;
+        private readonly TemplateViewManager _mainViewManager;
         #endregion
         
         public string Render(
@@ -95,7 +96,7 @@ namespace ViewEngine.Core.Engine
 
         public CoreEngine()
         {
-            _mainViewManager = TemplateMainViewManager.CreateMainViewManager();
+            _mainViewManager = TemplateViewManager.CreateMainViewManager();
         }
     }
 }

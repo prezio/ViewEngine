@@ -3,13 +3,13 @@ grammar ViewEngine;
 // grammar for main file
 
 main
-    : models_introduction regular_statement
+    : models_introduction declarations regular_statement
     ;
 
 // grammar for secondary file
 
 secondary
-    : regular_statement
+    : declarations
     ;
 
 
@@ -19,8 +19,7 @@ regular_statement
     : CODE_LINE regular_statement               #codeLineExp
     | COMMENT_LINE regular_statement            #commentLineExp
     | TEMPLATE_SCOPE regular_statement          #templateScopeExp
-    | func_usage SEP regular_statement          #funcUsageExp
-    | func_declaration regular_statement        #funcDeclExp
+    | mixin_usage SEP regular_statement         #mixinUsageExp
     | SEP regular_statement                     #emptyExp
     | EOF                                       #eofExp
     | /*epsilon*/                               #epsilonExp
@@ -44,23 +43,35 @@ model_introduction
 
 
 
+// grammar for declarations
+
+declarations
+	: mixin_declaration declarations
+	| SEP declarations
+	| /*epsilon*/
+	;
+
+// end of grammar for declarations
+
+
+
 // grammar for function usage
 
-func_usage
-    : ID LP func_usage_args RP
+mixin_usage
+    : ID LP mixin_usage_args RP
     ;
 
-func_usage_args
-    : func_usage_args2
+mixin_usage_args
+    : mixin_usage_args2
     | /*epsilon*/
     ;
 
-func_usage_args2
-    : func_usage_param
-    | func_usage_param COMMA func_usage_args2
+mixin_usage_args2
+    : mixin_usage_param
+    | mixin_usage_param COMMA mixin_usage_args2
     ;
 
-func_usage_param
+mixin_usage_param
     : ID EQUAL TEMPLATE_SCOPE
     | ID EQUAL REGULAR_SCOPE
     | ID EQUAL TEXT_STRING
@@ -74,12 +85,12 @@ func_usage_param
 
 // grammar for function declaration
 
-func_declaration
+mixin_declaration
     : MIXIN ID COLON
-        func_body
+        mixin_body
     ;
 
-func_body
+mixin_body
     : REGULAR_SCOPE
     | TEMPLATE_SCOPE
     ;

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Antlr4.Runtime;
 using ViewEngine.Core.Grammar.Common;
-using ViewEngine.Core.Grammar.FuncDeclaration;
+using ViewEngine.Core.Grammar.MixinDeclaration;
 using ViewEngine.Core.Grammar.Model;
 using ViewEngine.Core.Grammar.Scope;
 
@@ -16,6 +16,7 @@ namespace ViewEngine.Core.Grammar
     {
         public List<IRegularExpression> Result { get; } = new List<IRegularExpression>();
         public List<ModelIntroduceExpression> Models { get; } = new List<ModelIntroduceExpression>();
+        public List<MixinDeclarationExpression> Mixins { get; } = new List<MixinDeclarationExpression>();
 
         #region Conversion methods
         private TemplateScope ParseStringToTemplateScope(string content)
@@ -48,9 +49,9 @@ namespace ViewEngine.Core.Grammar
         #endregion
 
         #region Regular Statement Expression visitors
-        public override object VisitFuncUsageExp([NotNull] ViewEngineParser.FuncUsageExpContext context)
+        public override object VisitMixinUsageExp([NotNull] ViewEngineParser.MixinUsageExpContext context)
         {
-            var funcUsage = (IRegularExpression)Visit(context.func_usage());
+            var funcUsage = (IRegularExpression)Visit(context.mixin_usage());
             Result.Add(funcUsage);
 
             Visit(context.regular_statement());
@@ -61,15 +62,6 @@ namespace ViewEngine.Core.Grammar
         {
             var codeLine = context.CODE_LINE().GetText().Remove(0, 2);
             Result.Add(new CodeLineExpression(codeLine));
-
-            Visit(context.regular_statement());
-            return null;
-        }
-
-        public override object VisitFuncDeclExp(ViewEngineParser.FuncDeclExpContext context)
-        {
-            var funcDeclaration = (IRegularExpression) Visit(context.func_declaration());
-            Result.Add(funcDeclaration);
 
             Visit(context.regular_statement());
             return null;
@@ -96,26 +88,26 @@ namespace ViewEngine.Core.Grammar
         }
         #endregion
 
-        #region Function Usage Expression
-        public override object VisitFunc_usage([NotNull] ViewEngineParser.Func_usageContext context)
+        #region Mixin Usage Expression
+        public override object VisitMixin_usage([NotNull] ViewEngineParser.Mixin_usageContext context)
         {
             var functionName = context.ID().GetText();
-            var usageArgs = (Dictionary<string, IVarContent>)Visit(context.func_usage_args());
+            var usageArgs = (Dictionary<string, IVarContent>)Visit(context.mixin_usage_args());
 
             return new MixinUsageExpression(functionName, usageArgs);
         }
 
-        public override object VisitFunc_usage_args([NotNull] ViewEngineParser.Func_usage_argsContext context)
+        public override object VisitMixin_usage_args([NotNull] ViewEngineParser.Mixin_usage_argsContext context)
         {
-            var expArgs = context.func_usage_args2();
+            var expArgs = context.mixin_usage_args2();
             return expArgs != null ? (Dictionary<string, IVarContent>)Visit(expArgs) : new Dictionary<string, IVarContent>();
         }
 
-        public override object VisitFunc_usage_args2([NotNull] ViewEngineParser.Func_usage_args2Context context)
+        public override object VisitMixin_usage_args2([NotNull] ViewEngineParser.Mixin_usage_args2Context context)
         {
-            var newParam = (Tuple<string, IVarContent>) Visit(context.func_usage_param());
+            var newParam = (Tuple<string, IVarContent>) Visit(context.mixin_usage_param());
 
-            var nextArgsExp = context.func_usage_args2();
+            var nextArgsExp = context.mixin_usage_args2();
             var nextArgs = nextArgsExp != null ?
                 (Dictionary<string, IVarContent>)Visit(nextArgsExp) 
                 : new Dictionary<string, IVarContent>();
@@ -124,7 +116,7 @@ namespace ViewEngine.Core.Grammar
             return nextArgs;
         }
 
-        public override object VisitFunc_usage_param([NotNull] ViewEngineParser.Func_usage_paramContext context)
+        public override object VisitMixin_usage_param([NotNull] ViewEngineParser.Mixin_usage_paramContext context)
         {
             var ids = context.ID();
             var varName = ids.First().GetText();
@@ -170,16 +162,17 @@ namespace ViewEngine.Core.Grammar
         }
         #endregion
 
-        #region Function declaration expression
-        public override object VisitFunc_declaration(ViewEngineParser.Func_declarationContext context)
+        #region Mixin declaration expression
+        public override object VisitMixin_declaration(ViewEngineParser.Mixin_declarationContext context)
         {
-            var funcName = context.ID().GetText();
-            var bodyExp = (IMixinBody)Visit(context.func_body());
+            var mixinName = context.ID().GetText();
+            var bodyExp = (IMixinBody)Visit(context.mixin_body());
 
-            return new MixinDeclarationExpression(funcName, bodyExp);
+            Mixins.Add(new MixinDeclarationExpression(mixinName, bodyExp));
+            return null;
         }
 
-        public override object VisitFunc_body([NotNull] ViewEngineParser.Func_bodyContext context)
+        public override object VisitMixin_body([NotNull] ViewEngineParser.Mixin_bodyContext context)
         {
             var templateScope = context.TEMPLATE_SCOPE();
             if (templateScope != null)

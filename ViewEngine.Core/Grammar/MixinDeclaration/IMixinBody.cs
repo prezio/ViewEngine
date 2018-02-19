@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewEngine.Core.Grammar.FuncDeclaration
+namespace ViewEngine.Core.Grammar.MixinDeclaration
 {
     public interface IMixinBody
     {

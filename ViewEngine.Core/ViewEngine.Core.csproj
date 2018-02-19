@@ -148,9 +148,9 @@
     <Compile Include="Grammar\Common\CodeLineExpression.cs" />
     <Compile Include="Grammar\Common\TextString.cs" />
     <Compile Include="Grammar\Common\Variable.cs" />
-    <Compile Include="Grammar\FuncDeclaration\MixinDeclarationExpression.cs" />
+    <Compile Include="Grammar\MixinDeclaration\MixinDeclarationExpression.cs" />
     <Compile Include="Grammar\Common\FuncUsageExpression.cs" />
-    <Compile Include="Grammar\FuncDeclaration\IMixinBody.cs" />
+    <Compile Include="Grammar\MixinDeclaration\IMixinBody.cs" />
     <Compile Include="Grammar\Model\ModelIntroduceExpression.cs" />
     <Compile Include="Grammar\Outputs\MainOutput.cs" />
     <Compile Include="Grammar\Outputs\SecondaryOutput.cs" />
@@ -173,7 +173,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VariableAssignmentTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\MainView\TemplateMainViewManager.cs" />
+    <Compile Include="Templates\MainView\TemplateViewManager.cs" />
     <Compile Include="Templates\MethodDefinition\MethodDefinitionParams.cs" />
     <Compile Include="Templates\MethodDefinition\MethodDefinitionTemplate.cs">
       <AutoGen>True</AutoGen>

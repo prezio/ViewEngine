@@ -25,14 +25,14 @@ namespace ViewEngine.Core.Templates.MethodDefinition
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("void ");
+            this.Write("public static void ");
             
             #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodName));
             
             #line default
             #line hidden
-            this.Write("(IReadOnlyDictionary<string, Action> environment)\r\n{\r\n    ");
+            this.Write("(StreamWriter output, IReadOnlyDictionary<string, Action> environment)\r\n{\r\n    ");
             
             #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodContent));

@@ -15,11 +15,11 @@ using ViewEngine.Core.Templates.StringWrite;
 
 namespace ViewEngine.Core.Templates.MainView
 {
-    public class TemplateMainViewManager
+    public class TemplateViewManager
     {
-        public static TemplateMainViewManager CreateMainViewManager()
+        public static TemplateViewManager CreateMainViewManager()
         {
-            return new TemplateMainViewManager(
+            return new TemplateViewManager(
                 new TemplateModelManager(),
                 new TemplateScopeManager(
                     new TemplateWriteManager(), 
@@ -32,16 +32,9 @@ namespace ViewEngine.Core.Templates.MainView
         private readonly TemplateModelManager _modelManager;
         private readonly TemplateScopeManager _scopeManager;
 
-        public string GenerateContent(MainOutput mainOutput, SecondaryOutput[] secondaryOutputs)
+        public string GenerateContent(MainOutput mainOutput)
         {
-            var ret = new StringBuilder();
-            foreach (var secondaryOutput in secondaryOutputs)
-            {
-                ret.AppendLine(_scopeManager.GenerateRegularScope(secondaryOutput.RegularScope));
-            }
-            ret.AppendLine(_scopeManager.GenerateRegularScope(mainOutput.RegularScope));
-
-            return ret.ToString();
+            return _scopeManager.GenerateRegularScope(mainOutput.RegularScope);
         }
 
         public string GenerateMainView(
@@ -50,7 +43,7 @@ namespace ViewEngine.Core.Templates.MainView
             MainOutput mainOutput,
             SecondaryOutput[] secondaryOutputs)
         {
-            var contentSection = GenerateContent(mainOutput, secondaryOutputs);
+            var contentSection = GenerateContent(mainOutput);
             var modelParams = _modelManager.GenerateModelParams(mainOutput.Models);
             var modelDeclarations = _modelManager.GenerateModelDeclarations(mainOutput.Models);
             var modelAssignments = _modelManager.GenerateModelAssignments(mainOutput.Models);
@@ -70,7 +63,7 @@ namespace ViewEngine.Core.Templates.MainView
             return template.TransformText();
         }
 
-        public TemplateMainViewManager(
+        public TemplateViewManager(
             TemplateModelManager modelManager,
             TemplateScopeManager scopeManager)
         {
