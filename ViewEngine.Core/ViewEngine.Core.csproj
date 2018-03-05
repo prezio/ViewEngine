@@ -221,6 +221,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CodeWriteTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Web\Mvc\ViewFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Antlr4 Include="Grammar\TemplateTextLine.g4">
