@@ -32,7 +32,7 @@ namespace ViewEngine.Core.Templates.MethodDefinition
             
             #line default
             #line hidden
-            this.Write("(StreamWriter output, IReadOnlyDictionary<string, Action> environment)\r\n{\r\n    ");
+            this.Write("(TextWriter writer, IReadOnlyDictionary<string, Action> environment)\r\n{\r\n    ");
             
             #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodContent));

@@ -42,7 +42,7 @@ namespace ViewEngine.Core.Engine
             var visitor = CreateVisitor();
             visitor.Visit(parser.main());
             return new MainOutput(new RegularScope(visitor.Result),
-                visitor.Models,
+                visitor.Model,
                 visitor.Mixins);
         }
 

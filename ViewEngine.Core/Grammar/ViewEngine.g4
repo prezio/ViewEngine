@@ -3,7 +3,7 @@ grammar ViewEngine;
 // grammar for main file
 
 main
-    : models_introduction declarations regular_statement
+    : model_introduction declarations regular_statement
     ;
 
 // grammar for secondary file
@@ -29,15 +29,11 @@ regular_statement
 
 // grammar for model introduction
 
-models_introduction
-    : COMMENT_LINE models_introduction
-    | model_introduction SEP models_introduction
+model_introduction
+    : COMMENT_LINE model_introduction
+    | MODEL ID SEP
     | /*epsilon*/
     ;
-
-model_introduction
-	: MODEL ID ID
-	;
 
 // end of grammar for model introduction
 

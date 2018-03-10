@@ -12,10 +12,6 @@ namespace ViewEngine.Core.Templates.OutputView
         public string ViewName { get; set; }
         public string ContentSection { get; set; }
         public string MixinDeclarations { get; set; }
-
-        public string ModelDeclarations { get; set; }
-        public string ModelParams { get; set; }
-        public string ModelAssignments { get; set; }
-        public string ModelPassed { get; set; }
+        public string ViewPathKey { get; set; }
     }
 }

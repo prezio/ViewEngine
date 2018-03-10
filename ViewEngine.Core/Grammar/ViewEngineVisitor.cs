@@ -15,7 +15,7 @@ namespace ViewEngine.Core.Grammar
     public class ViewEngineVisitor : ViewEngineBaseVisitor<object>
     {
         public List<IRegularExpression> Result { get; } = new List<IRegularExpression>();
-        public List<ModelIntroduceExpression> Models { get; } = new List<ModelIntroduceExpression>();
+        public ModelIntroduceExpression Model { get; set; } = null;
         public List<MixinDeclarationExpression> Mixins { get; } = new List<MixinDeclarationExpression>();
 
         #region Conversion methods
@@ -80,10 +80,11 @@ namespace ViewEngine.Core.Grammar
         #region Model Introduce Section
         public override object VisitModel_introduction([NotNull] ViewEngineParser.Model_introductionContext context)
         {
-            var varType = context.ID(0).GetText();
-            var varName = context.ID(1).GetText();
-
-            Models.Add(new ModelIntroduceExpression(varType, varName));
+            var varType = context.ID();
+            if (varType != null)
+            {
+                Model = new ModelIntroduceExpression(varType.GetText());
+            }
             return null;
         }
         #endregion

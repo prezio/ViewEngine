@@ -12,15 +12,15 @@ namespace ViewEngine.Core.Grammar.Outputs
     public class MainOutput
     {
         public RegularScope RegularScope { get; set; }
-        public List<ModelIntroduceExpression> Models { get; set; }
+        public ModelIntroduceExpression Model { get; set; }
         public List<MixinDeclarationExpression> Mixins { get; set; }
 
         public MainOutput(RegularScope regularScope,
-            List<ModelIntroduceExpression> models,
+            ModelIntroduceExpression model,
             List<MixinDeclarationExpression> mixins)
         {
             RegularScope = regularScope;
-            Models = models;
+            Model = model;
             Mixins = mixins;
         }
     }

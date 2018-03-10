@@ -10,7 +10,6 @@ using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Templates.Assignment;
 using ViewEngine.Core.Templates.MethodDefinition;
 using ViewEngine.Core.Templates.Usage;
-using ViewEngine.Core.Templates.Model;
 using ViewEngine.Core.Templates.Scope;
 using ViewEngine.Core.Templates.StringWrite;
 
@@ -21,7 +20,6 @@ namespace ViewEngine.Core.Templates.OutputView
         public static TemplateViewManager CreateViewManager()
         {
             return new TemplateViewManager(
-                new TemplateModelManager(),
                 new TemplateScopeManager(
                     new TemplateWriteManager(), 
                     new TemplateVariableAssignmentManager(),
@@ -29,8 +27,7 @@ namespace ViewEngine.Core.Templates.OutputView
                     new TemplateUsageManager()
                     ));
         }
-
-        private readonly TemplateModelManager _modelManager;
+        
         private readonly TemplateScopeManager _scopeManager;
 
         public string GenerateContent(MainOutput mainOutput)
@@ -55,19 +52,11 @@ namespace ViewEngine.Core.Templates.OutputView
         {
             var mixinDeclarations = GenerateMixinDeclarations(mainOutput.Mixins);
             var contentSection = GenerateContent(mainOutput);
-            var modelParams = _modelManager.GenerateModelParams(mainOutput.Models);
-            var modelDeclarations = _modelManager.GenerateModelDeclarations(mainOutput.Models);
-            var modelAssignments = _modelManager.GenerateModelAssignments(mainOutput.Models);
-            var modelPassed = _modelManager.GenerateModelPassed(mainOutput.Models);
 
             var template = new MainViewTemplate
             {
                 ViewName = viewName,
                 NamespaceName = namespaceName,
-                ModelParams = modelParams,
-                ModelAssignments = modelAssignments,
-                ModelPassed = modelPassed,
-                ModelDeclarations = modelDeclarations,
                 ContentSection = contentSection,
                 MixinDeclarations = mixinDeclarations
             };
@@ -93,10 +82,8 @@ namespace ViewEngine.Core.Templates.OutputView
         }
 
         public TemplateViewManager(
-            TemplateModelManager modelManager,
             TemplateScopeManager scopeManager)
         {
-            _modelManager = modelManager;
             _scopeManager = scopeManager;
         }
     }

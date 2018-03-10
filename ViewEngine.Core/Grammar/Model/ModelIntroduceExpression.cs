@@ -9,12 +9,10 @@ namespace ViewEngine.Core.Grammar.Model
     public class ModelIntroduceExpression
     {
         public string VarType { get; set; }
-        public string VarName { get; set; }
 
-        public ModelIntroduceExpression(string varType, string varName)
+        public ModelIntroduceExpression(string varType)
         {
             VarType = varType;
-            VarName = varName;
         }
     }
 }

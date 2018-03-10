@@ -1,2 +1,2 @@
 ﻿<#@ template language="C#" #>
-output.Write("<#= TextString #>");
+writer.Write("<#= TextString #>");

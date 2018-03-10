@@ -153,6 +153,7 @@
   <ItemGroup>
     <Compile Include="Engine\CoreEngine.cs" />
     <Compile Include="Engine\ICoreEngine.cs" />
+    <Compile Include="Engine\ViewRendererAttribute.cs" />
     <Compile Include="Grammar\Common\IVarContent.cs" />
     <Compile Include="Grammar\Common\CodeLineExpression.cs" />
     <Compile Include="Grammar\Common\TextString.cs" />
@@ -209,7 +210,6 @@
       <DependentUpon>EnvironmentUsageTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Usage\TemplateUsageManager.cs" />
-    <Compile Include="Templates\Model\TemplateModelManager.cs" />
     <Compile Include="Templates\Scope\TemplateScopeManager.cs" />
     <Compile Include="Templates\StringWrite\StringWriteParams.cs" />
     <Compile Include="Templates\StringWrite\StringWriteTemplate.cs">
