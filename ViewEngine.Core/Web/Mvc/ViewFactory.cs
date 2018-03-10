@@ -7,21 +7,31 @@ using System.Web.Mvc;
 
 namespace ViewEngine.Core.Web.Mvc
 {
-    public class ViewFactory : IViewEngine
+    public class ViewFactory : VirtualPathProviderViewEngine
     {
-        public ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache)
+        private static Dictionary<string, IView> _viewRenderersDictionary;
+
+        public ViewFactory()
         {
-            throw new NotImplementedException();
+            this.ViewLocationFormats = new []
+                { "~/Views/{1}/{0}.myview", "~/Views/Shared/{0}.myview" };
+
+            this.PartialViewLocationFormats = new []
+                { "~/Views/{1}/{0}.myview", "~/Views/Shared/{0}.myview" };
         }
 
-        public ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
+        protected override IView CreatePartialView
+            (ControllerContext controllerContext, string partialPath)
         {
-            throw new NotImplementedException();
+            //var physicalpath = controllerContext.HttpContext.Server.MapPath(partialPath);
+            return new TestView();
         }
 
-        public void ReleaseView(ControllerContext controllerContext, IView view)
+        protected override IView CreateView
+            (ControllerContext controllerContext, string viewPath, string masterPath)
         {
-            throw new NotImplementedException();
+            //var physicalpath = controllerContext.HttpContext.Server.MapPath(viewPath);
+            return new TestView();
         }
     }
 }
