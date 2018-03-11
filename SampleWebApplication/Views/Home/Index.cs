@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using ViewEngine.Core.Engine;
 
-namespace WebApplication1.Views.Home
+namespace SampleWebApplication.Views.Home
 {
-    public class Index
+    [ViewRenderer("~/Views/Home/Index.myview")]
+    public class IndexView : IView
     {
+        public void Render(ViewContext viewContext, TextWriter writer)
+        {
+            writer.Write("pompka");
+        }
     }
 }

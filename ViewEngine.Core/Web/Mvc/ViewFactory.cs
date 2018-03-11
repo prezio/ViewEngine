@@ -13,10 +13,9 @@ namespace ViewEngine.Core.Web.Mvc
     {
         private static Dictionary<string, IView> _viewRenderersDispatcher;
 
-        private void SearchGeneratedViews()
+        private void SearchGeneratedViews(Assembly assembly)
         {
             _viewRenderersDispatcher = new Dictionary<string, IView>();
-            var assembly = Assembly.GetExecutingAssembly();
             foreach (var type in assembly.GetTypes())
             {
                 var attribute = (ViewRendererAttribute)type.GetCustomAttributes(typeof(ViewRendererAttribute))
@@ -28,10 +27,10 @@ namespace ViewEngine.Core.Web.Mvc
             }
         }
 
-        public ViewFactory()
+        public ViewFactory(Assembly assembly)
         {
             ViewLocationFormats = new [] { "~/Views/{1}/{0}.myview" };
-            SearchGeneratedViews();
+            SearchGeneratedViews(assembly);
         }
 
         protected override IView CreatePartialView

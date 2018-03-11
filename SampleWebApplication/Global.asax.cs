@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -13,7 +14,7 @@ namespace SampleWebApplication
     {
         protected void Application_Start()
         {
-            ViewEngines.Engines.Add(new ViewFactory());
+            ViewEngines.Engines.Add(new ViewFactory(Assembly.GetExecutingAssembly()));
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
