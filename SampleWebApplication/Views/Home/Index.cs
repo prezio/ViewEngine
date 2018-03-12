@@ -8,7 +8,7 @@ using ViewEngine.Core.Engine;
 
 namespace SampleWebApplication.Views.Home
 {
-    [ViewRenderer("~/Views/Home/Index.myview")]
+    [ViewRenderer("~/Views/Home/Index.myview","")]
     public class IndexView : IView
     {
         public void Render(ViewContext viewContext, TextWriter writer)

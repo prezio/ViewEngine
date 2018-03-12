@@ -22,7 +22,7 @@ namespace ViewEngine.Core.Web.Mvc
                     .FirstOrDefault();
                 if (attribute != null)
                 {
-                    _viewRenderersDispatcher[attribute.ViewPathKey] = (IView)Activator.CreateInstance(type);
+                    //_viewRenderersDispatcher[attribute.ViewPathKey] = (IView)Activator.CreateInstance(type);
                 }
             }
         }

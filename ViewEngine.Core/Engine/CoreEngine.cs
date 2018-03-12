@@ -17,7 +17,7 @@ namespace ViewEngine.Core.Engine
     public class CoreEngine : ICoreEngine
     {
         #region private region for parsing file
-        private static ViewEngineParser GenerateParser(StreamReader reader)
+        private static ViewEngineParser GenerateParser(TextReader reader)
         {
             var inputStream = new AntlrInputStream(reader);
             var viewEngineLexer = new ViewEngineLexer(inputStream);
@@ -25,20 +25,14 @@ namespace ViewEngine.Core.Engine
             return new ViewEngineParser(commonTokenStream);
         }
 
-        private static ViewEngineParser GenerateParser(string filePath)
-        {
-            var reader = new StreamReader(filePath);
-            return GenerateParser(reader);
-        }
-
         private static ViewEngineVisitor CreateVisitor()
         {
             return new ViewEngineVisitor();
         }
 
-        private static MainOutput ParseMainFile(string mainFilePath)
+        private static MainOutput ParseMainFile(TextReader mainTextReader)
         {
-            var parser = GenerateParser(mainFilePath);
+            var parser = GenerateParser(mainTextReader);
             var visitor = CreateVisitor();
             visitor.Visit(parser.main());
             return new MainOutput(new RegularScope(visitor.Result),
@@ -46,9 +40,9 @@ namespace ViewEngine.Core.Engine
                 visitor.Mixins);
         }
 
-        private static HelperOutput ParseHelperFile(string secondaryFilePath)
+        private static HelperOutput ParseHelperFile(TextReader helperTextReader)
         {
-            var parser = GenerateParser(secondaryFilePath);
+            var parser = GenerateParser(helperTextReader);
             var visitor = CreateVisitor();
             visitor.Visit(parser.secondary());
             return new HelperOutput(visitor.Mixins);
@@ -69,11 +63,12 @@ namespace ViewEngine.Core.Engine
 
         #region ICoreEngine Interface methods
         public string RenderMainView(
+            string controllerName,
             string viewName,
             string namespaceName,
-            string mainFilePath)
+            TextReader mainTextReader)
         {
-            var mainOutput = ParseMainFile(mainFilePath);
+            var mainOutput = ParseMainFile(mainTextReader);
             var renderOutput = _viewManager.GenerateMainView(
                 viewName,
                 namespaceName,
@@ -85,9 +80,9 @@ namespace ViewEngine.Core.Engine
         public string RenderHelper(
             string helperName,
             string namespaceName,
-            string helperFilePath)
+            TextReader helperTextReader)
         {
-            var helperOutput = ParseHelperFile(helperFilePath);
+            var helperOutput = ParseHelperFile(helperTextReader);
             var renderOutput = _viewManager.GenerateHelper(
                 helperName,
                 namespaceName,
