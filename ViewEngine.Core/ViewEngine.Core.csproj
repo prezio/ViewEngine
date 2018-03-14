@@ -40,12 +40,19 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
     <Antlr4 Include="Grammar\TemplateScope.g4">
       <CustomToolNamespace>ViewEngine.Core.Grammar</CustomToolNamespace>
       <Generator>MSBuild:Compile</Generator>
     </Antlr4>
+    <None Include="key.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -69,8 +76,7 @@
     <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=2.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.2.6.1\lib\netstandard1.3\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.Shell.15.0, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.VSHost.15.0, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
@@ -232,7 +238,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CodeWriteTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Web\Mvc\ViewEngineGenerationTool.cs" />
     <Compile Include="Web\Mvc\ViewFactory.cs" />
   </ItemGroup>
   <ItemGroup>

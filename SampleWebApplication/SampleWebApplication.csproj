@@ -157,7 +157,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Home\Index.myview" />
+    <Content Include="Views\Home\Index.myview">
+      <Generator>ViewEngine.GenerateTool</Generator>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Shared\" />
