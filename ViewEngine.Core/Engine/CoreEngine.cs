@@ -63,14 +63,15 @@ namespace ViewEngine.Core.Engine
 
         #region ICoreEngine Interface methods
         public string RenderMainView(
-            string controllerName,
             string viewName,
+            string viewPathKey,
             string namespaceName,
             TextReader mainTextReader)
         {
             var mainOutput = ParseMainFile(mainTextReader);
             var renderOutput = _viewManager.GenerateMainView(
                 viewName,
+                viewPathKey,
                 namespaceName,
                 mainOutput
             );

@@ -22,17 +22,9 @@ namespace <#= NamespaceName #>
 {
     // <#= ViewName #>View - generated class which
     // should be used for rendering views
-    [ViewRenderer("<#= ViewPathKey #>")]
+    [ViewRenderer(@"<#= ViewPathKey #>")]
 	class <#= ViewName #>View : IView
 	{
-        private void InvokeVariable(IReadOnlyDictionary<string, Action> environment, string varName)
-        {
-            if (environment.ContainsKey(varName))
-            {
-                environment[varName]();
-            }
-        }
-    
         // SECTION WITH MIXIN DECLARATIONS ======
 
         <#= MixinDeclarations #>

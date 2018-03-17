@@ -1,2 +1,2 @@
 ﻿<#@ template language="C#" #>
-InvokeVariable(environment, "<#= VarName #>");
+RenderHelpers.InvokeVariable(environment, "<#= VarName #>");

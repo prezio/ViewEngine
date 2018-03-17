@@ -161,6 +161,7 @@
   <ItemGroup>
     <Compile Include="Engine\CoreEngine.cs" />
     <Compile Include="Engine\ICoreEngine.cs" />
+    <Compile Include="Engine\RenderHelpers.cs" />
     <Compile Include="Engine\ViewRendererAttribute.cs" />
     <Compile Include="Grammar\Common\IVarContent.cs" />
     <Compile Include="Grammar\Common\CodeLineExpression.cs" />

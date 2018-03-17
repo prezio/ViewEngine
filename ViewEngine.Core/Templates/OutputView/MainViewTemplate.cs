@@ -63,7 +63,7 @@ namespace ");
             #line default
             #line hidden
             this.Write("View - generated class which\r\n    // should be used for rendering views\r\n    [Vie" +
-                    "wRenderer(\"");
+                    "wRenderer(@\"");
             
             #line 25 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ViewPathKey));
@@ -77,21 +77,9 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write(@"View : IView
-	{
-        private void InvokeVariable(IReadOnlyDictionary<string, Action> environment, string varName)
-        {
-            if (environment.ContainsKey(varName))
-            {
-                environment[varName]();
-            }
-        }
-    
-        // SECTION WITH MIXIN DECLARATIONS ======
-
-        ");
+            this.Write("View : IView\r\n\t{\r\n        // SECTION WITH MIXIN DECLARATIONS ======\r\n\r\n        ");
             
-            #line 38 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
+            #line 30 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MixinDeclarations));
             
             #line default
@@ -100,7 +88,7 @@ namespace ");
                     "===========================\r\n\r\n        // Render Method\r\n\t\tpublic void Render(Vi" +
                     "ewContext viewContext, System.IO.TextWriter writer)\r\n\t\t{\r\n\t\t\t");
             
-            #line 46 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
+            #line 38 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ContentSection));
             
             #line default

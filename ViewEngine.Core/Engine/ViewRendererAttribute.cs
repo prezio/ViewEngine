@@ -4,13 +4,11 @@ namespace ViewEngine.Core.Engine
 {
     public class ViewRendererAttribute : Attribute
     {
-        public string ViewName { get; set; }
-        public string ControllerName { get; set; }
+        public string ViewKeyPath { get; set; }
 
-        public ViewRendererAttribute(string viewName, string controllerName)
+        public ViewRendererAttribute(string viewKeyPath)
         {
-            ViewName = viewName;
-            ControllerName = controllerName;
+            ViewKeyPath = viewKeyPath;
         }
     }
 }

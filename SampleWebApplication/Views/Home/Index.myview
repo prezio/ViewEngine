@@ -1,1 +1,10 @@
-﻿
+﻿// kodzik
+model Model;
+mixin Html:
+<-
+	<html>
+		<body>
+			@body
+		</body>
+	</html>
+->;

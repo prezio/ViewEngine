@@ -10,8 +10,8 @@ namespace ViewEngine.Core.Engine
     public interface ICoreEngine
     {
         string RenderMainView(
-            string controllerName,
             string viewName,
+            string viewPathKey,
             string namespaceName,
             TextReader mainTextReader);
 

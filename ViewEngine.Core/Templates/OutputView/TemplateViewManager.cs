@@ -47,6 +47,7 @@ namespace ViewEngine.Core.Templates.OutputView
 
         public string GenerateMainView(
             string viewName,
+            string viewPathKey,
             string namespaceName,
             MainOutput mainOutput)
         {
@@ -56,6 +57,7 @@ namespace ViewEngine.Core.Templates.OutputView
             var template = new MainViewTemplate
             {
                 ViewName = viewName,
+                ViewPathKey = viewPathKey,
                 NamespaceName = namespaceName,
                 ContentSection = contentSection,
                 MixinDeclarations = mixinDeclarations
