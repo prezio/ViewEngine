@@ -82,10 +82,11 @@ namespace ViewEngine.Core.Grammar
         #region Model Introduce Section
         public override object VisitModel_introduction([NotNull] ViewEngineParser.Model_introductionContext context)
         {
-            var varType = context.ID();
+            var varType = context.CODE_SCOPE();
             if (varType != null)
             {
-                Model = new ModelIntroduceExpression(varType.GetText());
+                var content = varType.GetText();
+                Model = new ModelIntroduceExpression(content.Substring(2, content.Length - 3));
             }
             return null;
         }

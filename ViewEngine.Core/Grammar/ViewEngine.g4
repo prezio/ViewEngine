@@ -24,6 +24,9 @@ regular_statement
     | /*epsilon*/                               #epsilonExp
     ;
 
+// end of grammar for regular statement declaration
+
+
 
 // grammar for using namespace
 
@@ -41,7 +44,7 @@ using_namespace
 
 model_introduction
     : COMMENT_LINE model_introduction
-    | MODEL ID
+    | MODEL CODE_SCOPE
     | /*epsilon*/
     ;
 
@@ -110,7 +113,7 @@ mixin_body
 MIXIN : 'mixin' ;
 MODEL : 'model' ;
 USING : 'using' ;
-ID : [a-zA-Z] [a-zA-Z0-9]* ;
+ID : [a-zA-Z] [a-zA-Z0-9.]* ;
 COMMA : ',' ;
 COLON : ':' ;
 LP : '(' ;

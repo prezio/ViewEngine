@@ -5,8 +5,9 @@ using System.Web;
 
 namespace SampleWebApplication.Models
 {
-    public class SampleModel
+    public class ExampleModel
     {
         public string Name { get; set; }
+        public string Surname { get; set; }
     }
 }

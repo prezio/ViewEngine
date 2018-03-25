@@ -18,6 +18,16 @@ namespace ViewEngine.Core.Templates.StringWrite
             return template.TransformText();
         }
 
+        public string GenerateFormatStringWrite(string text)
+        {
+            var template = new FormatStringWriteTemplate
+            {
+                TextString = text
+            };
+
+            return template.TransformText();
+        }
+
         public string GenerateCodeWrite(string codeText)
         {
             var template = new CodeWriteTemplate

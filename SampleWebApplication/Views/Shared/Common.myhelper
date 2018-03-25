@@ -1,0 +1,23 @@
+﻿mixin Html:
+<-
+	<html>
+		<head>
+			<title>
+				@title
+			</title>
+		</head>
+		<body>
+			@body
+		</body>
+	</html>
+->
+
+mixin H1:
+<-
+	<h1> @header </h1>
+->
+
+mixin Line:
+<-
+	@line </br>
+->

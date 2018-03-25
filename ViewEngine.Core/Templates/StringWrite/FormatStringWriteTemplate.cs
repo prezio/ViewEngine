@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace ViewEngine.Core.Templates.OutputView
+namespace ViewEngine.Core.Templates.StringWrite
 {
     using System;
     
@@ -15,9 +15,9 @@ namespace ViewEngine.Core.Templates.OutputView
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\FormatStringWriteTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class HelperViewTemplate : HelperViewTemplateBase
+    public partial class FormatStringWriteTemplate : FormatStringWriteTemplateBase
     {
 #line hidden
         /// <summary>
@@ -25,37 +25,14 @@ namespace ViewEngine.Core.Templates.OutputView
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.IO;\r\nusing System." +
-                    "Linq;\r\nusing System.Text;\r\nusing System.Threading.Tasks;\r\nusing ViewEngine.Core." +
-                    "Engine;\r\n\r\n// Additional Namespaces\r\n");
+            this.Write("writer.Write(\"");
             
-            #line 11 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(UsingNamespaces));
+            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\StringWrite\FormatStringWriteTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TextString));
             
             #line default
             #line hidden
-            this.Write("\r\n// =====================\r\n\r\nnamespace ");
-            
-            #line 14 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(NamespaceName));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n{\r\n    public static class ");
-            
-            #line 16 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(HelperName));
-            
-            #line default
-            #line hidden
-            this.Write("Helper\r\n    {\r\n        ");
-            
-            #line 18 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(MixinDeclarations));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n    }\r\n}\r\n");
+            this.Write("\");");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -67,7 +44,7 @@ namespace ViewEngine.Core.Templates.OutputView
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class HelperViewTemplateBase
+    public class FormatStringWriteTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

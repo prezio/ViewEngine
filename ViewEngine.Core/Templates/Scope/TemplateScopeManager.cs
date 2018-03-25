@@ -99,7 +99,7 @@ namespace ViewEngine.Core.Templates.Scope
                         );
                 }
             }
-            ret.AppendLine(_writeManager.GenerateTextWrite("\\r\\n"));
+            ret.AppendLine(_writeManager.GenerateFormatStringWrite("\\r\\n"));
             return ret.ToString();
         }
 

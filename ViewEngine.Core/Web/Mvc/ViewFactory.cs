@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -22,14 +23,19 @@ namespace ViewEngine.Core.Web.Mvc
                     .FirstOrDefault();
                 if (attribute != null)
                 {
-                    //_viewRenderersDispatcher[attribute.ViewPathKey] = (IView)Activator.CreateInstance(type);
+                    _viewRenderersDispatcher[ToLocationFormat(attribute.ViewKeyPath)] = (IView)Activator.CreateInstance(type);
                 }
             }
         }
 
+        private string ToLocationFormat(string path)
+        {
+            return "~\\Views" + path.Split(new[] { "Views" }, StringSplitOptions.None).Last();
+        }
+
         public ViewFactory(Assembly assembly)
         {
-            ViewLocationFormats = new [] { "~/Views/{1}/{0}.myview" };
+            ViewLocationFormats = new [] { "~\\Views\\{1}\\{0}.myview" };
             SearchGeneratedViews(assembly);
         }
 

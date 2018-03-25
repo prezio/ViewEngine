@@ -1,10 +1,25 @@
-﻿// kodzik
-model Model;
-mixin Html:
-<-
-	<html>
-		<body>
-			@body
-		</body>
-	</html>
-->;
+﻿// This is definition of example model
+model @{SampleWebApplication.Models.ExampleModel}
+
+CommonHelper.Html(title = "Example Title",
+	 body = 
+		<|
+			// This is scope where you can use functions. I call it regular scope.
+			CommonHelper.H1 ( header = "Example site generated with ViewEngine" )
+			<-
+				// This is scope where you can type some template lines. I call it template scope.
+				My name is: Marek
+			->
+			CommonHelper.Line()
+
+			-- for (int i=0; i<10; i++)
+			-- {
+				CommonHelper.Line ( line =
+					<-
+						Row no. @{i}
+					->)
+			-- }
+
+			CommonHelper.Line ( line = "End line" )
+		|>
+)

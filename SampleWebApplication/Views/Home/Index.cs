@@ -17,7 +17,7 @@ using System.Web.Mvc;
 
 // Additional Namespaces
 // =====================
-namespace projekcik
+namespace SampleWebApplication.Views
 {
     // IndexView - generated class which
     // should be used for rendering views
@@ -25,25 +25,48 @@ namespace projekcik
     class IndexView : IView
     {
         // SECTION WITH MIXIN DECLARATIONS ======
-        public static void Html(TextWriter writer, IReadOnlyDictionary<string, Action> environment)
-        {
-            writer.Write("<html>");
-            writer.Write("\r\n");
-            writer.Write("<body>");
-            writer.Write("\r\n");
-            RenderHelpers.InvokeVariable(environment, "body");
-            writer.Write("\r\n");
-            writer.Write("</body>");
-            writer.Write("\r\n");
-            writer.Write("</html>");
-            writer.Write("\r\n");
-        }
-
         // END OF SECTION WITH MIXIN DECLARATIONS
         // ======================================
         // Render Method
         public void Render(ViewContext viewContext, TextWriter writer)
         {
+            CommonHelper.Html(writer, new Dictionary<string, Action>()
+            {{"body", () =>
+            {
+                CommonHelper.H1(writer, new Dictionary<string, Action>()
+                {{"header", () =>
+                {
+                    writer.Write(@"Example site generated with ViewEngine");
+                }
+                }, });
+                writer.Write(@"My name is: Marek");
+                writer.Write("\r\n");
+                CommonHelper.Line(writer, new Dictionary<string, Action>()
+                {});
+                for (int i = 0; i < 10; i++)
+                {
+                    CommonHelper.Line(writer, new Dictionary<string, Action>()
+                    {{"line", () =>
+                    {
+                        writer.Write(@"Row no. ");
+                        writer.Write($"{i}");
+                        writer.Write("\r\n");
+                    }
+                    }, });
+                }
+
+                CommonHelper.Line(writer, new Dictionary<string, Action>()
+                {{"line", () =>
+                {
+                    writer.Write(@"End line");
+                }
+                }, });
+            }
+            }, {"title", () =>
+            {
+                writer.Write(@"Example Title");
+            }
+            }, });
         }
     }
 }

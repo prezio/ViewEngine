@@ -207,6 +207,12 @@
       <DependentUpon>MethodDefinitionTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\MethodDefinition\TemplateMethodDefinitionManager.cs" />
+    <Compile Include="Templates\StringWrite\FormatStringWriteParams.cs" />
+    <Compile Include="Templates\StringWrite\FormatStringWriteTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormatStringWriteTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\Usage\MethodUsageParams.cs" />
     <Compile Include="Templates\Usage\MethodUsageTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -264,6 +270,10 @@
     <Content Include="Templates\OutputView\HelperViewTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>HelperViewTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\StringWrite\FormatStringWriteTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FormatStringWriteTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Usage\MethodUsageTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

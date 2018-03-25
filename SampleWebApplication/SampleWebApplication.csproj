@@ -139,10 +139,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\SampleModel.cs" />
+    <Compile Include="Models\ExampleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Home\Home.cs" />
     <Compile Include="Views\Home\Index.cs" />
+    <Compile Include="Views\Shared\Common.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -160,12 +160,10 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.myview" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Shared\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Views\Home\Home.myview" />
+    <Content Include="Views\Shared\Common.myhelper" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ViewEngine.Core\ViewEngine.Core.csproj">
