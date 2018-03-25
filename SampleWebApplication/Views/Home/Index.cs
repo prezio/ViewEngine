@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using ViewEngine.Core.Engine;
 using System.Web.Mvc;
 
+// Additional Namespaces
+// =====================
 namespace projekcik
 {
     // IndexView - generated class which
@@ -40,7 +42,7 @@ namespace projekcik
         // END OF SECTION WITH MIXIN DECLARATIONS
         // ======================================
         // Render Method
-        public void Render(ViewContext viewContext, System.IO.TextWriter writer)
+        public void Render(ViewContext viewContext, TextWriter writer)
         {
         }
     }

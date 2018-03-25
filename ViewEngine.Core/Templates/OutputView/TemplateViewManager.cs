@@ -7,6 +7,7 @@ using ViewEngine.Core.Grammar.Common;
 using ViewEngine.Core.Grammar.MixinDeclaration;
 using ViewEngine.Core.Grammar.Outputs;
 using ViewEngine.Core.Grammar.Scope;
+using ViewEngine.Core.Grammar.Using;
 using ViewEngine.Core.Templates.Assignment;
 using ViewEngine.Core.Templates.MethodDefinition;
 using ViewEngine.Core.Templates.Usage;
@@ -19,16 +20,18 @@ namespace ViewEngine.Core.Templates.OutputView
     {
         public static TemplateViewManager CreateViewManager()
         {
+            var usageManager = new TemplateUsageManager();
             return new TemplateViewManager(
                 new TemplateScopeManager(
                     new TemplateWriteManager(), 
                     new TemplateVariableAssignmentManager(),
                     new TemplateMethodDefinitionManager(),
-                    new TemplateUsageManager()
-                    ));
+                    usageManager
+                    ), usageManager);
         }
         
         private readonly TemplateScopeManager _scopeManager;
+        private readonly TemplateUsageManager _usageManager;
 
         public string GenerateContent(MainOutput mainOutput)
         {
@@ -45,6 +48,16 @@ namespace ViewEngine.Core.Templates.OutputView
             return ret.ToString();
         }
 
+        public string GenerateUsingNamespaces(List<UsingExpression> usings)
+        {
+            var ret = new StringBuilder();
+            foreach (var usingExpression in usings)
+            {
+                ret.AppendLine(_usageManager.GenerateUsingNamespace(usingExpression.NamespaceName));
+            }
+            return ret.ToString();
+        }
+
         public string GenerateMainView(
             string viewName,
             string viewPathKey,
@@ -52,12 +65,14 @@ namespace ViewEngine.Core.Templates.OutputView
             MainOutput mainOutput)
         {
             var mixinDeclarations = GenerateMixinDeclarations(mainOutput.Mixins);
+            var usingDeclarations = GenerateUsingNamespaces(mainOutput.Usings);
             var contentSection = GenerateContent(mainOutput);
 
             var template = new MainViewTemplate
             {
                 ViewName = viewName,
                 ViewPathKey = viewPathKey,
+                UsingNamespaces = usingDeclarations,
                 NamespaceName = namespaceName,
                 ContentSection = contentSection,
                 MixinDeclarations = mixinDeclarations
@@ -72,9 +87,11 @@ namespace ViewEngine.Core.Templates.OutputView
             HelperOutput helperOutput)
         {
             var mixinDeclarations = GenerateMixinDeclarations(helperOutput.Mixins);
+            var usingDeclarations = GenerateUsingNamespaces(helperOutput.Usings);
 
             var template = new HelperViewTemplate
             {
+                UsingNamespaces = usingDeclarations,
                 NamespaceName = namespaceName,
                 HelperName = helperName,
                 MixinDeclarations =  mixinDeclarations
@@ -84,9 +101,11 @@ namespace ViewEngine.Core.Templates.OutputView
         }
 
         public TemplateViewManager(
-            TemplateScopeManager scopeManager)
+            TemplateScopeManager scopeManager,
+            TemplateUsageManager usageManager)
         {
             _scopeManager = scopeManager;
+            _usageManager = usageManager;
         }
     }
 }

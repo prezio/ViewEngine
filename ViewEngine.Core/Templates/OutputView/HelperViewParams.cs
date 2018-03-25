@@ -8,6 +8,7 @@ namespace ViewEngine.Core.Templates.OutputView
 {
     public partial class HelperViewTemplate
     {
+        public string UsingNamespaces { get; set; }
         public string NamespaceName { get; set; }
         public string HelperName { get; set; }
         public string MixinDeclarations { get; set; }

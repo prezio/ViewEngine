@@ -184,6 +184,7 @@
     <Compile Include="Grammar\Scope\TemplateVarUsage.cs" />
     <Compile Include="Grammar\TemplateScopeVisitor.cs" />
     <Compile Include="Grammar\TemplateTextLineVisitor.cs" />
+    <Compile Include="Grammar\Using\UsingExpression.cs" />
     <Compile Include="Grammar\ViewEngineVisitor.cs" />
     <Compile Include="Templates\Assignment\TemplateVariableAssignmentManager.cs" />
     <Compile Include="Templates\Assignment\VariableAssignmentParams.cs" />
@@ -239,6 +240,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CodeWriteTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\Usage\UsingNamespaceParams.cs" />
+    <Compile Include="Templates\Usage\UsingNamespaceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsingNamespaceTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Web\Mvc\ViewFactory.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +284,10 @@
     <Content Include="Templates\Usage\EnvironmentUsageTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EnvironmentUsageTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Usage\UsingNamespaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>UsingNamespaceTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

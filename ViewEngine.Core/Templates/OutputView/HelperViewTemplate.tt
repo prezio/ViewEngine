@@ -6,6 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Additional Namespaces
+<#= UsingNamespaces #>
+// =====================
+
 namespace <#= NamespaceName #>
 {
     public static class <#= HelperName #>Helper

@@ -8,6 +8,7 @@ namespace ViewEngine.Core.Templates.OutputView
 {
     public partial class MainViewTemplate
     {
+        public string UsingNamespaces { get; set; }
         public string NamespaceName { get; set; }
         public string ViewName { get; set; }
         public string ContentSection { get; set; }

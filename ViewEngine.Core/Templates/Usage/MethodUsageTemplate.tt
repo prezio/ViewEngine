@@ -1,5 +1,5 @@
 ﻿<#@ template language="C#" #>
-<#= MethodName #>(output, new Dictionary<string, Action>()
+<#= MethodName #>(writer, new Dictionary<string, Action>()
 {
 	<#= VariableAssignments #>
 });

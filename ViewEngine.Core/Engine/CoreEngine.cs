@@ -37,6 +37,7 @@ namespace ViewEngine.Core.Engine
             visitor.Visit(parser.main());
             return new MainOutput(new RegularScope(visitor.Result),
                 visitor.Model,
+                visitor.Usings,
                 visitor.Mixins);
         }
 
@@ -45,7 +46,8 @@ namespace ViewEngine.Core.Engine
             var parser = GenerateParser(helperTextReader);
             var visitor = CreateVisitor();
             visitor.Visit(parser.secondary());
-            return new HelperOutput(visitor.Mixins);
+            return new HelperOutput(visitor.Mixins,
+                visitor.Usings);
         }
 
         private string ArrangeUsingRoslyn(string csCode)

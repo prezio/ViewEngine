@@ -18,6 +18,10 @@ using System.Threading.Tasks;
 using ViewEngine.Core.Engine;
 using System.Web.Mvc;
 
+// Additional Namespaces
+<#= UsingNamespaces #>
+// =====================
+
 namespace <#= NamespaceName #>
 {
     // <#= ViewName #>View - generated class which
@@ -33,7 +37,7 @@ namespace <#= NamespaceName #>
         // ======================================
 
         // Render Method
-		public void Render(ViewContext viewContext, System.IO.TextWriter writer)
+		public void Render(ViewContext viewContext, TextWriter writer)
 		{
 			<#= ContentSection #>
 		}

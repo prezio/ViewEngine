@@ -48,16 +48,24 @@ using System.Threading.Tasks;
 using ViewEngine.Core.Engine;
 using System.Web.Mvc;
 
-namespace ");
+// Additional Namespaces
+");
             
-            #line 21 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
+            #line 22 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(UsingNamespaces));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n// =====================\r\n\r\nnamespace ");
+            
+            #line 25 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NamespaceName));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    // ");
             
-            #line 23 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
+            #line 27 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ViewName));
             
             #line default
@@ -65,30 +73,30 @@ namespace ");
             this.Write("View - generated class which\r\n    // should be used for rendering views\r\n    [Vie" +
                     "wRenderer(@\"");
             
-            #line 25 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
+            #line 29 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ViewPathKey));
             
             #line default
             #line hidden
             this.Write("\")]\r\n\tclass ");
             
-            #line 26 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
+            #line 30 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ViewName));
             
             #line default
             #line hidden
             this.Write("View : IView\r\n\t{\r\n        // SECTION WITH MIXIN DECLARATIONS ======\r\n\r\n        ");
             
-            #line 30 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
+            #line 34 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MixinDeclarations));
             
             #line default
             #line hidden
             this.Write("\r\n    \r\n        // END OF SECTION WITH MIXIN DECLARATIONS\r\n        // ===========" +
                     "===========================\r\n\r\n        // Render Method\r\n\t\tpublic void Render(Vi" +
-                    "ewContext viewContext, System.IO.TextWriter writer)\r\n\t\t{\r\n\t\t\t");
+                    "ewContext viewContext, TextWriter writer)\r\n\t\t{\r\n\t\t\t");
             
-            #line 38 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
+            #line 42 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\MainViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ContentSection));
             
             #line default

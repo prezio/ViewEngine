@@ -3,13 +3,13 @@ grammar ViewEngine;
 // grammar for main file
 
 main
-    : model_introduction declarations regular_statement
+    : using_namespace model_introduction mixin_declarations regular_statement
     ;
 
 // grammar for secondary file
 
 secondary
-    : declarations
+    : using_namespace mixin_declarations
     ;
 
 
@@ -19,11 +19,21 @@ regular_statement
     : CODE_LINE regular_statement               #codeLineExp
     | COMMENT_LINE regular_statement            #commentLineExp
     | TEMPLATE_SCOPE regular_statement          #templateScopeExp
-    | mixin_usage SEP regular_statement         #mixinUsageExp
-    | SEP regular_statement                     #emptyExp
+    | mixin_usage regular_statement				#mixinUsageExp
     | EOF                                       #eofExp
     | /*epsilon*/                               #epsilonExp
     ;
+
+
+// grammar for using namespace
+
+using_namespace
+	: COMMENT_LINE using_namespace
+	| USING CODE_SCOPE using_namespace
+	| /*epsilon*/
+	;
+
+// end of grammar for using namespace
 
 
 
@@ -31,7 +41,7 @@ regular_statement
 
 model_introduction
     : COMMENT_LINE model_introduction
-    | MODEL ID SEP
+    | MODEL ID
     | /*epsilon*/
     ;
 
@@ -41,9 +51,9 @@ model_introduction
 
 // grammar for declarations
 
-declarations
-	: mixin_declaration declarations
-	| SEP declarations
+mixin_declarations
+	: COMMENT_LINE mixin_declarations
+    | mixin_declaration mixin_declarations
 	| /*epsilon*/
 	;
 
@@ -99,10 +109,10 @@ mixin_body
 
 MIXIN : 'mixin' ;
 MODEL : 'model' ;
+USING : 'using' ;
 ID : [a-zA-Z] [a-zA-Z0-9]* ;
 COMMA : ',' ;
 COLON : ':' ;
-SEP : ';' ;
 LP : '(' ;
 RP : ')' ;
 EQUAL : '=' ;

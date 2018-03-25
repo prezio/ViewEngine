@@ -15,9 +15,9 @@ namespace ViewEngine.Core.Templates.Usage
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
+    #line 1 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\UsingNamespaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class MethodUsageTemplate : MethodUsageTemplateBase
+    public partial class UsingNamespaceTemplate : UsingNamespaceTemplateBase
     {
 #line hidden
         /// <summary>
@@ -25,20 +25,14 @@ namespace ViewEngine.Core.Templates.Usage
         /// </summary>
         public virtual string TransformText()
         {
+            this.Write("using ");
             
-            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(MethodName));
-            
-            #line default
-            #line hidden
-            this.Write("(writer, new Dictionary<string, Action>()\r\n{\r\n\t");
-            
-            #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(VariableAssignments));
+            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\UsingNamespaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(NamespaceName));
             
             #line default
             #line hidden
-            this.Write("\r\n});");
+            this.Write(";\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -50,7 +44,7 @@ namespace ViewEngine.Core.Templates.Usage
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class MethodUsageTemplateBase
+    public class UsingNamespaceTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

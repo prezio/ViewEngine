@@ -9,14 +9,16 @@ using ViewEngine.Core.Grammar.Common;
 using ViewEngine.Core.Grammar.MixinDeclaration;
 using ViewEngine.Core.Grammar.Model;
 using ViewEngine.Core.Grammar.Scope;
+using ViewEngine.Core.Grammar.Using;
 
 namespace ViewEngine.Core.Grammar
 {
     public class ViewEngineVisitor : ViewEngineBaseVisitor<object>
     {
         public List<IRegularExpression> Result { get; } = new List<IRegularExpression>();
-        public ModelIntroduceExpression Model { get; set; } = null;
+        public ModelIntroduceExpression Model { get; set; }
         public List<MixinDeclarationExpression> Mixins { get; } = new List<MixinDeclarationExpression>();
+        public List<UsingExpression> Usings { get; } = new List<UsingExpression>();
 
         #region Conversion methods
         private TemplateScope ParseStringToTemplateScope(string content)
@@ -84,6 +86,19 @@ namespace ViewEngine.Core.Grammar
             if (varType != null)
             {
                 Model = new ModelIntroduceExpression(varType.GetText());
+            }
+            return null;
+        }
+        #endregion
+
+        #region Using Expression
+        public override object VisitUsing_namespace(ViewEngineParser.Using_namespaceContext context)
+        {
+            var usingId = context.CODE_SCOPE();
+            if (usingId != null)
+            {
+                var content = usingId.GetText();
+                Usings.Add(new UsingExpression(usingId.GetText().Substring(2, content.Length - 3)));
             }
             return null;
         }

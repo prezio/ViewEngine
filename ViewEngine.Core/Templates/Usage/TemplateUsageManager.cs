@@ -29,5 +29,15 @@ namespace ViewEngine.Core.Templates.Usage
 
             return template.TransformText();
         }
+
+        public string GenerateUsingNamespace(string namespaceName)
+        {
+            var template = new UsingNamespaceTemplate
+            {
+                NamespaceName = namespaceName
+            };
+
+            return template.TransformText();
+        }
     }
 }

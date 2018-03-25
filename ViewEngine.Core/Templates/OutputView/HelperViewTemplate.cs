@@ -26,23 +26,31 @@ namespace ViewEngine.Core.Templates.OutputView
         public virtual string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.IO;\r\nusing System." +
-                    "Linq;\r\nusing System.Text;\r\nusing System.Threading.Tasks;\r\n\r\nnamespace ");
+                    "Linq;\r\nusing System.Text;\r\nusing System.Threading.Tasks;\r\n\r\n// Additional Namesp" +
+                    "aces\r\n");
             
-            #line 9 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
+            #line 10 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(UsingNamespaces));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n// =====================\r\n\r\nnamespace ");
+            
+            #line 13 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NamespaceName));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public static class ");
             
-            #line 11 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
+            #line 15 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HelperName));
             
             #line default
             #line hidden
             this.Write("Helper\r\n    {\r\n        ");
             
-            #line 13 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
+            #line 17 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\OutputView\HelperViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MixinDeclarations));
             
             #line default
