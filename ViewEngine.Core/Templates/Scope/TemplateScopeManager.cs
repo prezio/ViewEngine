@@ -8,6 +8,7 @@ using ViewEngine.Core.Grammar.MixinDeclaration;
 using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Templates.Assignment;
 using ViewEngine.Core.Templates.MethodDefinition;
+using ViewEngine.Core.Templates.Model;
 using ViewEngine.Core.Templates.StringWrite;
 using ViewEngine.Core.Templates.Usage;
 

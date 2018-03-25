@@ -8,7 +8,8 @@ CommonHelper.Html(title = "Example Title",
 			CommonHelper.H1 ( header = "Example site generated with ViewEngine" )
 			<-
 				// This is scope where you can type some template lines. I call it template scope.
-				My name is: Marek
+				My name is: @{Model.Name}
+				My surname is: @{Model.Surname}
 			->
 			CommonHelper.Line()
 

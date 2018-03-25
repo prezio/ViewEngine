@@ -10,6 +10,7 @@ using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Grammar.Using;
 using ViewEngine.Core.Templates.Assignment;
 using ViewEngine.Core.Templates.MethodDefinition;
+using ViewEngine.Core.Templates.Model;
 using ViewEngine.Core.Templates.Usage;
 using ViewEngine.Core.Templates.Scope;
 using ViewEngine.Core.Templates.StringWrite;
@@ -27,15 +28,25 @@ namespace ViewEngine.Core.Templates.OutputView
                     new TemplateVariableAssignmentManager(),
                     new TemplateMethodDefinitionManager(),
                     usageManager
-                    ), usageManager);
+                ),
+                new TemplateModelManager(),
+                usageManager);
         }
         
         private readonly TemplateScopeManager _scopeManager;
         private readonly TemplateUsageManager _usageManager;
+        private readonly TemplateModelManager _modelManager;
 
         public string GenerateContent(MainOutput mainOutput)
         {
-            return _scopeManager.GenerateRegularScope(mainOutput.RegularScope);
+            var ret = new StringBuilder();
+            if (mainOutput.Model != null)
+            {
+                ret.Append(
+                    _modelManager.GenerateModelDefinition(mainOutput.Model.VarType));
+            }
+            ret.Append(_scopeManager.GenerateRegularScope(mainOutput.RegularScope));
+            return ret.ToString();
         }
 
         public string GenerateMixinDeclarations(List<MixinDeclarationExpression> declarations)
@@ -102,9 +113,11 @@ namespace ViewEngine.Core.Templates.OutputView
 
         public TemplateViewManager(
             TemplateScopeManager scopeManager,
+            TemplateModelManager modelManager,
             TemplateUsageManager usageManager)
         {
             _scopeManager = scopeManager;
+            _modelManager = modelManager;
             _usageManager = usageManager;
         }
     }

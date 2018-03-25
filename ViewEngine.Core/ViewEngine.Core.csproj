@@ -193,6 +193,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VariableAssignmentTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\Model\ModelDefinitionParams.cs" />
+    <Compile Include="Templates\Model\ModelDefinitionTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelDefinitionTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Model\TemplateModelManager.cs" />
     <Compile Include="Templates\OutputView\HelperViewParams.cs" />
     <Compile Include="Templates\OutputView\HelperViewTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -266,6 +273,10 @@
     <Content Include="Templates\MethodDefinition\MethodDefinitionTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MethodDefinitionTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Model\ModelDefinitionTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ModelDefinitionTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\OutputView\HelperViewTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
