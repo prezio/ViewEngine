@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Antlr4.Runtime;
+using ViewEngine.Core.Engine;
 using ViewEngine.Core.Grammar.Common;
 using ViewEngine.Core.Grammar.MixinDeclaration;
 using ViewEngine.Core.Grammar.Model;
@@ -82,11 +83,24 @@ namespace ViewEngine.Core.Grammar
         #region Model Introduce Section
         public override object VisitModel_introduction([NotNull] ViewEngineParser.Model_introductionContext context)
         {
+            string modelType = null;
             var varType = context.CODE_SCOPE();
             if (varType != null)
             {
                 var content = varType.GetText();
-                Model = new ModelIntroduceExpression(content.Substring(2, content.Length - 3));
+                modelType = content.Substring(2, content.Length - 3);
+            }
+            if (context.MODEL() != null && string.IsNullOrEmpty(modelType))
+            {
+                throw new RenderException("No type for model was provided.");
+            }
+            if (!string.IsNullOrEmpty(modelType))
+            {
+                if (Model != null)
+                {
+                    throw new RenderException("Only one model per renderer can be defined.");
+                }
+                Model = new ModelIntroduceExpression(modelType);
             }
             return null;
         }
