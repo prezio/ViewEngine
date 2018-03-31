@@ -22,7 +22,7 @@ namespace ViewEngine.Core.Grammar
         public List<MixinDeclarationExpression> Mixins { get; } = new List<MixinDeclarationExpression>();
         public List<UsingExpression> Usings { get; } = new List<UsingExpression>();
 
-        private static bool CheckIfNodeIsCorrect(ITerminalNode node)
+        private static bool CheckIfTerminalIsCorrect(ITerminalNode node)
         {
             return node != null && node.Symbol.StartIndex != -1;
         }
@@ -90,7 +90,7 @@ namespace ViewEngine.Core.Grammar
         public override object VisitModel_introduction([NotNull] ViewEngineParser.Model_introductionContext context)
         {
             var varType = context.CODE_SCOPE();
-            if (!CheckIfNodeIsCorrect(varType))
+            if (!CheckIfTerminalIsCorrect(varType))
             {
                 throw new RenderException("No type for model was provided.");
             }
@@ -198,10 +198,14 @@ namespace ViewEngine.Core.Grammar
         #region Mixin declaration expression
         public override object VisitMixin_declaration(ViewEngineParser.Mixin_declarationContext context)
         {
-            var mixinName = context.ID().GetText();
+            var mixinName = context.ID();
+            if (!CheckIfTerminalIsCorrect(mixinName))
+            {
+                throw new RenderException("There is no name for mixin declaration.");
+            }
             var bodyExp = (IMixinBody)Visit(context.mixin_body());
 
-            Mixins.Add(new MixinDeclarationExpression(mixinName, bodyExp));
+            Mixins.Add(new MixinDeclarationExpression(mixinName.GetText(), bodyExp));
             return null;
         }
 

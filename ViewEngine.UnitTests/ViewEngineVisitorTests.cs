@@ -79,14 +79,14 @@ namespace ViewEngine.UnitTests
         public void ViewEnigineVisitor_should_visit_parameterless_mixin_usage_properly()
         {
             // GIVEN
-            var methodName = "TestMethod";
-            var parser = CreateTestParser($"{methodName}()");
+            var mixinName = "TestMethod";
+            var parser = CreateTestParser($"{mixinName}()");
 
             // WHEN
             var mixinExp = (MixinUsageExpression)_testVisitor.Visit(parser.mixin_usage());
 
             // THEN
-            mixinExp.MixinName.Should().BeEquivalentTo(methodName);
+            mixinExp.MixinName.Should().BeEquivalentTo(mixinName);
             mixinExp.VariableAssignments.Should().BeEmpty();
         }
 
@@ -94,21 +94,21 @@ namespace ViewEngine.UnitTests
         public void ViewEngineVisitor_should_visit_mixin_usage_with_basic_parameters_properly()
         {
             // GIVEN
-            var methodName = "TestMethod";
+            var mixinName = "TestMethod";
             var testParam1 = "TestParam1";
             var testMsg1 = "Hello World 1";
 
             var testParam2 = "TestParam2";
             var testMsg2 = "Hello World 2";
 
-            var exp = $"{methodName} ({testParam1}=\"{testMsg1}\", {testParam2}=\"{testMsg2}\")";
+            var exp = $"{mixinName} ({testParam1}=\"{testMsg1}\", {testParam2}=\"{testMsg2}\")";
             var parser = CreateTestParser(exp);
 
             // WHEN
             var mixinExp = (MixinUsageExpression)_testVisitor.Visit(parser.mixin_usage());
 
             // THEN
-            mixinExp.MixinName.Should().BeEquivalentTo(methodName);
+            mixinExp.MixinName.Should().BeEquivalentTo(mixinName);
             Assert.AreEqual(mixinExp.VariableAssignments.Count, 2);
             Assert.IsTrue(mixinExp.VariableAssignments.ContainsKey(testParam1));
 
@@ -123,18 +123,18 @@ namespace ViewEngine.UnitTests
         public void ViewEngineVisitor_should_visit_mixin_usage_with_complex_regular_parameter_properly()
         {
             // GIVEN
-            var methodName = "methodName";
+            var mixinName = "methodName";
             var testParam = "testParam";
             var methodTest = "methodTest";
 
-            var exp = $"{methodName}({testParam}= <| {methodTest}() |>)";
+            var exp = $"{mixinName}({testParam}= <| {methodTest}() |>)";
             var parser = CreateTestParser(exp);
 
             // WHEN
             var mixinExp = (MixinUsageExpression)_testVisitor.Visit(parser.mixin_usage());
 
             // THEN
-            mixinExp.MixinName.Should().BeEquivalentTo(methodName);
+            mixinExp.MixinName.Should().BeEquivalentTo(mixinName);
             Assert.AreEqual(mixinExp.VariableAssignments.Count, 1);
             Assert.IsTrue(mixinExp.VariableAssignments.ContainsKey(testParam));
             var body = (RegularScope)mixinExp.VariableAssignments[testParam];
@@ -148,20 +148,74 @@ namespace ViewEngine.UnitTests
         public void ViewEngineVisitor_should_visit_mixin_usage_with_complex_template_parameter_properly()
         {
             // GIVEN
-            var methodName = "methodName";
+            var mixinName = "mixinName";
             var testParam = "testParam";
 
-            var exp = $"{methodName} ({testParam}=<- Sample template ->)";
+            var exp = $"{mixinName} ({testParam}=<- Sample template ->)";
             var parser = CreateTestParser(exp);
 
             // WHEN
             var mixinExp = (MixinUsageExpression)_testVisitor.Visit(parser.mixin_usage());
 
             // THEN
-            mixinExp.MixinName.Should().BeEquivalentTo(methodName);
+            mixinExp.MixinName.Should().BeEquivalentTo(mixinName);
             Assert.AreEqual(mixinExp.VariableAssignments.Count, 1);
             Assert.IsTrue(mixinExp.VariableAssignments.ContainsKey(testParam));
             Assert.IsTrue(mixinExp.VariableAssignments[testParam] is TemplateScope);
+        }
+        #endregion
+
+        #region Mixin Declaration Tests
+        [TestMethod]
+        public void ViewEngineVisitor_should_visit_mixin_declaration_with_regular_body_properly()
+        {
+            // GIVEN
+            var mixinName = "mixinName";
+
+            var exp = $"mixin {mixinName} <| SampleTest() |>";
+            var parser = CreateTestParser(exp);
+
+            // WHEN
+            _testVisitor.Visit(parser.mixin_declaration());
+
+            // THEN
+            Assert.AreEqual(_testVisitor.Mixins.Count, 1);
+            var mixin = _testVisitor.Mixins.First();
+            mixin.MixinName.Should().BeEquivalentTo(mixinName);
+            Assert.IsTrue(mixin.MixinBody is RegularScope);
+        }
+
+        [TestMethod]
+        public void ViewEngineVisitor_should_visit_mixin_declaration_with_template_body_properly()
+        {
+            // GIVEN
+            var mixinName = "mixinName";
+
+            var exp = $"mixin {mixinName} <- Hello World ->";
+            var parser = CreateTestParser(exp);
+
+            // WHEN
+            _testVisitor.Visit(parser.mixin_declaration());
+
+            // THEN
+            Assert.AreEqual(_testVisitor.Mixins.Count, 1);
+            var mixin = _testVisitor.Mixins.First();
+            mixin.MixinName.Should().BeEquivalentTo(mixinName);
+            Assert.IsTrue(mixin.MixinBody is TemplateScope);
+        }
+
+        [TestMethod]
+        public void ViewEngineVisitor_should_fail_when_mixin_declaration_has_no_name()
+        {
+            // GIVEN
+            var exp = $"mixin <- Hello World ->";
+            var parser = CreateTestParser(exp);
+
+            // WHEN
+            Action action = () => { _testVisitor.Visit(parser.mixin_declaration()); };
+
+            // THEN
+            Assert.ThrowsException<RenderException>(action);
         }
         #endregion
     }
