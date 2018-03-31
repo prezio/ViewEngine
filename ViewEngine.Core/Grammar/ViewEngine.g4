@@ -95,7 +95,7 @@ mixin_usage_param
 // grammar for function declaration
 
 mixin_declaration
-    : MIXIN ID COLON
+    : MIXIN ID
         mixin_body
     ;
 
@@ -115,7 +115,6 @@ MODEL : 'model' ;
 USING : 'using' ;
 ID : [a-zA-Z] [a-zA-Z0-9.]* ;
 COMMA : ',' ;
-COLON : ':' ;
 LP : '(' ;
 RP : ')' ;
 EQUAL : '=' ;

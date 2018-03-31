@@ -22,7 +22,7 @@ namespace SampleWebApplication.Views
 {
     // IndexView - generated class which
     // should be used for rendering views
-    [ViewRenderer(@"E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\SampleWebApplication\Views\Home\Index.myview")]
+    [ViewRenderer(@"C:\magisterium\ViewEngine\SampleWebApplication\Views\Home\Index.myview")]
     class IndexView : IView
     {
         // SECTION WITH MIXIN DECLARATIONS ======
