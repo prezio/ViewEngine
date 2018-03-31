@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
 using ViewEngine.Core.Engine;
 using ViewEngine.Core.Grammar.Common;
 using ViewEngine.Core.Grammar.MixinDeclaration;
@@ -20,6 +21,11 @@ namespace ViewEngine.Core.Grammar
         public ModelIntroduceExpression Model { get; set; }
         public List<MixinDeclarationExpression> Mixins { get; } = new List<MixinDeclarationExpression>();
         public List<UsingExpression> Usings { get; } = new List<UsingExpression>();
+
+        private static bool CheckIfNodeIsCorrect(ITerminalNode node)
+        {
+            return node != null && node.Symbol.StartIndex != -1;
+        }
 
         #region Conversion methods
         private TemplateScope ParseStringToTemplateScope(string content)
@@ -83,25 +89,21 @@ namespace ViewEngine.Core.Grammar
         #region Model Introduce Section
         public override object VisitModel_introduction([NotNull] ViewEngineParser.Model_introductionContext context)
         {
-            string modelType = null;
             var varType = context.CODE_SCOPE();
-            if (varType != null)
-            {
-                var content = varType.GetText();
-                modelType = content.Substring(2, content.Length - 3);
-            }
-            if (context.MODEL() != null && string.IsNullOrEmpty(modelType))
+            if (!CheckIfNodeIsCorrect(varType))
             {
                 throw new RenderException("No type for model was provided.");
             }
-            if (!string.IsNullOrEmpty(modelType))
+            
+            var content = varType.GetText();
+            var modelType = content.Substring(2, content.Length - 3);
+
+            if (Model != null)
             {
-                if (Model != null)
-                {
-                    throw new RenderException("Only one model per renderer can be defined.");
-                }
-                Model = new ModelIntroduceExpression(modelType);
+                throw new RenderException("Only one model per renderer can be defined.");
             }
+
+            Model = new ModelIntroduceExpression(modelType);
             return null;
         }
         #endregion
