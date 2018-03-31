@@ -8,6 +8,7 @@ using ViewEngine.Core.Engine;
 using ViewEngine.Core.Grammar.Model;
 using System.Linq;
 using ViewEngine.Core.Grammar.Common;
+using ViewEngine.Core.Grammar.Scope;
 
 namespace ViewEngine.UnitTests
 {
@@ -101,8 +102,7 @@ namespace ViewEngine.UnitTests
             var testMsg2 = "Hello World 2";
 
             var exp = $"{methodName} ({testParam1}=\"{testMsg1}\", {testParam2}=\"{testMsg2}\")";
-            var parser = 
-                CreateTestParser(exp);
+            var parser = CreateTestParser(exp);
 
             // WHEN
             var mixinExp = (MixinUsageExpression)_testVisitor.Visit(parser.mixin_usage());
@@ -117,6 +117,51 @@ namespace ViewEngine.UnitTests
 
             var value2 = (TextString)mixinExp.VariableAssignments[testParam2];
             value2.Text.Should().BeEquivalentTo(testMsg2);
+        }
+
+        [TestMethod]
+        public void ViewEngineVisitor_should_visit_mixin_usage_with_complex_regular_parameter_properly()
+        {
+            // GIVEN
+            var methodName = "methodName";
+            var testParam = "testParam";
+            var methodTest = "methodTest";
+
+            var exp = $"{methodName}({testParam}= <| {methodTest}() |>)";
+            var parser = CreateTestParser(exp);
+
+            // WHEN
+            var mixinExp = (MixinUsageExpression)_testVisitor.Visit(parser.mixin_usage());
+
+            // THEN
+            mixinExp.MixinName.Should().BeEquivalentTo(methodName);
+            Assert.AreEqual(mixinExp.VariableAssignments.Count, 1);
+            Assert.IsTrue(mixinExp.VariableAssignments.ContainsKey(testParam));
+            var body = (RegularScope)mixinExp.VariableAssignments[testParam];
+            Assert.AreEqual(body.Result.Count, 1);
+            var bodyFunc = (MixinUsageExpression)body.Result.First();
+            Assert.AreEqual(bodyFunc.MixinName, methodTest);
+            bodyFunc.VariableAssignments.Should().BeEmpty();
+        }
+
+        [TestMethod]
+        public void ViewEngineVisitor_should_visit_mixin_usage_with_complex_template_parameter_properly()
+        {
+            // GIVEN
+            var methodName = "methodName";
+            var testParam = "testParam";
+
+            var exp = $"{methodName} ({testParam}=<- Sample template ->)";
+            var parser = CreateTestParser(exp);
+
+            // WHEN
+            var mixinExp = (MixinUsageExpression)_testVisitor.Visit(parser.mixin_usage());
+
+            // THEN
+            mixinExp.MixinName.Should().BeEquivalentTo(methodName);
+            Assert.AreEqual(mixinExp.VariableAssignments.Count, 1);
+            Assert.IsTrue(mixinExp.VariableAssignments.ContainsKey(testParam));
+            Assert.IsTrue(mixinExp.VariableAssignments[testParam] is TemplateScope);
         }
         #endregion
     }
