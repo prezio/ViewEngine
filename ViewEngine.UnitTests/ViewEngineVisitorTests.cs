@@ -218,5 +218,25 @@ namespace ViewEngine.UnitTests
             Assert.ThrowsException<RenderException>(action);
         }
         #endregion
+
+        #region Code Line Visit Tests
+        [TestMethod]
+        public void ViewEngineVisitor_should_visit_code_line_expression_properly()
+        {
+            // GIVEN
+            var testCodeLine = "for(int i=0; i<5; i++) i++";
+
+            var exp = $"--{testCodeLine}";
+            var parser = CreateTestParser(exp);
+
+            // WHEN
+            _testVisitor.Visit(parser.regular_statement());
+
+            // THEN
+            Assert.AreEqual(_testVisitor.Result.Count, 1);
+            var codeExp = (CodeLineExpression)_testVisitor.Result.First();
+            codeExp.CodeLine.Should().BeEquivalentTo(testCodeLine);
+        }
+        #endregion
     }
 }
