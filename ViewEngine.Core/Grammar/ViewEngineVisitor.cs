@@ -89,6 +89,12 @@ namespace ViewEngine.Core.Grammar
         #region Model Introduce Section
         public override object VisitModel_introduction([NotNull] ViewEngineParser.Model_introductionContext context)
         {
+            var model = context.MODEL();
+            if (!CheckIfTerminalIsCorrect(model))
+            {
+                return null;
+            }
+
             var varType = context.CODE_SCOPE();
             if (!CheckIfTerminalIsCorrect(varType))
             {
