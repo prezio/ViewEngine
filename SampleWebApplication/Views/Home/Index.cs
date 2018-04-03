@@ -48,7 +48,12 @@ namespace SampleWebApplication.Views
                 writer.Write($"{Model.Surname}");
                 writer.Write("\r\n");
                 CommonHelper.Line(writer, new Dictionary<string, Action>()
-                {});
+                {{"line", () =>
+                {
+                    CommonHelper.Line(writer, new Dictionary<string, Action>()
+                    {});
+                }
+                }, });
                 for (int i = 0; i < 10; i++)
                 {
                     CommonHelper.Line(writer, new Dictionary<string, Action>()

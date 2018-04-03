@@ -136,7 +136,7 @@ RP : ')' ;
 EQUAL : '=' ;
 
 TEMPLATE_SCOPE : '<-' ( ~'-' | ( '-'+ ~[>*]) )* '-'* '->';
-REGULAR_SCOPE : '<|' ( ~'|' | ( '|'+ ~[>*]) )* '|'* '|>';
+REGULAR_SCOPE : '<|' (REGULAR_SCOPE | ~'|' | ( '|'+ ~[>*]) )* '|>';
 CODE_SCOPE : '@{' ~('}')* '}' ;
 TEXT_STRING : '"' ~('"')* '"' ;
 fragment TEXT_LINE : ~( '\r' | '\n' )* ;

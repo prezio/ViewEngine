@@ -11,7 +11,11 @@ CommonHelper.Html(title = "Example Title",
 				My name is: @{Model.Name}
 				My surname is: @{Model.Surname}
 			->
-			CommonHelper.Line()
+			CommonHelper.Line(line = 
+				<|
+					CommonHelper.Line()
+				|>
+				)
 
 			-- for (int i=0; i<10; i++)
 			-- {
