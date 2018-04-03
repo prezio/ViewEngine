@@ -168,8 +168,9 @@
     <Compile Include="Grammar\Common\CodeLineExpression.cs" />
     <Compile Include="Grammar\Common\TextString.cs" />
     <Compile Include="Grammar\Common\Variable.cs" />
+    <Compile Include="Grammar\Instructions\VariableAssignmentExpression.cs" />
     <Compile Include="Grammar\MixinDeclaration\MixinDeclarationExpression.cs" />
-    <Compile Include="Grammar\Common\FuncUsageExpression.cs" />
+    <Compile Include="Grammar\Instructions\MixinUsageExpression.cs" />
     <Compile Include="Grammar\MixinDeclaration\IMixinBody.cs" />
     <Compile Include="Grammar\Model\ModelIntroduceExpression.cs" />
     <Compile Include="Grammar\Outputs\MainOutput.cs" />

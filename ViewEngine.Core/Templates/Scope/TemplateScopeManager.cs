@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewEngine.Core.Grammar.Common;
+using ViewEngine.Core.Grammar.Instructions;
 using ViewEngine.Core.Grammar.MixinDeclaration;
 using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Templates.Assignment;

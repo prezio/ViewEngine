@@ -12,6 +12,7 @@ using ViewEngine.Core.Grammar.MixinDeclaration;
 using ViewEngine.Core.Grammar.Model;
 using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Grammar.Using;
+using ViewEngine.Core.Grammar.Instructions;
 
 namespace ViewEngine.Core.Grammar
 {
@@ -123,6 +124,57 @@ namespace ViewEngine.Core.Grammar
                 var content = usingId.GetText();
                 Usings.Add(new UsingExpression(usingId.GetText().Substring(2, content.Length - 3)));
             }
+            return null;
+        }
+        #endregion
+
+        #region Assignment Expression
+        public override object VisitAssignment_exp([NotNull] ViewEngineParser.Assignment_expContext context)
+        {
+            var ids = context.ID();
+            var varName = ids.First().GetText();
+
+            if (ids.Length == 2)
+            {
+                Result.Add(new VariableAssignmentExpression(varName,
+                    new Variable(ids[1].GetText())));
+                return null;
+            }
+
+            var templateScope = context.TEMPLATE_SCOPE();
+            if (templateScope != null)
+            {
+                var content = templateScope.GetText();
+                Result.Add(new VariableAssignmentExpression(varName,
+                    ParseStringToTemplateScope(content.Substring(2, content.Length - 4))));
+                return null;
+            }
+
+            var regularScope = context.REGULAR_SCOPE();
+            if (regularScope != null)
+            {
+                var content = regularScope.GetText();
+                Result.Add(new VariableAssignmentExpression(varName,
+                    ParseStringToRegularScope(content.Substring(2, content.Length - 4))));
+                return null;
+            }
+
+            var textString = context.TEXT_STRING();
+            if (textString != null)
+            {
+                Result.Add(new VariableAssignmentExpression(varName,
+                    new TextString(textString.GetText().Trim('"'))));
+                return null;
+            }
+
+            var codeString = context.CODE_SCOPE();
+            if (codeString != null)
+            {
+                var content = codeString.GetText();
+                Result.Add(new VariableAssignmentExpression(varName,
+                    new CodeVarUsage(content.Substring(2, content.Length - 3))));
+            }
+
             return null;
         }
         #endregion

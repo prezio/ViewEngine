@@ -21,6 +21,9 @@ CommonHelper.Html(title = "Example Title",
 					->)
 			-- }
 
+			-- var a = "pompka";
+			CommonHelper.Line ( line = @{a} )
+
 			CommonHelper.Line ( line = "End line" )
 		|>
 )

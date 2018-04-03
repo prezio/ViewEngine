@@ -9,6 +9,7 @@ using ViewEngine.Core.Grammar.Model;
 using System.Linq;
 using ViewEngine.Core.Grammar.Common;
 using ViewEngine.Core.Grammar.Scope;
+using ViewEngine.Core.Grammar.Instructions;
 
 namespace ViewEngine.UnitTests
 {

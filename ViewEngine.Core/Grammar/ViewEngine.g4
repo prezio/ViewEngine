@@ -19,7 +19,8 @@ regular_statement
     : CODE_LINE regular_statement               #codeLineExp
     | COMMENT_LINE regular_statement            #commentLineExp
     | TEMPLATE_SCOPE regular_statement          #templateScopeExp
-    | mixin_usage regular_statement				#mixinUsageExp
+    | mixin_usage regular_statement             #mixinUsageExp
+	| assignment_exp regular_statement          #assignmentExp
     | EOF                                       #eofExp
     | /*epsilon*/                               #epsilonExp
     ;
@@ -52,7 +53,21 @@ model_introduction
 
 
 
-// grammar for declarations
+// grammar for assignment
+
+assignment_exp
+	: VAR ID EQUAL TEMPLATE_SCOPE
+    | VAR ID EQUAL REGULAR_SCOPE
+    | VAR ID EQUAL TEXT_STRING
+	| VAR ID EQUAL CODE_SCOPE
+	| VAR ID EQUAL ID
+    ;
+
+// end of grammar for assignment
+
+
+
+// grammar for mixin declarations
 
 mixin_declarations
 	: COMMENT_LINE mixin_declarations
@@ -60,7 +75,7 @@ mixin_declarations
 	| /*epsilon*/
 	;
 
-// end of grammar for declarations
+// end of grammar for mixin declarations
 
 
 
@@ -113,6 +128,7 @@ mixin_body
 MIXIN : 'mixin' ;
 MODEL : 'model' ;
 USING : 'using' ;
+VAR : 'var' ;
 ID : [a-zA-Z] [a-zA-Z0-9.]* ;
 COMMA : ',' ;
 LP : '(' ;

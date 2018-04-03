@@ -61,6 +61,13 @@ namespace SampleWebApplication.Views
                     }, });
                 }
 
+                var a = "pompka";
+                CommonHelper.Line(writer, new Dictionary<string, Action>()
+                {{"line", () =>
+                {
+                    writer.Write($"{a}");
+                }
+                }, });
                 CommonHelper.Line(writer, new Dictionary<string, Action>()
                 {{"line", () =>
                 {

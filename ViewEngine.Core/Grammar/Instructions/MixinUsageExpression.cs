@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using ViewEngine.Core.Grammar.Common;
 using ViewEngine.Core.Grammar.Scope;
 
-namespace ViewEngine.Core.Grammar.Common
+namespace ViewEngine.Core.Grammar.Instructions
 {
     // This type of expression cant be used in template scope
     public class MixinUsageExpression : IRegularExpression
