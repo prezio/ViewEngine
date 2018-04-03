@@ -1,6 +1,4 @@
 ﻿<#@ template language="C#" #>
-{
-	"<#= VarName #>" , () => {
-		<#= Content #>
-	}
-},
+Action <#= VarName #> = () => {
+	<#= Content #>
+};

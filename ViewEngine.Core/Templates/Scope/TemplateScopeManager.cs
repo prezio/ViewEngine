@@ -70,7 +70,7 @@ namespace ViewEngine.Core.Templates.Scope
             var assignments = new StringBuilder();
             foreach (var varAssign in exp.VariableAssignments)
             {
-                assignments.Append(_assignmentManager.GenerateVariableAssignment(varAssign.Key,
+                assignments.Append(_assignmentManager.GenerateParamAssignment(varAssign.Key,
                     GenerateVarContent(varAssign.Value)));
             }
             return _usageManager.GenerateMethodUsage(assignments.ToString(),
@@ -117,6 +117,11 @@ namespace ViewEngine.Core.Templates.Scope
                 else if (expression is MixinUsageExpression mixinUsage)
                 {
                     ret.Append(GenerateMixinUsage(mixinUsage));
+                }
+                else if (expression is VariableAssignmentExpression varAssign)
+                {
+                    ret.Append(_assignmentManager.GenerateVariableAssignment(varAssign.VarName,
+                    GenerateVarContent(varAssign.Content)));
                 }
                 else if (expression is TemplateScope templateScope)
                 {

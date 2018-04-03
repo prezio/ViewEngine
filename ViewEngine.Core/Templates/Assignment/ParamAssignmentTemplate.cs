@@ -15,9 +15,9 @@ namespace ViewEngine.Core.Templates.Assignment
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\magisterium\ViewEngine\ViewEngine.Core\Templates\Assignment\VariableAssignmentTemplate.tt"
+    #line 1 "C:\magisterium\ViewEngine\ViewEngine.Core\Templates\Assignment\ParamAssignmentTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class VariableAssignmentTemplate : VariableAssignmentTemplateBase
+    public partial class ParamAssignmentTemplate : ParamAssignmentTemplateBase
     {
 #line hidden
         /// <summary>
@@ -25,21 +25,21 @@ namespace ViewEngine.Core.Templates.Assignment
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("Action ");
+            this.Write("{\r\n\t\"");
             
-            #line 2 "C:\magisterium\ViewEngine\ViewEngine.Core\Templates\Assignment\VariableAssignmentTemplate.tt"
+            #line 3 "C:\magisterium\ViewEngine\ViewEngine.Core\Templates\Assignment\ParamAssignmentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(VarName));
             
             #line default
             #line hidden
-            this.Write(" = () => {\r\n\t");
+            this.Write("\" , () => {\r\n\t\t");
             
-            #line 3 "C:\magisterium\ViewEngine\ViewEngine.Core\Templates\Assignment\VariableAssignmentTemplate.tt"
+            #line 4 "C:\magisterium\ViewEngine\ViewEngine.Core\Templates\Assignment\ParamAssignmentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Content));
             
             #line default
             #line hidden
-            this.Write("\r\n};");
+            this.Write("\r\n\t}\r\n},");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -51,7 +51,7 @@ namespace ViewEngine.Core.Templates.Assignment
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class VariableAssignmentTemplateBase
+    public class ParamAssignmentTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

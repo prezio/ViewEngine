@@ -68,6 +68,13 @@ namespace SampleWebApplication.Views
                     writer.Write($"{a}");
                 }
                 }, });
+                Action k = () =>
+                {
+                    writer.Write(@" Pomoc!!! ");
+                    writer.Write("\r\n");
+                }
+
+                ;
                 CommonHelper.Line(writer, new Dictionary<string, Action>()
                 {{"line", () =>
                 {
