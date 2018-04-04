@@ -205,62 +205,56 @@ namespace ViewEngine.Core.Grammar
         public override object VisitMixin_usage_args([NotNull] ViewEngineParser.Mixin_usage_argsContext context)
         {
             var expArgs = context.mixin_usage_args2();
-            return expArgs != null ? (Dictionary<string, IVarContent>)Visit(expArgs) : new Dictionary<string, IVarContent>();
+            return expArgs != null ? (List<IVarContent>)Visit(expArgs) : new List<IVarContent>();
         }
 
         public override object VisitMixin_usage_args2([NotNull] ViewEngineParser.Mixin_usage_args2Context context)
         {
-            var newParam = (Tuple<string, IVarContent>) Visit(context.mixin_usage_param());
+            var newParam = (IVarContent) Visit(context.mixin_usage_param());
 
             var nextArgsExp = context.mixin_usage_args2();
             var nextArgs = nextArgsExp != null ?
-                (Dictionary<string, IVarContent>)Visit(nextArgsExp) 
-                : new Dictionary<string, IVarContent>();
+                (LinkedList<IVarContent>)Visit(nextArgsExp) 
+                : new LinkedList<IVarContent>();
 
-            nextArgs[newParam.Item1] = newParam.Item2;
+            nextArgs.AddFirst(newParam);
             return nextArgs;
         }
 
         public override object VisitMixin_usage_param([NotNull] ViewEngineParser.Mixin_usage_paramContext context)
         {
-            var ids = context.ID();
-            var varName = ids.First().GetText();
+            var id = context.ID();
 
-            if (ids.Length == 2)
+            if (CheckIfTerminalIsCorrect(id))
             {
-                return new Tuple<string, IVarContent>(varName,
-                    new Variable(ids[1].GetText()));
+                return new Variable(id.GetText());
             }
 
             var templateScope = context.TEMPLATE_SCOPE();
-            if (templateScope != null)
+            if (CheckIfTerminalIsCorrect(templateScope))
             {
                 var content = templateScope.GetText();
-                return new Tuple<string, IVarContent>(varName, 
-                    ParseStringToTemplateScope(content.Substring(2, content.Length - 4)));
+                return ParseStringToTemplateScope(content.Substring(2, content.Length - 4));
             }
 
             var regularScope = context.REGULAR_SCOPE();
-            if (regularScope != null)
+            if (CheckIfTerminalIsCorrect(regularScope))
             {
                 var content = regularScope.GetText();
-                return new Tuple<string, IVarContent>(varName, 
-                    ParseStringToRegularScope(content.Substring(2, content.Length - 4)));
+                return ParseStringToRegularScope(content.Substring(2, content.Length - 4));
             }
 
             var textString = context.TEXT_STRING();
-            if (textString != null)
+            if (CheckIfTerminalIsCorrect(textString))
             {
-                return new Tuple<string, IVarContent>(varName,
-                    new TextString(textString.GetText().Trim('"')));
+                return new TextString(textString.GetText().Trim('"'));
             }
 
             var codeString = context.CODE_SCOPE();
-            if (codeString != null)
+            if (CheckIfTerminalIsCorrect(codeString))
             {
                 var content = codeString.GetText();
-                return new Tuple<string, IVarContent>(varName,
-                    new CodeVarUsage(content.Substring(2, content.Length - 3)));
+                return new CodeVarUsage(content.Substring(2, content.Length - 3));
             }
 
             return null;

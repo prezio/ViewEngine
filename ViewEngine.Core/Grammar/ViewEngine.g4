@@ -90,7 +90,7 @@ mixin_declarations
 
 
 
-// grammar for function usage
+// grammar for mixin usage
 
 mixin_usage
     : ID LP mixin_usage_args RP
@@ -107,30 +107,40 @@ mixin_usage_args2
     ;
 
 mixin_usage_param
-    : ID EQUAL TEMPLATE_SCOPE
-    | ID EQUAL REGULAR_SCOPE
-    | ID EQUAL TEXT_STRING
-	| ID EQUAL CODE_SCOPE
-	| ID EQUAL ID
+    : TEMPLATE_SCOPE
+    | REGULAR_SCOPE
+    | TEXT_STRING
+	| CODE_SCOPE
+	| ID
     ;
 
-// end of grammar for function usage
+// end of grammar for mixin usage
 
 
 
-// grammar for function declaration
+// grammar for mixin declaration
 
 mixin_declaration
-    : MIXIN ID
+    : MIXIN ID LP mixin_declaration_params RP
         mixin_body
     ;
+
+mixin_declaration_params
+	: mixin_declaration_params2
+	| /*espilon*/
+	;
+
+mixin_declaration_params2
+	: ID COMMA mixin_declaration_params2
+	| ID
+	;
 
 mixin_body
     : REGULAR_SCOPE
     | TEMPLATE_SCOPE
     ;
 
-// end of grammar for function declaration
+// end of grammar for mixin declaration
 
 
 
