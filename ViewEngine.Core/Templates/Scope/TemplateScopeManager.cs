@@ -55,7 +55,7 @@ namespace ViewEngine.Core.Templates.Scope
             }
             if (varContent is Variable variable)
             {
-                return _usageManager.GenerateVariableUsage(variable.Name);
+                return _usageManager.GenerateVariableUsageAsParameter(variable.Name);
             }
             if (varContent is CodeVarUsage codeUsage)
             {
@@ -91,7 +91,7 @@ namespace ViewEngine.Core.Templates.Scope
                 else if (part is TemplateVarUsage templateUsage)
                 {
                     ret.Append(
-                        _usageManager.GenerateVariableUsage(templateUsage.VarUsageString)
+                        _usageManager.GenerateVariableUsageAsParameter(templateUsage.VarUsageString)
                         );
                 }
                 else if (part is CodeVarUsage codeUsage)
@@ -122,6 +122,10 @@ namespace ViewEngine.Core.Templates.Scope
                 {
                     ret.Append(_assignmentManager.GenerateVariableAssignment(varAssign.VarName,
                     GenerateVarContent(varAssign.Content)));
+                }
+                else if (expression is EvaluateExpression evalVar)
+                {
+
                 }
                 else if (expression is TemplateScope templateScope)
                 {

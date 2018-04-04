@@ -21,6 +21,7 @@ regular_statement
     | TEMPLATE_SCOPE regular_statement          #templateScopeExp
     | mixin_usage regular_statement             #mixinUsageExp
 	| assignment_exp regular_statement          #assignmentExp
+	| eval_exp regular_statement                #evaluateExp
     | EOF                                       #eofExp
     | /*epsilon*/                               #epsilonExp
     ;
@@ -64,6 +65,16 @@ assignment_exp
     ;
 
 // end of grammar for assignment
+
+
+
+// grammar for expression evaluation
+
+eval_exp
+	: EVAL ID
+	;
+
+// end of grammar for expression evaluation
 
 
 
@@ -129,6 +140,7 @@ MIXIN : 'mixin' ;
 MODEL : 'model' ;
 USING : 'using' ;
 VAR : 'var' ;
+EVAL : 'eval' ;
 ID : [a-zA-Z] [a-zA-Z0-9.]* ;
 COMMA : ',' ;
 LP : '(' ;

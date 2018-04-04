@@ -20,7 +20,7 @@ namespace ViewEngine.Core.Templates.Usage
             return template.TransformText();
         }
 
-        public string GenerateVariableUsage(string varName)
+        public string GenerateVariableUsageAsParameter(string varName)
         {
             var template = new EnvironmentUsageTemplate
             {
@@ -28,6 +28,11 @@ namespace ViewEngine.Core.Templates.Usage
             };
 
             return template.TransformText();
+        }
+
+        public string GenerateVariableUsage(string varName)
+        {
+            return $"{varName}();";
         }
 
         public string GenerateUsingNamespace(string namespaceName)

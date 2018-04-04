@@ -179,6 +179,20 @@ namespace ViewEngine.Core.Grammar
         }
         #endregion
 
+        #region Evaluate Expression
+        public override object VisitEval_exp([NotNull] ViewEngineParser.Eval_expContext context)
+        {
+            var variable = context.ID();
+            if (!CheckIfTerminalIsCorrect(variable))
+            {
+                throw new RenderException("You need to put variable in 'eval' statement");
+            }
+            Result.Add(new EvaluateExpression(variable.GetText()));
+
+            return null;
+        }
+        #endregion
+
         #region Mixin Usage Expression
         public override object VisitMixin_usage([NotNull] ViewEngineParser.Mixin_usageContext context)
         {
@@ -253,7 +267,7 @@ namespace ViewEngine.Core.Grammar
         }
         #endregion
 
-        #region Mixin declaration expression
+        #region Mixin declaration Expression
         public override object VisitMixin_declaration(ViewEngineParser.Mixin_declarationContext context)
         {
             var mixinName = context.ID();
