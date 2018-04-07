@@ -22,7 +22,7 @@ namespace SampleWebApplication.Views
 {
     // IndexView - generated class which
     // should be used for rendering views
-    [ViewRenderer(@"C:\magisterium\ViewEngine\SampleWebApplication\Views\Home\Index.myview")]
+    [ViewRenderer(@"E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\SampleWebApplication\Views\Home\Index.myview")]
     class IndexView : IView
     {
         // SECTION WITH MIXIN DECLARATIONS ======
@@ -32,47 +32,55 @@ namespace SampleWebApplication.Views
         public void Render(ViewContext viewContext, TextWriter writer)
         {
             var Model = (SampleWebApplication.Models.ExampleModel)viewContext.ViewData.Model;
-            CommonHelper.Html(writer, new Dictionary<string, Action>()
-            {{"body", () =>
+            CommonHelper.Html(writer, () =>
             {
-                CommonHelper.H1(writer, new Dictionary<string, Action>()
-                {{"header", () =>
+                writer.Write(@"Example Title");
+            }
+
+            , () =>
+            {
+                CommonHelper.H1(writer, () =>
                 {
                     writer.Write(@"Example site generated with ViewEngine");
                 }
-                }, });
+
+                );
                 writer.Write(@"My name is: ");
                 writer.Write($"{Model.Name}");
                 writer.Write("\r\n");
                 writer.Write(@"My surname is: ");
                 writer.Write($"{Model.Surname}");
                 writer.Write("\r\n");
-                CommonHelper.Line(writer, new Dictionary<string, Action>()
-                {{"line", () =>
+                CommonHelper.Line(writer, () =>
                 {
-                    CommonHelper.Line(writer, new Dictionary<string, Action>()
-                    {});
+                    CommonHelper.Line(writer, () =>
+                    {
+                        writer.Write(@"");
+                    }
+
+                    );
                 }
-                }, });
+
+                );
                 for (int i = 0; i < 10; i++)
                 {
-                    CommonHelper.Line(writer, new Dictionary<string, Action>()
-                    {{"line", () =>
+                    CommonHelper.Line(writer, () =>
                     {
                         writer.Write(@"Row no. ");
                         writer.Write($"{i}");
                         writer.Write("\r\n");
                     }
-                    }, });
+
+                    );
                 }
 
                 var a = "pompka";
-                CommonHelper.Line(writer, new Dictionary<string, Action>()
-                {{"line", () =>
+                CommonHelper.Line(writer, () =>
                 {
                     writer.Write($"{a}");
                 }
-                }, });
+
+                );
                 Action k = () =>
                 {
                     writer.Write(@" Pomoc!!! ");
@@ -80,18 +88,15 @@ namespace SampleWebApplication.Views
                 }
 
                 ;
-                CommonHelper.Line(writer, new Dictionary<string, Action>()
-                {{"line", () =>
+                CommonHelper.Line(writer, () =>
                 {
                     writer.Write(@"End line");
                 }
-                }, });
+
+                );
             }
-            }, {"title", () =>
-            {
-                writer.Write(@"Example Title");
-            }
-            }, });
+
+            );
         }
     }
 }

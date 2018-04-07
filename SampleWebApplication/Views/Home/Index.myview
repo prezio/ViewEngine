@@ -1,35 +1,34 @@
 ﻿// This is definition of example model
 model @{SampleWebApplication.Models.ExampleModel}
 
-CommonHelper.Html(title = "Example Title",
-	 body = 
+CommonHelper.Html("Example Title", 
 		<|
 			// This is scope where you can use functions. I call it regular scope.
-			CommonHelper.H1 ( header = "Example site generated with ViewEngine" )
+			CommonHelper.H1 ( "Example site generated with ViewEngine" )
 			<-
 				// This is scope where you can type some template lines. I call it template scope.
 				My name is: @{Model.Name}
 				My surname is: @{Model.Surname}
 			->
-			CommonHelper.Line(line = 
+			CommonHelper.Line( 
 				<|
-					CommonHelper.Line()
+					CommonHelper.Line("")
 				|>
 				)
 
 			-- for (int i=0; i<10; i++)
 			-- {
-				CommonHelper.Line ( line =
+				CommonHelper.Line (
 					<-
 						Row no. @{i}
 					->)
 			-- }
 
 			-- var a = "pompka";
-			CommonHelper.Line ( line = @{a} )
+			CommonHelper.Line ( @{a} )
 
 			var k = <- Pomoc!!! ->
 
-			CommonHelper.Line ( line = "End line" )
+			CommonHelper.Line ( "End line" )
 		|>
 )

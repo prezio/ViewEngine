@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ViewEngine.Core.Templates.Assignment
 {
-    public partial class ParamAssignmentTemplate
+    public partial class ParamContentTemplate
     {
-        public string VarName { get; set; }
         public string Content { get; set; }
     }
 }

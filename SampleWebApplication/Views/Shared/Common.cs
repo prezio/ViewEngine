@@ -21,7 +21,7 @@ namespace SampleWebApplication.Views
 {
     public static class CommonHelper
     {
-        public static void Html(TextWriter writer, IReadOnlyDictionary<string, Action> environment)
+        public static void Html(TextWriter writer, Action title, Action body)
         {
             writer.Write(@"<html>");
             writer.Write("\r\n");
@@ -29,7 +29,7 @@ namespace SampleWebApplication.Views
             writer.Write("\r\n");
             writer.Write(@"<title>");
             writer.Write("\r\n");
-            RenderHelpers.InvokeVariable(environment, "title");
+            title();
             writer.Write("\r\n");
             writer.Write(@"</title>");
             writer.Write("\r\n");
@@ -37,7 +37,7 @@ namespace SampleWebApplication.Views
             writer.Write("\r\n");
             writer.Write(@"<body>");
             writer.Write("\r\n");
-            RenderHelpers.InvokeVariable(environment, "body");
+            body();
             writer.Write("\r\n");
             writer.Write(@"</body>");
             writer.Write("\r\n");
@@ -45,17 +45,17 @@ namespace SampleWebApplication.Views
             writer.Write("\r\n");
         }
 
-        public static void H1(TextWriter writer, IReadOnlyDictionary<string, Action> environment)
+        public static void H1(TextWriter writer, Action header)
         {
             writer.Write(@"<h1> ");
-            RenderHelpers.InvokeVariable(environment, "header");
+            header();
             writer.Write(@" </h1>");
             writer.Write("\r\n");
         }
 
-        public static void Line(TextWriter writer, IReadOnlyDictionary<string, Action> environment)
+        public static void Line(TextWriter writer, Action line)
         {
-            RenderHelpers.InvokeVariable(environment, "line");
+            line();
             writer.Write(@" </br>");
             writer.Write("\r\n");
         }

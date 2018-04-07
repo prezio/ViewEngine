@@ -35,7 +35,9 @@ namespace ViewEngine.Core.Templates.Scope
             }
 
             return _methodDefinitionManager.GenerateMethodDefinition(
-                    exp.MixinName, funcBody
+                    exp.MixinName, string.Join(",",
+                        exp.Parameters.Select(_methodDefinitionManager.GenerateParamDecl)), 
+                    funcBody
                 );
         }
 
@@ -55,7 +57,7 @@ namespace ViewEngine.Core.Templates.Scope
             }
             if (varContent is Variable variable)
             {
-                return _usageManager.GenerateVariableUsageAsParameter(variable.Name);
+                return _usageManager.GenerateVariableUsage(variable.Name);
             }
             if (varContent is CodeVarUsage codeUsage)
             {
@@ -67,13 +69,10 @@ namespace ViewEngine.Core.Templates.Scope
 
         public string GenerateMixinUsage(MixinUsageExpression exp)
         {
-            var assignments = new StringBuilder();
-            foreach (var varAssign in exp.VariableAssignments)
-            {
-                assignments.Append(_assignmentManager.GenerateParamAssignment(varAssign.Key,
-                    GenerateVarContent(varAssign.Value)));
-            }
-            return _usageManager.GenerateMethodUsage(assignments.ToString(),
+            var generatedParams = exp.VariableContents.Select(GenerateVarContent)
+                .Select(_assignmentManager.GenerateParamContent);
+            var assignmentString = string.Join(",", generatedParams);
+            return _usageManager.GenerateMethodUsage(assignmentString,
                 exp.MixinName);
         }
 
@@ -91,7 +90,7 @@ namespace ViewEngine.Core.Templates.Scope
                 else if (part is TemplateVarUsage templateUsage)
                 {
                     ret.Append(
-                        _usageManager.GenerateVariableUsageAsParameter(templateUsage.VarUsageString)
+                        _usageManager.GenerateVariableUsage(templateUsage.VarUsageString)
                         );
                 }
                 else if (part is CodeVarUsage codeUsage)

@@ -8,13 +8,13 @@ namespace ViewEngine.Core.Grammar.Instructions
     public class MixinUsageExpression : IRegularExpression
     {
         public string MixinName { get; set; }
-        public Dictionary<string, IVarContent> VariableAssignments { get; set; }
+        public List<IVarContent> VariableContents { get; set; }
 
         public MixinUsageExpression(string mixinName,
-            Dictionary<string, IVarContent> variableAssignments)
+            List<IVarContent> variableContents)
         {
             MixinName = mixinName;
-            VariableAssignments = variableAssignments;
+            VariableContents = variableContents;
         }
     }
 }

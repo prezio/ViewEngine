@@ -22,11 +22,11 @@ namespace SampleWebApplication.Views
 {
     // BasicView - generated class which
     // should be used for rendering views
-    [ViewRenderer(@"C:\magisterium\ViewEngine\SampleWebApplication\Views\Home\Basic.myview")]
+    [ViewRenderer(@"E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\SampleWebApplication\Views\Home\Basic.myview")]
     class BasicView : IView
     {
         // SECTION WITH MIXIN DECLARATIONS ======
-        public static void Basic(TextWriter writer, IReadOnlyDictionary<string, Action> environment)
+        public static void Basic(TextWriter writer)
         {
             writer.Write(@"Witaj świecie!!!");
             writer.Write("\r\n");
@@ -37,8 +37,7 @@ namespace SampleWebApplication.Views
         // Render Method
         public void Render(ViewContext viewContext, TextWriter writer)
         {
-            Basic(writer, new Dictionary<string, Action>()
-            {});
+            Basic(writer);
         }
     }
 }

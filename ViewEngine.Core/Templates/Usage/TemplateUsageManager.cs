@@ -13,18 +13,9 @@ namespace ViewEngine.Core.Templates.Usage
         {
             var template = new MethodUsageTemplate
             {
-                VariableAssignments = varAssignments,
+                VariableAssignments = 
+                    string.IsNullOrEmpty(varAssignments) ? string.Empty : $",{varAssignments}",
                 MethodName = methodName
-            };
-
-            return template.TransformText();
-        }
-
-        public string GenerateVariableUsageAsParameter(string varName)
-        {
-            var template = new EnvironmentUsageTemplate
-            {
-                VarName = varName
             };
 
             return template.TransformText();

@@ -190,11 +190,11 @@
     <Compile Include="Grammar\Using\UsingExpression.cs" />
     <Compile Include="Grammar\ViewEngineVisitor.cs" />
     <Compile Include="Templates\Assignment\TemplateVariableAssignmentManager.cs" />
-    <Compile Include="Templates\Assignment\ParamAssignmentParams.cs" />
-    <Compile Include="Templates\Assignment\ParamAssignmentTemplate.cs">
+    <Compile Include="Templates\Assignment\ParamContentParams.cs" />
+    <Compile Include="Templates\Assignment\ParamContentTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ParamAssignmentTemplate.tt</DependentUpon>
+      <DependentUpon>ParamContentTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Assignment\VariableAssignmentParams.cs" />
     <Compile Include="Templates\Assignment\VariableAssignmentTemplate.cs">
@@ -235,12 +235,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MethodUsageTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\Usage\EnvironmentUsageParams.cs" />
-    <Compile Include="Templates\Usage\EnvironmentUsageTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EnvironmentUsageTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\Usage\TemplateUsageManager.cs" />
     <Compile Include="Templates\Scope\TemplateScopeManager.cs" />
     <Compile Include="Templates\StringWrite\StringWriteParams.cs" />
@@ -275,9 +269,9 @@
       <Generator>MSBuild:Compile</Generator>
       <CustomToolNamespace>ViewEngine.Core.Grammar</CustomToolNamespace>
     </Antlr4>
-    <Content Include="Templates\Assignment\ParamAssignmentTemplate.tt">
+    <Content Include="Templates\Assignment\ParamContentTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ParamAssignmentTemplate.cs</LastGenOutput>
+      <LastGenOutput>ParamContentTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Assignment\VariableAssignmentTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -314,10 +308,6 @@
     <Content Include="Templates\StringWrite\CodeWriteTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CodeWriteTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Usage\EnvironmentUsageTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EnvironmentUsageTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Usage\UsingNamespaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

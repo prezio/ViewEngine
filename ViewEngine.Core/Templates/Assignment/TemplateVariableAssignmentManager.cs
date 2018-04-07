@@ -8,13 +8,11 @@ namespace ViewEngine.Core.Templates.Assignment
 {
     public class TemplateVariableAssignmentManager
     {
-        public string GenerateParamAssignment(string variableName,
-            string varContent)
+        public string GenerateParamContent(string content)
         {
-            var template = new ParamAssignmentTemplate
+            var template = new ParamContentTemplate
             {
-                VarName = variableName,
-                Content = varContent
+                Content = content
             };
             return template.TransformText();
         }

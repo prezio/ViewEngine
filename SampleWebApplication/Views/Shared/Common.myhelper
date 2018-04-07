@@ -1,4 +1,4 @@
-﻿mixin Html
+﻿mixin Html(title, body)
 <-
 	<html>
 		<head>
@@ -12,12 +12,12 @@
 	</html>
 ->
 
-mixin H1
+mixin H1(header)
 <-
 	<h1> @header </h1>
 ->
 
-mixin Line
+mixin Line(line)
 <-
 	@line </br>
 ->

@@ -197,7 +197,7 @@ namespace ViewEngine.Core.Grammar
         public override object VisitMixin_usage([NotNull] ViewEngineParser.Mixin_usageContext context)
         {
             var functionName = context.ID().GetText();
-            var usageArgs = (Dictionary<string, IVarContent>)Visit(context.mixin_usage_args());
+            var usageArgs = (List<IVarContent>)Visit(context.mixin_usage_args());
 
             return new MixinUsageExpression(functionName, usageArgs);
         }
@@ -205,7 +205,7 @@ namespace ViewEngine.Core.Grammar
         public override object VisitMixin_usage_args([NotNull] ViewEngineParser.Mixin_usage_argsContext context)
         {
             var expArgs = context.mixin_usage_args2();
-            return expArgs != null ? (List<IVarContent>)Visit(expArgs) : new List<IVarContent>();
+            return expArgs != null ? ((LinkedList<IVarContent>)Visit(expArgs)).ToList() : new List<IVarContent>();
         }
 
         public override object VisitMixin_usage_args2([NotNull] ViewEngineParser.Mixin_usage_args2Context context)
@@ -269,10 +269,33 @@ namespace ViewEngine.Core.Grammar
             {
                 throw new RenderException("There is no name for mixin declaration.");
             }
-            var bodyExp = (IMixinBody)Visit(context.mixin_body());
 
-            Mixins.Add(new MixinDeclarationExpression(mixinName.GetText(), bodyExp));
+            var bodyExp = (IMixinBody)Visit(context.mixin_body());
+            var mixinParams = (List<string>) Visit(context.mixin_declaration_params());
+
+            Mixins.Add(new MixinDeclarationExpression(mixinName.GetText(),
+                mixinParams,
+                bodyExp));
             return null;
+        }
+
+        public override object VisitMixin_declaration_params([NotNull] ViewEngineParser.Mixin_declaration_paramsContext context)
+        {
+            var expArgs = context.mixin_declaration_params2();
+            return expArgs != null ? ((LinkedList<string>)Visit(expArgs)).ToList() : new List<string>();
+        }
+
+        public override object VisitMixin_declaration_params2([NotNull] ViewEngineParser.Mixin_declaration_params2Context context)
+        {
+            var parameterName = context.ID().GetText();
+            
+            var nextArgsExp = context.mixin_declaration_params2();
+            var nextArgs = nextArgsExp != null ?
+                (LinkedList<string>)Visit(nextArgsExp)
+                : new LinkedList<string>();
+
+            nextArgs.AddFirst(parameterName);
+            return nextArgs;
         }
 
         public override object VisitMixin_body([NotNull] ViewEngineParser.Mixin_bodyContext context)

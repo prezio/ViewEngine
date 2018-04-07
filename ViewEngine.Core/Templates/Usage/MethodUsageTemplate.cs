@@ -31,14 +31,14 @@ namespace ViewEngine.Core.Templates.Usage
             
             #line default
             #line hidden
-            this.Write("(writer, new Dictionary<string, Action>()\r\n{\r\n\t");
+            this.Write("(writer");
             
-            #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
+            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\Usage\MethodUsageTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(VariableAssignments));
             
             #line default
             #line hidden
-            this.Write("\r\n});");
+            this.Write(");");
             return this.GenerationEnvironment.ToString();
         }
     }

@@ -1,4 +1,4 @@
-﻿mixin Basic
+﻿mixin Basic()
 <-
    Witaj świecie!!!
 ->

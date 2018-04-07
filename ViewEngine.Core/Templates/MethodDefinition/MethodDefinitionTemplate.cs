@@ -32,7 +32,14 @@ namespace ViewEngine.Core.Templates.MethodDefinition
             
             #line default
             #line hidden
-            this.Write("(TextWriter writer, IReadOnlyDictionary<string, Action> environment)\r\n{\r\n    ");
+            this.Write("(TextWriter writer");
+            
+            #line 2 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(MethodParams));
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n{\r\n    ");
             
             #line 4 "E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.Core\Templates\MethodDefinition\MethodDefinitionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MethodContent));

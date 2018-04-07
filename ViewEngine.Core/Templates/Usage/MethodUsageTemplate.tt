@@ -1,5 +1,2 @@
 ﻿<#@ template language="C#" #>
-<#= MethodName #>(writer, new Dictionary<string, Action>()
-{
-	<#= VariableAssignments #>
-});
+<#= MethodName #>(writer<#= VariableAssignments #>);

@@ -88,7 +88,7 @@ namespace ViewEngine.UnitTests
 
             // THEN
             mixinExp.MixinName.Should().BeEquivalentTo(mixinName);
-            mixinExp.VariableAssignments.Should().BeEmpty();
+            mixinExp.VariableContents.Should().BeEmpty();
         }
 
         [TestMethod]
@@ -96,13 +96,10 @@ namespace ViewEngine.UnitTests
         {
             // GIVEN
             var mixinName = "TestMethod";
-            var testParam1 = "TestParam1";
             var testMsg1 = "Hello World 1";
-
-            var testParam2 = "TestParam2";
             var testMsg2 = "Hello World 2";
 
-            var exp = $"{mixinName} ({testParam1}=\"{testMsg1}\", {testParam2}=\"{testMsg2}\")";
+            var exp = $"{mixinName} (\"{testMsg1}\",\"{testMsg2}\")";
             var parser = CreateTestParser(exp);
 
             // WHEN
@@ -110,13 +107,12 @@ namespace ViewEngine.UnitTests
 
             // THEN
             mixinExp.MixinName.Should().BeEquivalentTo(mixinName);
-            Assert.AreEqual(mixinExp.VariableAssignments.Count, 2);
-            Assert.IsTrue(mixinExp.VariableAssignments.ContainsKey(testParam1));
-
-            var value1 = (TextString)mixinExp.VariableAssignments[testParam1];
+            Assert.AreEqual(mixinExp.VariableContents.Count, 2);
+            
+            var value1 = (TextString)mixinExp.VariableContents[0];
             value1.Text.Should().BeEquivalentTo(testMsg1);
 
-            var value2 = (TextString)mixinExp.VariableAssignments[testParam2];
+            var value2 = (TextString)mixinExp.VariableContents[1];
             value2.Text.Should().BeEquivalentTo(testMsg2);
         }
 
@@ -125,10 +121,9 @@ namespace ViewEngine.UnitTests
         {
             // GIVEN
             var mixinName = "methodName";
-            var testParam = "testParam";
             var methodTest = "methodTest";
 
-            var exp = $"{mixinName}({testParam}= <| {methodTest}() |>)";
+            var exp = $"{mixinName}(<| {methodTest}() |>)";
             var parser = CreateTestParser(exp);
 
             // WHEN
@@ -136,13 +131,13 @@ namespace ViewEngine.UnitTests
 
             // THEN
             mixinExp.MixinName.Should().BeEquivalentTo(mixinName);
-            Assert.AreEqual(mixinExp.VariableAssignments.Count, 1);
-            Assert.IsTrue(mixinExp.VariableAssignments.ContainsKey(testParam));
-            var body = (RegularScope)mixinExp.VariableAssignments[testParam];
-            Assert.AreEqual(body.Result.Count, 1);
-            var bodyFunc = (MixinUsageExpression)body.Result.First();
-            Assert.AreEqual(bodyFunc.MixinName, methodTest);
-            bodyFunc.VariableAssignments.Should().BeEmpty();
+            Assert.AreEqual(mixinExp.VariableContents.Count, 1);
+
+            var content = (RegularScope)mixinExp.VariableContents.First();
+            Assert.AreEqual(content.Result.Count, 1);
+            var insideMixin = (MixinUsageExpression)content.Result.First();
+            Assert.AreEqual(insideMixin.MixinName, methodTest);
+            insideMixin.VariableContents.Should().BeEmpty();
         }
 
         [TestMethod]
@@ -150,9 +145,8 @@ namespace ViewEngine.UnitTests
         {
             // GIVEN
             var mixinName = "mixinName";
-            var testParam = "testParam";
 
-            var exp = $"{mixinName} ({testParam}=<- Sample template ->)";
+            var exp = $"{mixinName} (<- Sample template ->)";
             var parser = CreateTestParser(exp);
 
             // WHEN
@@ -160,9 +154,8 @@ namespace ViewEngine.UnitTests
 
             // THEN
             mixinExp.MixinName.Should().BeEquivalentTo(mixinName);
-            Assert.AreEqual(mixinExp.VariableAssignments.Count, 1);
-            Assert.IsTrue(mixinExp.VariableAssignments.ContainsKey(testParam));
-            Assert.IsTrue(mixinExp.VariableAssignments[testParam] is TemplateScope);
+            Assert.AreEqual(mixinExp.VariableContents.Count, 1);
+            Assert.IsTrue(mixinExp.VariableContents.First() is TemplateScope);
         }
         #endregion
 
@@ -173,7 +166,7 @@ namespace ViewEngine.UnitTests
             // GIVEN
             var mixinName = "mixinName";
 
-            var exp = $"mixin {mixinName} <| SampleTest() |>";
+            var exp = $"mixin {mixinName} () <| SampleTest() |>";
             var parser = CreateTestParser(exp);
 
             // WHEN
@@ -192,7 +185,7 @@ namespace ViewEngine.UnitTests
             // GIVEN
             var mixinName = "mixinName";
 
-            var exp = $"mixin {mixinName} <- Hello World ->";
+            var exp = $"mixin {mixinName} () <- Hello World ->";
             var parser = CreateTestParser(exp);
 
             // WHEN
@@ -209,7 +202,7 @@ namespace ViewEngine.UnitTests
         public void ViewEngineVisitor_should_fail_when_mixin_declaration_has_no_name()
         {
             // GIVEN
-            var exp = $"mixin <- Hello World ->";
+            var exp = "mixin () <- Hello World ->";
             var parser = CreateTestParser(exp);
 
             // WHEN
