@@ -10,11 +10,11 @@ namespace ViewEngine.Core.Grammar.MixinDeclaration
     public class MixinDeclarationExpression
     {
         public string MixinName { get; set; }
-        public List<string> Parameters { get; set; }
+        public List<MixinDeclarationParam> Parameters { get; set; }
         public IMixinBody MixinBody { get; set; }
 
         public MixinDeclarationExpression(string functionName,
-            List<string> parameters,
+            List<MixinDeclarationParam> parameters,
             IMixinBody functionBody)
         {
             MixinName = functionName;

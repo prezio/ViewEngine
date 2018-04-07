@@ -173,6 +173,8 @@
     <Compile Include="Grammar\MixinDeclaration\MixinDeclarationExpression.cs" />
     <Compile Include="Grammar\Instructions\MixinUsageExpression.cs" />
     <Compile Include="Grammar\MixinDeclaration\IMixinBody.cs" />
+    <Compile Include="Grammar\MixinDeclaration\MixinDeclarationParam.cs" />
+    <Compile Include="Grammar\MixinDeclaration\MixinDeclarationParamType.cs" />
     <Compile Include="Grammar\Model\ModelIntroduceExpression.cs" />
     <Compile Include="Grammar\Outputs\MainOutput.cs" />
     <Compile Include="Grammar\Outputs\HelperOutput.cs" />

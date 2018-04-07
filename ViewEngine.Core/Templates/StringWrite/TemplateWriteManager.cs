@@ -12,7 +12,7 @@ namespace ViewEngine.Core.Templates.StringWrite
         {
             var template = new StringWriteTemplate
             {
-                TextString = text
+                TextString = text.Replace("\"", "\"\"")
             };
 
             return template.TransformText();

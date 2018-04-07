@@ -31,74 +31,9 @@ namespace SampleWebApplication.Views
         // Render Method
         public void Render(ViewContext viewContext, TextWriter writer)
         {
-            var Model = (SampleWebApplication.Models.ExampleModel)viewContext.ViewData.Model;
-            CommonHelper.Html(writer, () =>
+            CommonHelper.Form(writer, "Home", "Index", () =>
             {
-                writer.Write(@"Example Title");
-            }
-
-            , () =>
-            {
-                CommonHelper.H1(writer, () =>
-                {
-                    writer.Write(@"Example site generated with ViewEngine");
-                }
-
-                );
-                writer.Write(@"My name is: ");
-                writer.Write($"{Model.Name}");
-                writer.Write("\r\n");
-                writer.Write(@"My surname is: ");
-                writer.Write($"{Model.Surname}");
-                writer.Write("\r\n");
-                CommonHelper.Line(writer, () =>
-                {
-                    CommonHelper.Line(writer, () =>
-                    {
-                        writer.Write(@"");
-                    }
-
-                    );
-                }
-
-                );
-                for (int i = 0; i < 10; i++)
-                {
-                    CommonHelper.Line(writer, () =>
-                    {
-                        writer.Write(@"Row no. ");
-                        writer.Write($"{i}");
-                        writer.Write("\r\n");
-                    }
-
-                    );
-                }
-
-                var a = "pompka";
-                CommonHelper.Line(writer, () =>
-                {
-                    writer.Write($"{a}");
-                }
-
-                );
-                Action k = () =>
-                {
-                    CommonHelper.Line(writer, () =>
-                    {
-                        writer.Write(@"Pomoc!!!");
-                    }
-
-                    );
-                }
-
-                ;
-                k();
-                CommonHelper.Line(writer, () =>
-                {
-                    writer.Write(@"End line");
-                }
-
-                );
+                CommonHelper.Input(writer, "Pendzel");
             }
 
             );

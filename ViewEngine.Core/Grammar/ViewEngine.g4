@@ -131,8 +131,13 @@ mixin_declaration_params
 	;
 
 mixin_declaration_params2
-	: ID COMMA mixin_declaration_params2
-	| ID
+	: mixin_declaration_param COMMA mixin_declaration_params2
+	| mixin_declaration_param
+	;
+
+mixin_declaration_param
+	: ID
+	| CODE_SCOPE
 	;
 
 mixin_body

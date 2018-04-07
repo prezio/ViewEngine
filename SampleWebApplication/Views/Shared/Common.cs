@@ -59,5 +59,29 @@ namespace SampleWebApplication.Views
             writer.Write(@" </br>");
             writer.Write("\r\n");
         }
+
+        public static void Form(TextWriter writer, string actionName, string controllerName, Action body)
+        {
+            writer.Write(@"<form action=""/");
+            writer.Write($"{controllerName}");
+            writer.Write(@"/");
+            writer.Write($"{actionName}");
+            writer.Write(@""" method=""post"">");
+            writer.Write("\r\n");
+            body();
+            writer.Write("\r\n");
+            writer.Write(@"</form>");
+            writer.Write("\r\n");
+        }
+
+        public static void Input(TextWriter writer, string name)
+        {
+            writer.Write(@"<input id=""");
+            writer.Write($"{name}");
+            writer.Write(@""" name=""");
+            writer.Write($"{name}");
+            writer.Write(@""" type=""text"" value="""">");
+            writer.Write("\r\n");
+        }
     }
 }

@@ -21,3 +21,16 @@ mixin Line(line)
 <-
 	@line </br>
 ->
+
+
+mixin Form(@{string actionName}, @{string controllerName}, body)
+<-
+	<form action="/@{controllerName}/@{actionName}" method="post">
+		@body
+	</form>
+->
+
+mixin Input(@{string name})
+<-
+	<input id="@{name}" name="@{name}" type="text" value="">
+->

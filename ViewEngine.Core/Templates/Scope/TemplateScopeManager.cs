@@ -63,6 +63,7 @@ namespace ViewEngine.Core.Templates.Scope
             }
             if (varContent is CodeVarUsage codeUsage)
             {
+                //return codeUsage.VarUsageString;
                 return _writeManager.GenerateCodeWrite(codeUsage.VarUsageString);
             }
 
@@ -71,8 +72,20 @@ namespace ViewEngine.Core.Templates.Scope
 
         public string GenerateMixinUsage(MixinUsageExpression exp)
         {
-            var generatedParams = exp.VariableContents.Select(GenerateVarContent)
-                .Select(_assignmentManager.GenerateParamContent);
+            var generatedParams = new List<string>();
+            foreach (var content in exp.VariableContents)
+            {
+                if (content is CodeVarUsage codeVar)
+                {
+                    generatedParams.Add(codeVar.VarUsageString);
+                }
+                else
+                {
+                    generatedParams.Add(_assignmentManager.GenerateParamContent(
+                            GenerateVarContent(content)
+                        ));
+                }
+            }
             var assignmentString = string.Join(",", generatedParams);
             return _usageManager.GenerateMethodUsage(assignmentString,
                 exp.MixinName);

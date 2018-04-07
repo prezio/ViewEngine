@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewEngine.Core.Grammar.MixinDeclaration;
 
 namespace ViewEngine.Core.Templates.MethodDefinition
 {
@@ -22,9 +23,17 @@ namespace ViewEngine.Core.Templates.MethodDefinition
             return template.TransformText();
         }
 
-        public string GenerateParamDecl(string paramName)
+        public string GenerateParamDecl(MixinDeclarationParam param)
         {
-            return $"Action {paramName}";
+            if (param.ParamType == MixinDeclarationParamType.CodeScope)
+            {
+                return param.ParamContent;
+            }
+            if (param.ParamType == MixinDeclarationParamType.MixinScope)
+            {
+                return $"Action {param.ParamContent}";
+            }
+            return string.Empty;
         }
     }
 }
