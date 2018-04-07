@@ -202,6 +202,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VariableAssignmentTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\Instructions\TemplateInstructionsManager.cs" />
     <Compile Include="Templates\Model\ModelDefinitionParams.cs" />
     <Compile Include="Templates\Model\ModelDefinitionTemplate.cs">
       <AutoGen>True</AutoGen>

@@ -9,6 +9,7 @@ using ViewEngine.Core.Grammar.Outputs;
 using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Grammar.Using;
 using ViewEngine.Core.Templates.Assignment;
+using ViewEngine.Core.Templates.Instructions;
 using ViewEngine.Core.Templates.MethodDefinition;
 using ViewEngine.Core.Templates.Model;
 using ViewEngine.Core.Templates.Usage;
@@ -27,6 +28,7 @@ namespace ViewEngine.Core.Templates.OutputView
                     new TemplateWriteManager(), 
                     new TemplateVariableAssignmentManager(),
                     new TemplateMethodDefinitionManager(),
+                    new TemplateInstructionsManager(),
                     usageManager
                 ),
                 new TemplateModelManager(),

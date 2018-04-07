@@ -8,6 +8,7 @@ using ViewEngine.Core.Grammar.Instructions;
 using ViewEngine.Core.Grammar.MixinDeclaration;
 using ViewEngine.Core.Grammar.Scope;
 using ViewEngine.Core.Templates.Assignment;
+using ViewEngine.Core.Templates.Instructions;
 using ViewEngine.Core.Templates.MethodDefinition;
 using ViewEngine.Core.Templates.Model;
 using ViewEngine.Core.Templates.StringWrite;
@@ -20,6 +21,7 @@ namespace ViewEngine.Core.Templates.Scope
         private readonly TemplateWriteManager _writeManager;
         private readonly TemplateVariableAssignmentManager _assignmentManager;
         private readonly TemplateMethodDefinitionManager _methodDefinitionManager;
+        private readonly TemplateInstructionsManager _instructionsManager;
         private readonly TemplateUsageManager _usageManager;
 
         public string GenerateMixinDeclaration(MixinDeclarationExpression exp)
@@ -124,7 +126,7 @@ namespace ViewEngine.Core.Templates.Scope
                 }
                 else if (expression is EvaluateExpression evalVar)
                 {
-
+                    ret.AppendLine(_instructionsManager.GenerateEvalStatement(evalVar.VarName));
                 }
                 else if (expression is TemplateScope templateScope)
                 {
@@ -156,11 +158,13 @@ namespace ViewEngine.Core.Templates.Scope
             TemplateWriteManager writeManager,
             TemplateVariableAssignmentManager assignmentManager,
             TemplateMethodDefinitionManager methodDefinitionManager,
+            TemplateInstructionsManager instructionsManager,
             TemplateUsageManager methodUsageManager)
         {
             _writeManager = writeManager;
             _assignmentManager = assignmentManager;
             _methodDefinitionManager = methodDefinitionManager;
+            _instructionsManager = instructionsManager;
             _usageManager = methodUsageManager;
         }
     }

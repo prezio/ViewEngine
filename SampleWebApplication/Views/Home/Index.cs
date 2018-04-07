@@ -83,11 +83,16 @@ namespace SampleWebApplication.Views
                 );
                 Action k = () =>
                 {
-                    writer.Write(@" Pomoc!!! ");
-                    writer.Write("\r\n");
+                    CommonHelper.Line(writer, () =>
+                    {
+                        writer.Write(@"Pomoc!!!");
+                    }
+
+                    );
                 }
 
                 ;
+                k();
                 CommonHelper.Line(writer, () =>
                 {
                     writer.Write(@"End line");

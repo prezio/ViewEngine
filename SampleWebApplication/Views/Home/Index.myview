@@ -27,8 +27,8 @@ CommonHelper.Html("Example Title",
 			-- var a = "pompka";
 			CommonHelper.Line ( @{a} )
 
-			var k = <- Pomoc!!! ->
-
+			var k = <| CommonHelper.Line("Pomoc!!!") |>
+			eval k
 			CommonHelper.Line ( "End line" )
 		|>
 )
