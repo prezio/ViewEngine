@@ -1,5 +1,30 @@
-﻿CommonHelper.Form(@{"Home"}, @{"Index"},
+﻿CommonHelper.Html(
+	"Przyklad strony logowania",
 	<|
-		CommonHelper.Input(@{"Pendzel"})
-	|>
-)
+		CommonHelper.H1 ( "Strona logowania" )
+		CommonHelper.Line ( "Podaj dane do logowania" )
+
+		CommonHelper.Form(@{"Home"}, @{"Index"},
+		<|
+			CommonHelper.Table(
+			<|
+				CommonHelper.Tr(
+				<|
+					CommonHelper.Td("Name: ")
+					CommonHelper.Td(
+					<|
+						CommonHelper.TextInput(@{"Name"})
+					|>)
+				|>)
+				CommonHelper.Tr(
+				<|
+					CommonHelper.Td("Password: ")
+					CommonHelper.Td(
+					<|
+						CommonHelper.PassInput(@{"Password"})
+					|>)
+				|>)
+			|>)
+			CommonHelper.Submit(@{"Logowanie"})
+		|>)
+	|>)

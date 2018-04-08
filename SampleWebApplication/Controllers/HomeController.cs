@@ -11,11 +11,15 @@ namespace SampleWebApplication.Controllers
     {
         public ActionResult Index()
         {
-            return View(new ExampleModel
-            {
-                Name = "Marek",
-                Surname = "Markowski"
-            });
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(PersonModel person)
+        {
+            string name = person.Name;
+            string password = person.Password;
+            return View();
         }
     }
 }

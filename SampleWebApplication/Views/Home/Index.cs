@@ -31,9 +31,70 @@ namespace SampleWebApplication.Views
         // Render Method
         public void Render(ViewContext viewContext, TextWriter writer)
         {
-            CommonHelper.Form(writer, "Home", "Index", () =>
+            CommonHelper.Html(writer, () =>
             {
-                CommonHelper.Input(writer, "Pendzel");
+                writer.Write(@"Przyklad strony logowania");
+            }
+
+            , () =>
+            {
+                CommonHelper.H1(writer, () =>
+                {
+                    writer.Write(@"Strona logowania");
+                }
+
+                );
+                CommonHelper.Line(writer, () =>
+                {
+                    writer.Write(@"Podaj dane do logowania");
+                }
+
+                );
+                CommonHelper.Form(writer, "Home", "Index", () =>
+                {
+                    CommonHelper.Table(writer, () =>
+                    {
+                        CommonHelper.Tr(writer, () =>
+                        {
+                            CommonHelper.Td(writer, () =>
+                            {
+                                writer.Write(@"Name: ");
+                            }
+
+                            );
+                            CommonHelper.Td(writer, () =>
+                            {
+                                CommonHelper.TextInput(writer, "Name");
+                            }
+
+                            );
+                        }
+
+                        );
+                        CommonHelper.Tr(writer, () =>
+                        {
+                            CommonHelper.Td(writer, () =>
+                            {
+                                writer.Write(@"Password: ");
+                            }
+
+                            );
+                            CommonHelper.Td(writer, () =>
+                            {
+                                CommonHelper.PassInput(writer, "Password");
+                            }
+
+                            );
+                        }
+
+                        );
+                    }
+
+                    );
+                    CommonHelper.Submit(writer, "Logowanie");
+                }
+
+                );
             }
 
             );

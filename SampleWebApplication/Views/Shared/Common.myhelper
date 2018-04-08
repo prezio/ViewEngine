@@ -23,14 +23,43 @@ mixin Line(line)
 ->
 
 
-mixin Form(@{string actionName}, @{string controllerName}, body)
+mixin Form(@{string controllerName}, @{string actionName}, body)
 <-
 	<form action="/@{controllerName}/@{actionName}" method="post">
 		@body
 	</form>
 ->
 
-mixin Input(@{string name})
+mixin TextInput(@{string name})
 <-
 	<input id="@{name}" name="@{name}" type="text" value="">
+->
+
+mixin PassInput(@{string name})
+<-
+	<input id="@{name}" name="@{name}" type="password" value="">
+->
+
+mixin Td(body)
+<-
+	<td> @body </td>
+->
+
+mixin Tr(body)
+<-
+	<tr> @body </tr>
+->
+
+mixin Table(body)
+<-
+	<table cellpadding="0" cellspacing="0">
+		<tbody>
+			@body
+		</tbody>
+	</table>
+->
+
+mixin Submit(@{string name})
+<-
+	<input type="submit" value="@{name}">
 ->

@@ -60,7 +60,7 @@ namespace SampleWebApplication.Views
             writer.Write("\r\n");
         }
 
-        public static void Form(TextWriter writer, string actionName, string controllerName, Action body)
+        public static void Form(TextWriter writer, string controllerName, string actionName, Action body)
         {
             writer.Write(@"<form action=""/");
             writer.Write($"{controllerName}");
@@ -74,13 +74,61 @@ namespace SampleWebApplication.Views
             writer.Write("\r\n");
         }
 
-        public static void Input(TextWriter writer, string name)
+        public static void TextInput(TextWriter writer, string name)
         {
             writer.Write(@"<input id=""");
             writer.Write($"{name}");
             writer.Write(@""" name=""");
             writer.Write($"{name}");
             writer.Write(@""" type=""text"" value="""">");
+            writer.Write("\r\n");
+        }
+
+        public static void PassInput(TextWriter writer, string name)
+        {
+            writer.Write(@"<input id=""");
+            writer.Write($"{name}");
+            writer.Write(@""" name=""");
+            writer.Write($"{name}");
+            writer.Write(@""" type=""password"" value="""">");
+            writer.Write("\r\n");
+        }
+
+        public static void Td(TextWriter writer, Action body)
+        {
+            writer.Write(@"<td> ");
+            body();
+            writer.Write(@" </td>");
+            writer.Write("\r\n");
+        }
+
+        public static void Tr(TextWriter writer, Action body)
+        {
+            writer.Write(@"<tr> ");
+            body();
+            writer.Write(@" </tr>");
+            writer.Write("\r\n");
+        }
+
+        public static void Table(TextWriter writer, Action body)
+        {
+            writer.Write(@"<table cellpadding=""0"" cellspacing=""0"">");
+            writer.Write("\r\n");
+            writer.Write(@"<tbody>");
+            writer.Write("\r\n");
+            body();
+            writer.Write("\r\n");
+            writer.Write(@"</tbody>");
+            writer.Write("\r\n");
+            writer.Write(@"</table>");
+            writer.Write("\r\n");
+        }
+
+        public static void Submit(TextWriter writer, string name)
+        {
+            writer.Write(@"<input type=""submit"" value=""");
+            writer.Write($"{name}");
+            writer.Write(@""">");
             writer.Write("\r\n");
         }
     }
