@@ -2,4 +2,5 @@
 	"Blad w logowaniu",
 	<|
 		CommonHelper.Line("Jest nam przykro, ale podany login i haslo sa niepoprawne")
+		CommonHelper.ActionLink(@{"Home"}, @{"Index"}, "Powrot na strone glowna")
 	|>)

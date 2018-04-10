@@ -98,3 +98,8 @@ mixin If(@{bool condition}, trueState, falseState)
 		eval falseState
 	--}
 |>
+
+mixin ActionLink(@{string controllerName}, @{string actionName}, caption)
+<-
+	<a href='/@{controllerName}/@{actionName}'> @caption </a>
+->

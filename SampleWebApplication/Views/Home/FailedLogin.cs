@@ -44,6 +44,12 @@ namespace SampleWebApplication.Views
                 }
 
                 );
+                CommonHelper.ActionLink(writer, "Home", "Index", () =>
+                {
+                    writer.Write(@"Powrot na strone glowna");
+                }
+
+                );
             }
 
             );

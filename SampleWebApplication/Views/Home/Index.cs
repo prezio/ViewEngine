@@ -50,7 +50,7 @@ namespace SampleWebApplication.Views
                 }
 
                 );
-                CommonHelper.Form(writer, "Home", "Login", () =>
+                CommonHelper.PostForm(writer, "Home", "Login", () =>
                 {
                     CommonHelper.Table(writer, () =>
                     {

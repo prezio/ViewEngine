@@ -76,7 +76,7 @@ namespace SampleWebApplication.Views
             writer.Write("\r\n");
         }
 
-        public static void Form(TextWriter writer, string controllerName, string actionName, Action body)
+        public static void PostForm(TextWriter writer, string controllerName, string actionName, Action body)
         {
             writer.Write(@"<form action=""/");
             writer.Write($"{controllerName}");
@@ -182,6 +182,18 @@ namespace SampleWebApplication.Views
             {
                 falseState();
             }
+        }
+
+        public static void ActionLink(TextWriter writer, string controllerName, string actionName, Action caption)
+        {
+            writer.Write(@"<a href='/");
+            writer.Write($"{controllerName}");
+            writer.Write(@"/");
+            writer.Write($"{actionName}");
+            writer.Write(@"'> ");
+            caption();
+            writer.Write(@" </a>");
+            writer.Write("\r\n");
         }
     }
 }
