@@ -53,6 +53,22 @@ namespace SampleWebApplication.Views
             writer.Write("\r\n");
         }
 
+        public static void H2(TextWriter writer, Action header)
+        {
+            writer.Write(@"<h2> ");
+            header();
+            writer.Write(@" </h2>");
+            writer.Write("\r\n");
+        }
+
+        public static void H3(TextWriter writer, Action header)
+        {
+            writer.Write(@"<h3> ");
+            header();
+            writer.Write(@" </h3>");
+            writer.Write("\r\n");
+        }
+
         public static void Line(TextWriter writer, Action line)
         {
             line();
@@ -130,6 +146,42 @@ namespace SampleWebApplication.Views
             writer.Write($"{name}");
             writer.Write(@""">");
             writer.Write("\r\n");
+        }
+
+        public static void Ul(TextWriter writer, Action body)
+        {
+            writer.Write(@"<ul> ");
+            body();
+            writer.Write(@" </ul>");
+            writer.Write("\r\n");
+        }
+
+        public static void Li(TextWriter writer, Action body)
+        {
+            writer.Write(@"<li> ");
+            body();
+            writer.Write(@" </li>");
+            writer.Write("\r\n");
+        }
+
+        public static void P(TextWriter writer, Action body)
+        {
+            writer.Write(@"<p> ");
+            body();
+            writer.Write(@" </p>");
+            writer.Write("\r\n");
+        }
+
+        public static void If(TextWriter writer, bool condition, Action trueState, Action falseState)
+        {
+            if (condition)
+            {
+                trueState();
+            }
+            else
+            {
+                falseState();
+            }
         }
     }
 }

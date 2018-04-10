@@ -1,0 +1,63 @@
+﻿using @{SampleWebApplication.Models}
+model @{LoginViewModel}
+
+// Przyklad zastosowania rekurencji w funkcjach widokowych
+mixin ShowTreeStructure(@{Node node})
+<|
+	CommonHelper.If(
+		@{node.Children.Any()},
+		<|
+			CommonHelper.P(<- Wezel o nazwie "@{node.Name}" z dziecmi: ->)
+			CommonHelper.Ul(
+				<|
+					-- foreach (var child in node.Children) {
+						CommonHelper.Li(<| ShowTreeStructure(@{child}) |>)
+					-- }
+				|>)
+		|>,
+		<| 
+			CommonHelper.P(<- Wezel o nazwie "@{node.Name}" bez dzieci :( ->) 
+		|>)
+|>
+
+mixin Part1()
+<|
+	CommonHelper.H3( "Operacje na zmiennych" )
+
+	var temp = <-
+		Linia tekstu bez helpera </br>
+		-- var a = 2;
+		Przypadkowa zmienna: @{a} </br>
+		->
+
+	var temp2 = <|
+		CommonHelper.Line( "Linia tekstu" )
+		eval temp
+		|>
+
+	var temp3 = <|
+		CommonHelper.Line( "Linia tekstu2" )
+		<-
+			<p> Przypadkowy tekst w paragrafie </p>
+		->
+		eval temp
+		eval temp2
+		|>
+	eval temp3
+|>
+
+mixin Part2(@{Node sample})
+<|
+	CommonHelper.H3( "Rekurencyjny szablon" )
+	ShowTreeStructure( @{sample} )
+|>
+
+CommonHelper.Html(
+	"Strona Prywatna",
+	<|
+		CommonHelper.H1(<- Witaj @{Model.Name} !! ->)
+		CommonHelper.H2(<- Pokaz możliwosci silnika ->)
+		// podzial widoku na czesci
+		Part1()
+		Part2(@{Model.Tree})
+	|>)

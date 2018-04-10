@@ -15,11 +15,52 @@ namespace SampleWebApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(PersonModel person)
+        public ActionResult Login(PersonModel person)
         {
             string name = person.Name;
             string password = person.Password;
-            return View();
+
+            // simple check if name == password, then we allow access
+            if (name != password)
+            {
+                return View("FailedLogin");
+            }
+
+            var loginViewModel = new LoginViewModel
+            {
+                Name = person.Name,
+                Tree = new Node
+                {
+                    Name = "Jarmarek",
+                    Children = new List<Node>
+                    {
+                        new Node
+                        {
+                            Name = "Jar",
+                            Children = new List<Node>()
+                        },
+                        new Node
+                        {
+                            Name = "marek",
+                            Children = new List<Node>
+                            {
+                                new Node
+                                {
+                                    Name = "ma",
+                                    Children = new List<Node>()
+                                },
+                                new Node
+                                {
+                                    Name = "rek",
+                                    Children = new List<Node>()
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            return View(loginViewModel);
         }
     }
 }

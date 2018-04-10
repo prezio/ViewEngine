@@ -139,9 +139,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\Node.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Home\FailedLogin.cs" />
     <Compile Include="Views\Home\Index.cs" />
+    <Compile Include="Views\Home\Login.cs" />
     <Compile Include="Views\Shared\Common.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +168,8 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\Shared\Common.myhelper" />
+    <Content Include="Views\Home\Login.myview" />
+    <Content Include="Views\Home\FailedLogin.myview" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ViewEngine.Core\ViewEngine.Core.csproj">

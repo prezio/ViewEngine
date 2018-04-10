@@ -4,7 +4,7 @@
 		CommonHelper.H1 ( "Strona logowania" )
 		CommonHelper.Line ( "Podaj dane do logowania" )
 
-		CommonHelper.Form(@{"Home"}, @{"Index"},
+		CommonHelper.PostForm(@{"Home"}, @{"Login"},
 		<|
 			CommonHelper.Table(
 			<|

@@ -1,0 +1,5 @@
+﻿CommonHelper.Html(
+	"Blad w logowaniu",
+	<|
+		CommonHelper.Line("Jest nam przykro, ale podany login i haslo sa niepoprawne")
+	|>)

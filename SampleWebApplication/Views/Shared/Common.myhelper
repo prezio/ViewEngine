@@ -17,13 +17,23 @@ mixin H1(header)
 	<h1> @header </h1>
 ->
 
+mixin H2(header)
+<-
+	<h2> @header </h2>
+->
+
+mixin H3(header)
+<-
+	<h3> @header </h3>
+->
+
 mixin Line(line)
 <-
 	@line </br>
 ->
 
 
-mixin Form(@{string controllerName}, @{string actionName}, body)
+mixin PostForm(@{string controllerName}, @{string actionName}, body)
 <-
 	<form action="/@{controllerName}/@{actionName}" method="post">
 		@body
@@ -63,3 +73,28 @@ mixin Submit(@{string name})
 <-
 	<input type="submit" value="@{name}">
 ->
+
+mixin Ul(body)
+<-
+	<ul> @body </ul>
+->
+
+mixin Li(body)
+<-
+	<li> @body </li>
+->
+
+mixin P(body)
+<-
+	<p> @body </p>
+->
+
+mixin If(@{bool condition}, trueState, falseState)
+<|
+	--if (condition) {
+		eval trueState
+	--}
+	--else {
+		eval falseState
+	--}
+|>
