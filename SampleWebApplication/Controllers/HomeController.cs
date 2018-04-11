@@ -14,6 +14,11 @@ namespace SampleWebApplication.Controllers
             return View();
         }
 
+        public ActionResult Basic()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Login(PersonModel person)
         {

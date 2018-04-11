@@ -133,6 +133,22 @@ namespace SampleWebApplication.Views
             ShowTreeStructure(writer, sample);
         }
 
+        public static void Part3(TextWriter writer)
+        {
+            CommonHelper.H3(writer, () =>
+            {
+                writer.Write(@"Link do akcji");
+            }
+
+            );
+            CommonHelper.ActionLink(writer, "Home", "Basic", () =>
+            {
+                writer.Write(@"Kliknij tutaj");
+            }
+
+            );
+        }
+
         // END OF SECTION WITH MIXIN DECLARATIONS
         // ======================================
         // Render Method
@@ -164,6 +180,7 @@ namespace SampleWebApplication.Views
                 );
                 Part1(writer);
                 Part2(writer, Model.Tree);
+                Part3(writer);
             }
 
             );

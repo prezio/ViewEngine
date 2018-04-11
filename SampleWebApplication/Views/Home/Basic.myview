@@ -1,0 +1,5 @@
+﻿mixin Basic()
+<-
+	Witaj swiecie!!!
+->
+Basic()

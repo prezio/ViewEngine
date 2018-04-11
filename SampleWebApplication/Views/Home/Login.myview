@@ -52,6 +52,12 @@ mixin Part2(@{Node sample})
 	ShowTreeStructure( @{sample} )
 |>
 
+mixin Part3()
+<|
+	CommonHelper.H3( "Link do akcji" )
+	CommonHelper.ActionLink(@{"Home"}, @{"Basic"}, "Kliknij tutaj")
+|>
+
 CommonHelper.Html(
 	"Strona Prywatna",
 	<|
@@ -60,4 +66,5 @@ CommonHelper.Html(
 		// podzial widoku na czesci
 		Part1()
 		Part2(@{Model.Tree})
+		Part3()
 	|>)
