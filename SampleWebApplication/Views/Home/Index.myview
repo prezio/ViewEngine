@@ -1,5 +1,5 @@
 ﻿CommonHelper.Html(
-	"Przyklad strony logowania",
+	"Przykład strony logowania",
 	<|
 		CommonHelper.H1 ( "Strona logowania" )
 		CommonHelper.Line ( "Podaj dane do logowania" )

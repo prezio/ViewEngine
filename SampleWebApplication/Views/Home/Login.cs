@@ -33,9 +33,9 @@ namespace SampleWebApplication.Views
             {
                 CommonHelper.P(writer, () =>
                 {
-                    writer.Write(@" Wezel o nazwie """);
+                    writer.Write(@" Węzęł o nazwie """);
                     writer.Write($"{node.Name}");
-                    writer.Write(@""" z dziecmi: ");
+                    writer.Write(@""" z dziećmi: ");
                     writer.Write("\r\n");
                 }
 
@@ -60,7 +60,7 @@ namespace SampleWebApplication.Views
             {
                 CommonHelper.P(writer, () =>
                 {
-                    writer.Write(@" Wezel o nazwie """);
+                    writer.Write(@" Węzęł o nazwie """);
                     writer.Write($"{node.Name}");
                     writer.Write(@""" bez dzieci :( ");
                     writer.Write("\r\n");
@@ -120,6 +120,15 @@ namespace SampleWebApplication.Views
 
             ;
             temp3();
+            Action temp4 = () =>
+            {
+                writer.Write(@"Witaj świecie!! Dzisiaj jest: ");
+                writer.Write($"{DateTime.Now}");
+                writer.Write("\r\n");
+            }
+
+            ;
+            temp4();
         }
 
         public static void Part2(TextWriter writer, Node sample)

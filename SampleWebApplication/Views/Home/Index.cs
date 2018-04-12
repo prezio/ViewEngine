@@ -33,7 +33,7 @@ namespace SampleWebApplication.Views
         {
             CommonHelper.Html(writer, () =>
             {
-                writer.Write(@"Przyklad strony logowania");
+                writer.Write(@"Przykład strony logowania");
             }
 
             , () =>

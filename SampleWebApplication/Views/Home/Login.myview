@@ -1,13 +1,13 @@
 ﻿using @{SampleWebApplication.Models}
 model @{LoginViewModel}
 
-// Przyklad zastosowania rekurencji w funkcjach widokowych
+// Przykład zastosowania rekurencji w funkcjach widokowych
 mixin ShowTreeStructure(@{Node node})
 <|
 	CommonHelper.If(
 		@{node.Children.Any()},
 		<|
-			CommonHelper.P(<- Wezel o nazwie "@{node.Name}" z dziecmi: ->)
+			CommonHelper.P(<- Węzęł o nazwie "@{node.Name}" z dziećmi: ->)
 			CommonHelper.Ul(
 				<|
 					-- foreach (var child in node.Children) {
@@ -16,7 +16,7 @@ mixin ShowTreeStructure(@{Node node})
 				|>)
 		|>,
 		<| 
-			CommonHelper.P(<- Wezel o nazwie "@{node.Name}" bez dzieci :( ->) 
+			CommonHelper.P(<- Węzęł o nazwie "@{node.Name}" bez dzieci :( ->) 
 		|>)
 |>
 
@@ -44,6 +44,11 @@ mixin Part1()
 		eval temp2
 		|>
 	eval temp3
+
+	var temp4 = <-
+			Witaj świecie!! Dzisiaj jest: @{DateTime.Now}
+		->
+	eval temp4
 |>
 
 mixin Part2(@{Node sample})
@@ -63,7 +68,7 @@ CommonHelper.Html(
 	<|
 		CommonHelper.H1(<- Witaj @{Model.Name} !! ->)
 		CommonHelper.H2(<- Pokaz możliwosci silnika ->)
-		// podzial widoku na czesci
+		// podział widoku na części
 		Part1()
 		Part2(@{Model.Tree})
 		Part3()

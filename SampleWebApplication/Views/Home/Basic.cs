@@ -22,13 +22,13 @@ namespace SampleWebApplication.Views
 {
     // BasicView - generated class which
     // should be used for rendering views
-    [ViewRenderer(@"E:\mgr\ViewEngine.Core\ViewEngine\SampleWebApplication\Views\Home\Basic.myview")]
+    [ViewRenderer(@"E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\SampleWebApplication\Views\Home\Basic.myview")]
     class BasicView : IView
     {
         // SECTION WITH MIXIN DECLARATIONS ======
         public static void Basic(TextWriter writer)
         {
-            writer.Write(@"Witaj swiecie!!!");
+            writer.Write(@"Witaj świecie!!!");
             writer.Write("\r\n");
         }
 
