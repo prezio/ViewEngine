@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWebApplication", "Sam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewEngine.GenerateTool", "ViewEngine.GenerateTool\ViewEngine.GenerateTool.csproj", "{CA1346C5-9358-4484-A0E3-EC3D927705C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewEngine.IntegratedTests", "ViewEngine.IntegratedTests\ViewEngine.IntegratedTests.csproj", "{F5FD3A2E-3E8C-48B1-8C70-9C90D6B30CEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CA1346C5-9358-4484-A0E3-EC3D927705C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA1346C5-9358-4484-A0E3-EC3D927705C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA1346C5-9358-4484-A0E3-EC3D927705C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FD3A2E-3E8C-48B1-8C70-9C90D6B30CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FD3A2E-3E8C-48B1-8C70-9C90D6B30CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FD3A2E-3E8C-48B1-8C70-9C90D6B30CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FD3A2E-3E8C-48B1-8C70-9C90D6B30CEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

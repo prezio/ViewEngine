@@ -1,0 +1,45 @@
+﻿using @{ViewEngine.IntegratedTests.Medium}
+
+model @{CustomerViewModel}
+
+mixin If(@{bool condition}, trueState, falseState)
+<|
+	--if (condition) {
+		eval trueState
+	--} else {
+		eval falseState
+	--}
+|>
+
+mixin Html(title, body)
+<-
+	<html>
+		<head>
+			<title>
+				@title
+			</title>
+		</head>
+		<body>
+			@body
+		</body>
+	</html>
+->
+mixin Line(content)
+<-
+	@content</br>
+->
+
+Html("Tytuł strony", 
+<|
+	Line("Witaj świecie")
+	Line(<-
+		Imię klienta: @{Model.Name}
+	->)
+	If(@{Model.Address.Contains("USA")},
+	    <|
+		   Line("Welcome in Poland")
+		|>,
+		<|
+		   Line("Witamy w Polsce")
+		|>)
+|>)
