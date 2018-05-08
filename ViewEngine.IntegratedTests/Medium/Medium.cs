@@ -23,7 +23,7 @@ namespace ViewEngine.IntegratedTests
 {
     // MediumView - generated class which
     // should be used for rendering views
-    [ViewRenderer(@"C:\magisterium\ViewEngine\ViewEngine.IntegratedTests\Medium\Medium.myview")]
+    [ViewRenderer(@"E:\kodzenie\mgr\final\ViewEngine.Core\ViewEngine\ViewEngine.IntegratedTests\Medium\Medium.myview")]
     class MediumView : IView
     {
         // SECTION WITH MIXIN DECLARATIONS ======

@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basic2\Basic2.cs" />
+    <Compile Include="Basic2\Basic2IntegrationTests.cs" />
     <Compile Include="Basic\Basic.cs" />
     <Compile Include="IntegrationTestManager.cs" />
     <Compile Include="Medium\CustomerViewModel.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="Basic\BasicIntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Basic2\Basic2.myview" />
     <None Include="Medium\Medium.myview" />
     <None Include="Medium\Test1.out">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -75,6 +78,9 @@
       <Project>{804d8e99-b393-4cfd-a7b9-f767cb331788}</Project>
       <Name>ViewEngine.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Medium2\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

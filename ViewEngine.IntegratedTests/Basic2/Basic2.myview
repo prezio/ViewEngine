@@ -1,0 +1,10 @@
+﻿using @{System.IO}
+
+mixin P(content)
+<-
+	<p> @content </p>
+->
+
+var dir = @{Directory.GetCurrentDirectory()}
+
+P(dir)
