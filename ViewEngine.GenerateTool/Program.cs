@@ -11,11 +11,17 @@ namespace ViewEngine.GenerateTool
 {
     class Program
     {
+        static void WriteMessage(string message)
+        {
+            Console.WriteLine($"ViewEngine.GenerateTool> {message}");
+        }
+
         static void RenderMainViews(ICoreEngine engine, string solutionDirectory, string namespaceName)
         {
             var mainFilePaths = Directory.GetFiles(solutionDirectory, "*.myview", SearchOption.AllDirectories);
             foreach (var path in mainFilePaths)
             {
+                WriteMessage($"Generating {Path.GetFileName(path)}...");
                 var viewName = Path.GetFileNameWithoutExtension(path);
                 var content = engine.RenderMainView(viewName,
                     path,
@@ -28,9 +34,10 @@ namespace ViewEngine.GenerateTool
 
         static void RenderHelpers(ICoreEngine engine, string solutionDirectory, string namespaceName)
         {
-            var mainFilePaths = Directory.GetFiles(solutionDirectory, "*.myhelper", SearchOption.AllDirectories);
-            foreach (var path in mainFilePaths)
+            var helperFilePaths = Directory.GetFiles(solutionDirectory, "*.myhelper", SearchOption.AllDirectories);
+            foreach (var path in helperFilePaths)
             {
+                WriteMessage($"Generating {Path.GetFileName(path)}...");
                 var helperName = Path.GetFileNameWithoutExtension(path);
                 var content = engine.RenderHelper(helperName,
                     namespaceName,
@@ -42,9 +49,11 @@ namespace ViewEngine.GenerateTool
 
         static void RunOptionsAndReturnExitCode(Options options)
         {
+            WriteMessage("Starting View Generation...");
             var engine = new CoreEngine();
             RenderMainViews(engine, options.SolutionDirectory, options.NamespaceName);
             RenderHelpers(engine, options.SolutionDirectory, options.NamespaceName);
+            WriteMessage("View Generation completed.");
         }
 
         static void Main(string[] args)
