@@ -178,6 +178,7 @@
     <Compile Include="Grammar\Outputs\MainOutput.cs" />
     <Compile Include="Grammar\Outputs\HelperOutput.cs" />
     <Compile Include="Grammar\Common\CodeVarUsage.cs" />
+    <Compile Include="Grammar\Scope\CodeScope.cs" />
     <Compile Include="Grammar\Scope\IRegularExpression.cs" />
     <Compile Include="Grammar\Scope\ITemplateExpression.cs" />
     <Compile Include="Grammar\Scope\ITemplateLinePart.cs" />

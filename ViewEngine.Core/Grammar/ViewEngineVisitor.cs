@@ -68,6 +68,17 @@ namespace ViewEngine.Core.Grammar
             return null;
         }
 
+        public override object VisitCodeScopeExp([NotNull] ViewEngineParser.CodeScopeExpContext context)
+        {
+            var content = context.CODE_SCOPE().GetText();
+            Result.Add(
+                new CodeScope(content.Substring(2, content.Length - 3))
+                );
+
+            Visit(context.regular_statement());
+            return null;
+        }
+
         public override object VisitCodeLineExp([NotNull] ViewEngineParser.CodeLineExpContext context)
         {
             var codeLine = context.CODE_LINE().GetText().Remove(0, 2);

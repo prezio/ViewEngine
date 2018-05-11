@@ -18,6 +18,7 @@ secondary
 regular_statement
     : CODE_LINE regular_statement               #codeLineExp
     | COMMENT_LINE regular_statement            #commentLineExp
+	| CODE_SCOPE regular_statement              #codeScopeExp
     | TEMPLATE_SCOPE regular_statement          #templateScopeExp
     | mixin_usage regular_statement             #mixinUsageExp
 	| assignment_exp regular_statement          #assignmentExp

@@ -145,6 +145,10 @@ namespace ViewEngine.Core.Templates.Scope
                 {
                     ret.Append(GenerateTemplateScope(templateScope));
                 }
+                else if (expression is CodeScope codeScope)
+                {
+                    ret.Append(codeScope.Content);
+                }
             }
             return ret.ToString();
         }
