@@ -30,7 +30,7 @@ namespace ViewEngine.Core.Web.Mvc
 
         private string ToLocationFormat(string path)
         {
-            return "~\\Views" + path.Split(new[] { "Views" }, StringSplitOptions.None).Last();
+            return $"~\\Views{path.Split(new[] { "Views" }, StringSplitOptions.None).Last()}".ToLower();
         }
 
         public ViewFactory(Assembly assembly)
@@ -48,7 +48,7 @@ namespace ViewEngine.Core.Web.Mvc
         protected override IView CreateView
             (ControllerContext controllerContext, string viewPath, string masterPath)
         {
-            return _viewRenderersDispatcher[viewPath];
+            return _viewRenderersDispatcher[viewPath.ToLower()];
         }
     }
 }
